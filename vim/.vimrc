@@ -48,6 +48,7 @@ filetype plugin indent on    " required
 set backspace=indent,eol,start
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab smartindent autoindent
 set nu
+syntax on
 
 " paste toggle in edit mode (F2) 
 nnoremap <F2> :set invpaste paste?<CR>
