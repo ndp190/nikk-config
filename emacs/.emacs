@@ -9,6 +9,7 @@
                      evil-mc
                      ggtags
                      company
+                     go-mode
                      ))
 
 ; list the repositories containing them
@@ -67,7 +68,7 @@
     (setq ledger-binary-path "/usr/local/bin/ledger")
 )
 
-(setq projectile-tags-command "ctags-exuberant -Re %s %s .")
+(setq projectile-tags-command "ctags -Re %s %s .")
 (setq-default indent-tabs-mode nil)
 (setq standard-indent 4)
 (add-to-list 'load-path "~/.emacs.d/includes/")
