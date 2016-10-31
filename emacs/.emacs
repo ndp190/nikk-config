@@ -10,6 +10,8 @@
                      ggtags
                      company
                      go-mode
+                     all-the-icons
+                     neotree
                      ))
 
 ; list the repositories containing them
@@ -96,7 +98,10 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/Dropbox/Org/Meetings.org" "~/Dropbox/Org/Tasks.org"))))
+    ("~/Dropbox/Org/Meetings.org" "~/Dropbox/Org/Tasks.org")))
+ '(package-selected-packages
+   (quote
+    (neotree suscolors-theme ledger-mode helm-projectile go-mode git-gutter ggtags evil-mc evil-magit emmet-mode company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -140,6 +145,8 @@
 (global-set-key (kbd "C-x v SPC") 'git-gutter:mark-hunk)
 ;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
+;; neotree
+(global-set-key [f8] 'neotree-toggle)
 ;; company
 (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-n") 'company-select-next)
