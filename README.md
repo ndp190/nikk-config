@@ -1,13 +1,18 @@
-# vim
+# Nikk config
+clone with submodule
+cd nikk-config
+git submodule update --init --recursive
+
+## vim
 ln -s vim/.vim ~/.vim
 ln -s vim/.vimrc ~/.vim
 
-# emacs
+## emacs
 ln -s emacs/.emacs ~/.emacs
 
-# shell
-## bash mac
+## shell
+### bash mac
 ln -s shell/.bash_profile ~/.bash_profile
 
-## fish mac
+### fish mac
 ln -s shell/fish.config ~/.config/fish/fish.config
