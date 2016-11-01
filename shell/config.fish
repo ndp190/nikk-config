@@ -14,7 +14,7 @@ set -gx PATH ~/.npm-packages/bin $PATH
 set -gx PATH /usr/local/Cellar/rabbitmq/3.6.1/sbin $PATH
 
 # export golang
-set GOPATH $HOME/go
+set GOPATH /usr/local/Cellar/go/1.7.3/libexec
 set PATH $GOPATH/bin $PATH
 
 alias SQLyog 'wine "C:/Program Files/SQLyog/SQLyog.exe"'
