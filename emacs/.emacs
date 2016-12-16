@@ -12,6 +12,8 @@
                      go-mode
                      all-the-icons
                      neotree
+                     smart-mode-line-powerline-theme
+                     nyan-mode
                      ))
 
 ; list the repositories containing them
@@ -38,6 +40,25 @@
 ;;(add-hook 'after-init-hook 'global-company-mode)
 
 ;; CONFIG ;;
+;; encryption
+(require 'epa-file)
+(epa-file-enable)
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+;; GPG key to use for encryption
+;; Either the Key ID or set to nil to use symmetric encryption
+(setq org-crypt-key nil)
+
+;; smart mode line
+(setq sml/no-confirm-load-theme t)
+(setq sml/theme 'powerline)
+(sml/setup)
+(nyan-mode 1)
+;(setq mode-line-format
+;      (list
+;       '(:eval (list (nyan-create)))
+;       ))
 ;; evil 
 (evil-mode t)
 (require 'evil-magit)
@@ -96,6 +117,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default)))
  '(org-agenda-files
    (quote
     ("~/Dropbox/Org/Meetings.org" "~/Dropbox/Org/Tasks.org")))
