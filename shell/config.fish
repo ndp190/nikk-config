@@ -85,3 +85,8 @@ end
 #set JAVA_HOME (/usr/libexec/java_home)
 set JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
 set HADOOP_CLASSPATH {$JAVA_HOME}/lib/tools.jar
+
+# direnv
+eval (direnv hook fish)
+
+set VAGRANT_HOME /Volumes/Nikk\ Passport/.vagrant.d/

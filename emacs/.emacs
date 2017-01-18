@@ -42,7 +42,7 @@
 ;; CONFIG ;;
 ;; encryption
 (require 'epa-file)
-(epa-file-enable)
+;(epa-file-enable)
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance (quote ("crypt")))
