@@ -1,3 +1,10 @@
+" 
+" 
+" DO NOT CHANGED THIS FILE
+" CHANGE THE CONFIG IN NIKK-CONFIG REPO AND RERUN THE INSTALL SCRIPT INSTEAD
+"
+"
+
 " -------- VUNDLE -------- "
 set nocompatible              " be iMproved, required
 filetype off                  " required
