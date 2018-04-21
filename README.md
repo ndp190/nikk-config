@@ -1,28 +1,18 @@
 # Nikk config
-clone with submodule
+
+Run install script and follow the promps
+
 ```
-cd nikk-config
-git submodule update --init --recursive
+chmod +x install.sh
+./install.sh
 ```
 
-## vim
-```
-ln -s vim/.vim ~/.vim
-ln -s vim/.vimrc ~/.vim
-```
+## Vim included plugins
+Vundle 
+    Command-T (fuzzy search)
+NERDTree (LHS navigation) https://github.com/scrooloose/nerdtree
 
-## emacs
-```
-ln -s emacs/.emacs ~/.emacs
-```
-
-## shell
-### bash mac
-```
-ln -s shell/.bash_profile ~/.bash_profile
-```
-
-### fish mac
-```
-ln -s shell/fish.config ~/.config/fish/fish.config
-```
+## Others config files
+* emacs (deprecated - install spacemacs instead)
+* bash mac
+* fish mac
