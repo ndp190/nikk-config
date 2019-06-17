@@ -75,3 +75,4 @@ set guicursor+=i:blinkwait10
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
