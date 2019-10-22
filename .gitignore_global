@@ -1,0 +1,8 @@
+queue-wrapper/test.local.sh
+monolith/Makefile
+.idea
+.DS_Store
+composer-local.json
+composer-local.lock
+.env
+.php_cs.cache
