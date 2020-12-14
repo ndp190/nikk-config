@@ -58,7 +58,11 @@ filetype plugin indent on    " required
 " editor settings
 set backspace=indent,eol,start
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab smartindent autoindent
-set nu
+set hlsearch    " highlight all search results
+set ignorecase  " do case insensitive search
+set incsearch   " show incremental search results as you type
+set number      " display line number
+set noswapfile  " disable swap file
 syntax on
 
 " paste toggle in edit mode (F2) 
