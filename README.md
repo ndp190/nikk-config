@@ -1,18 +1,18 @@
 # Nikk config
 
-Run install script and follow the promps
+Install
 
 ```
-chmod +x install.sh
-./install.sh
+make
 ```
 
-## Vim included plugins
-Vundle 
-    Command-T (fuzzy search)
-NERDTree (LHS navigation) https://github.com/scrooloose/nerdtree
+Clean: this will *remove all* current configuration, use with cautiuos
 
-## Others config files
-* emacs (deprecated - install spacemacs instead)
-* bash mac
-* fish mac
+```
+make clean
+```
+
+# Edit
+
+To add more package for brew, update it in `install-brew.sh
+To add more package for node, update it in `install-node.sh

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/go1/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -63,6 +63,7 @@ plugins=(
   tmux
   composer
   dotenv
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -96,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dc='docker-compose -f docker-compose.yml -f docker-compose-fn.yml'
+alias ll='ls -la'
 
 bindkey "[D" backward-word
 bindkey "[C" forward-word
@@ -103,7 +105,7 @@ bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
 export PATH=~/.composer/vendor/bin:$PATH
-export GOPATH=/Users/go1/Projects/go1/monolith/golang
+export GOPATH=~/Projects/go1/monolith/golang
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export PATH="/usr/local/opt/node@8/bin:$PATH"
@@ -112,7 +114,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # pip
-export PATH=/Users/go1/Library/Python/2.7/bin:$PATH
+export PATH=~/Library/Python/2.7/bin:$PATH
 
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"

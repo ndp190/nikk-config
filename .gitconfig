@@ -4,9 +4,9 @@
 [url "git@code.go1.com.au:"]
 	insteadOf = https://code.go1.com.au/
 [test "local"]
-	sh = /Users/go1/.gitignore_global
+	sh = ~/.gitignore_global
 [core]
-	excludesfile = /Users/go1/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = /usr/bin/vim
 [alias]
         tree = log --graph --decorate
