@@ -1,6 +1,7 @@
 # general settings
 auto-reload yes
 max-items 50
+always-display-description yes
 
 # unbind keys
 unbind-key ENTER
