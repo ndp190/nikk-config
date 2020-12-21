@@ -64,11 +64,13 @@ plugins=(
   composer
   dotenv
   zsh-autosuggestions
+  autojump
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+ZSH_DOTENV_PROMPT=false
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
