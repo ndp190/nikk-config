@@ -10,3 +10,5 @@
 	editor = /usr/bin/vim
 [alias]
         tree = log --graph --decorate
+[pager]
+	branch = false
