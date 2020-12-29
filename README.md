@@ -6,7 +6,7 @@ Install
 make
 ```
 
-Clean: this will *remove all* current configuration, use with cautiuos
+Clean: this will *remove all* current configuration, use with cautious
 
 ```
 make clean
