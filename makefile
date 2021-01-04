@@ -1,4 +1,5 @@
 install: prerequisite \
+    install-custom-script \
     install-karabiner \
     install-vim \
     install-tmux \
@@ -11,6 +12,11 @@ prerequisite:
 	chmod +x `pwd`/install-brew.sh `pwd`/install-node.sh
 	`pwd`/install-brew.sh
 	`pwd`/install-node.sh
+
+install-custom-script:
+	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
+	ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
+	ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
 
 install-karabiner:
 	mkdir -p ~/.config/karabiner
