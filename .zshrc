@@ -120,3 +120,6 @@ export PATH=~/Library/Python/2.7/bin:$PATH
 
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+source <(kubectl completion zsh)

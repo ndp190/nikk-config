@@ -486,7 +486,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow"
+                                        "shell_command": "pmset displaysleepnow"
                                     }
                                 ],
                                 "type": "basic"
