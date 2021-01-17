@@ -10,6 +10,7 @@ fi
 
 # EDIT HERE for brew packages to install
 packages=(
+    htop
     kubectl
     node
     autojump
