@@ -1,16 +1,17 @@
 "NERDTree
-map <C-n> :NERDTreeToggle<CR>
-map <C-i> :NERDTreeFind<CR>
-let g:NERDTreePatternMatchHighlightFullName = 1
-let NERDTreeAutoDeleteBuffer = 1
-"let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-let g:NERDTreeChDirMode=2
-"let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', 'node_modules']
-let g:NERDTreeShowBookmarks=1
-let NERDTreeShowHidden=1
+"map <C-n> :NERDTreeToggle<CR>
+"map <C-i> :NERDTreeFind<CR>
+"let g:NERDTreePatternMatchHighlightFullName = 1
+"let NERDTreeAutoDeleteBuffer = 1
+""let NERDTreeMinimalUI = 1
+"let NERDTreeDirArrows = 1
+"let g:NERDDefaultAlign = 'left'
+"let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+"let g:NERDTreeChDirMode=2
+""let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', 'node_modules']
+"let g:NERDTreeShowBookmarks=1
+"let NERDTreeShowHidden=1
+
 "Theme 
 syntax enable
 set background=dark
@@ -38,8 +39,8 @@ let g:rnvimr_action = {
             \ 'yw': 'EmitRangerCwd'
             \ }
 " fzf
-nnoremap <silent> <leader>f :FZF<cr>
-nnoremap <silent> <leader>F :FZF ~<cr>
+nnoremap <silent> <leader>f :Rg<cr>
+nnoremap <silent> <leader>F :Files<cr>
 
 " numbers
 nnoremap <F3> :NumbersToggle<CR>

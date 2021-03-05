@@ -3,10 +3,11 @@ call plug#begin('~/.config/nvim/bundle')
 " run `:so %` to reload and `:PlugInstall` to install plugins
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'morhetz/gruvbox' " theme
-" Highlight when using f to find word(s)
-Plug 'unblevable/quick-scope'
+Plug 'vim-airline/vim-airline' " status line
+" " Highlight when using f to find word(s)
+" Plug 'unblevable/quick-scope'
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
 " Closetags
@@ -29,4 +30,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'myusuf3/numbers.vim'
 " Copy to clipboard - cp to copy, cv to paste, cP to copy current line
 Plug 'christoomey/vim-system-copy'
+" Jump to definition - <leader>j
+Plug 'pechorin/any-jump.vim'
+" Start page
+Plug 'mhinz/vim-startify'
+" Bookmark - mm to toggle, mi to annotate, mn mp to navigate, ma to show all,
+" mc to clear, mx to clear all
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 call plug#end()

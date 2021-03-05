@@ -8,6 +8,11 @@ else
     brew update
 fi
 
+# EDIT HERE for brew taps to install
+taps=(
+	homebrew/cask-fonts
+)
+
 # EDIT HERE for brew packages to install
 packages=(
     htop
@@ -19,11 +24,17 @@ packages=(
     lynx
     newsboat
     nvim
-	ranger
+	ripgrep
 )
 packages_cask=(
     karabiner-elements
+	font-hack-nerd-font
 )
+
+for pkg in "${taps[@]}"; do
+	brew tap $pkg
+	echo "[nikk] brew tap '$pkg'"
+done
 
 for pkg in "${packages[@]}"; do
     if brew ls --versions $pkg > /dev/null; then
