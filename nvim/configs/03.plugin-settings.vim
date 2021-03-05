@@ -16,8 +16,9 @@
 syntax enable
 set background=dark
 highlight Normal ctermbg=None
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
+" colorscheme gruvbox
+" let g:airline_theme='gruvbox'
+colorscheme ayu
 set termguicolors
 
 " bbye
@@ -45,3 +46,6 @@ nnoremap <silent> <leader>F :Files<cr>
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+
+" bookmark - fix for quickfix window
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
