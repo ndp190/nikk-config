@@ -1,0 +1,32 @@
+call plug#begin('~/.config/nvim/bundle')
+" Plugins has to sit between plug#begin & plug#end
+" run `:so %` to reload and `:PlugInstall` to install plugins
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'morhetz/gruvbox' " theme
+" Highlight when using f to find word(s)
+Plug 'unblevable/quick-scope'
+" Auto pairs for '(' '[' '{'
+Plug 'jiangmiao/auto-pairs'
+" Closetags
+Plug 'alvan/vim-closetag'
+" Better Comments - type `gcc`
+Plug 'tpope/vim-commentary'
+" Ranger in popup
+Plug 'kevinhwang91/rnvimr'
+" Intuitive buffer closing - type space-q
+Plug 'moll/vim-bbye'
+" Smooth scroll
+Plug 'psliwka/vim-smoothie'
+" Intellisense
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" auto set indent settings
+Plug 'tpope/vim-sleuth'
+" Better Syntax Support
+Plug 'sheerun/vim-polyglot'
+" Line number display - F3 to toggle number, F4 to toggle on/off
+Plug 'myusuf3/numbers.vim'
+" Copy to clipboard - cp to copy, cv to paste, cP to copy current line
+Plug 'christoomey/vim-system-copy'
+call plug#end()

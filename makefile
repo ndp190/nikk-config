@@ -1,7 +1,7 @@
 install: prerequisite \
     install-custom-script \
     install-karabiner \
-    install-vim \
+    install-nvim \
     install-tmux \
     install-zsh \
     install-lynx \
@@ -9,9 +9,10 @@ install: prerequisite \
     install-newsboat
 
 prerequisite:
-	chmod +x `pwd`/install-brew.sh `pwd`/install-node.sh
+	chmod +x `pwd`/install-brew.sh `pwd`/install-node.sh `pwd`/install-pip.sh
 	`pwd`/install-brew.sh
 	`pwd`/install-node.sh
+	`pwd`/install-pip.sh
 
 install-custom-script:
 	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
@@ -22,9 +23,14 @@ install-karabiner:
 	mkdir -p ~/.config/karabiner
 	ln -sf `pwd`/karabiner.json ~/.config/karabiner/karabiner.json
 
-install-vim:
-	ln -sf `pwd`/.vimrc ~/.vimrc
-	vim +PluginInstall +qall
+#install-vim:
+#	ln -sf `pwd`/.vimrc ~/.vimrc
+#	vim +PluginInstall +qall
+
+install-nvim:
+	mkdir -p ~/.config
+	ln -sf `pwd`/nvim ~/.config
+	vim +PlugInstall
 
 install-tmux:
 	mkdir -p ~/.tmux/plugins

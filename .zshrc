@@ -116,10 +116,16 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # pip
-export PATH=~/Library/Python/2.7/bin:$PATH
+#export PATH=~/Library/Python/2.7/bin:$PATH
+export PYTHONPATH=/usr/local/lib/python3.9/site-packages
 
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+export PATH="/Applications/flutter/bin:$PATH"
 source <(kubectl completion zsh)
+
+export VISUAL=nvim;
+export EDITOR=nvim;

@@ -13,10 +13,13 @@ packages=(
     htop
     kubectl
     node
+	python
     autojump
     watch
     lynx
     newsboat
+    nvim
+	ranger
 )
 packages_cask=(
     karabiner-elements
