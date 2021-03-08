@@ -49,3 +49,8 @@ nnoremap <F4> :NumbersOnOff<CR>
 
 " bookmark - fix for quickfix window
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+
+" auto cwd
+let g:autocwd_patternwd_pairs = [
+	\['*', '*REPO*'],
+\]

@@ -40,4 +40,5 @@ Plug 'mhinz/vim-startify'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'yssl/AutoCWD.vim'
 call plug#end()
