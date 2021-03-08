@@ -32,7 +32,9 @@ install-nvim:
 	ln -sf `pwd`/nvim ~/.config
 	vim +PlugInstall
 	# install ranger icon
-	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons && echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
+	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+	echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
+	echo "map <DELETE> shell -s trash-put %s" >> ~/.config/ranger/rc.conf
 
 install-tmux:
 	mkdir -p ~/.tmux/plugins

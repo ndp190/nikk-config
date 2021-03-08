@@ -29,3 +29,6 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 10gt
+
+" map quit
+nnoremap <leader>w :q<cr>
