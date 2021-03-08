@@ -127,5 +127,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/Applications/flutter/bin:$PATH"
 source <(kubectl completion zsh)
 
-export VISUAL=nvim;
-export EDITOR=nvim;
+export VISUAL=nvim
+export EDITOR=nvim
+
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
