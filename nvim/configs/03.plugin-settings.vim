@@ -20,9 +20,13 @@ highlight Normal ctermbg=None
 " let g:airline_theme='gruvbox'
 colorscheme ayu
 set termguicolors
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " bbye
 :nnoremap <Leader>q :Bdelete<CR>
+:nnoremap <Leader>Q :Bdelete!<CR>
 
 " rnvimr ranger popup
 " tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
@@ -54,3 +58,14 @@ autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 let g:autocwd_patternwd_pairs = [
 	\['*', '*REPO*'],
 \]
+
+" " SimpylFold
+" let g:SimpylFold_fold_docstring=0
+" let b:SimpylFold_fold_docstring=0
+" let g:SimpylFold_docstring_preview=1
+
+" Enable hidden file search for Rg
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)

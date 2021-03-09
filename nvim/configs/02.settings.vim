@@ -15,6 +15,9 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
+" Enable switch buffer without saving modified contents
+set hidden
+
 " key mapping
 nnoremap <silent> <C-n> :bnext<CR>
 nnoremap <silent> <C-p> :bprev<CR>
@@ -32,3 +35,6 @@ nnoremap <leader>0 10gt
 
 " map quit
 nnoremap <leader>w :q<cr>
+
+" open empty buffer
+nnoremap <leader>n :enew<cr>

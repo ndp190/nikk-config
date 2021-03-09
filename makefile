@@ -35,6 +35,7 @@ install-nvim:
 	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 	echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
 	echo "map <DELETE> shell -s trash-put %s" >> ~/.config/ranger/rc.conf
+	echo "set show_hidden true" >> ~/.config/ranger/rc.conf
 
 install-tmux:
 	mkdir -p ~/.tmux/plugins

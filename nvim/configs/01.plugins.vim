@@ -41,4 +41,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'yssl/AutoCWD.vim'
+" " Code folding - za to fold all, zo to open fold
+" Plug 'tmhedberg/SimpylFold'
 call plug#end()
