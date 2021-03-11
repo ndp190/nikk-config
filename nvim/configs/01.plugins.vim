@@ -43,4 +43,5 @@ Plug 'airblade/vim-gitgutter'
 Plug 'yssl/AutoCWD.vim'
 " " Code folding - za to fold all, zo to open fold
 " Plug 'tmhedberg/SimpylFold'
+Plug 'zchee/deoplete-jedi'
 call plug#end()
