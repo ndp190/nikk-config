@@ -42,8 +42,8 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 set laststatus=2    " enables vim-airline.
 
 " bbye
-:nnoremap <Leader>q :Bdelete<CR>
-:nnoremap <Leader>Q :Bdelete!<CR>
+:nnoremap <Leader>w :Bdelete<CR>
+:nnoremap <Leader>W :Bdelete!<CR>
 
 " rnvimr ranger popup
 " tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>

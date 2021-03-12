@@ -34,7 +34,7 @@ nnoremap <silent> <C-p> :bprev<CR>
 " nnoremap <leader>0 10gt
 
 " map quit
-nnoremap <leader>w :q<cr>
+nnoremap <leader>q :q<cr>
 
 " save buffer
 nnoremap <leader>s :w<cr>
