@@ -30,7 +30,10 @@ install-karabiner:
 install-nvim:
 	mkdir -p ~/.config
 	ln -sf `pwd`/nvim ~/.config
-	vim +PlugInstall
+	# install neovim plugin
+	nvim +PlugInstall +qall
+	# install coc plugins
+	nvim '+CocInstall -sync coc-phpls coc-python' +qall
 	# install ranger icon
 	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 	echo "default_linemode devicons" >> ~/.config/ranger/rc.conf

@@ -18,7 +18,7 @@ packages=(
     htop
     kubectl
     node
-	python
+	python3
     autojump
     watch
     lynx

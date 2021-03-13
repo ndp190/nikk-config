@@ -23,6 +23,8 @@ Plug 'moll/vim-bbye'
 Plug 'psliwka/vim-smoothie'
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ " Jump to definition - <leader>j
+Plug 'pechorin/any-jump.vim'
 " auto set indent settings
 Plug 'tpope/vim-sleuth'
 " Better Syntax Support
@@ -32,7 +34,7 @@ Plug 'myusuf3/numbers.vim'
 " Copy to clipboard - cp to copy, cv to paste, cP to copy current line
 Plug 'christoomey/vim-system-copy'
 " Jump to definition - <leader>j
-Plug 'pechorin/any-jump.vim'
+" Plug 'pechorin/any-jump.vim'
 " Start page
 Plug 'mhinz/vim-startify'
 " Bookmark - mm to toggle, mi to annotate, mn mp to navigate, ma to show all,
@@ -41,7 +43,4 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'yssl/AutoCWD.vim'
-" " Code folding - za to fold all, zo to open fold
-" Plug 'tmhedberg/SimpylFold'
-Plug 'zchee/deoplete-jedi'
 call plug#end()
