@@ -43,4 +43,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'yssl/AutoCWD.vim'
+" Drawing in vim
+Plug 'gyim/vim-boxdraw'
 call plug#end()

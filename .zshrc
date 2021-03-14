@@ -100,6 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dc='docker-compose -f docker-compose.yml -f docker-compose-fn.yml'
 alias ll='ls -la'
+alias vim="nvim"
+alias vi="nvim"
 
 bindkey "[D" backward-word
 bindkey "[C" forward-word

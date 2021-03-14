@@ -64,6 +64,7 @@ nnoremap <silent> <leader>F :Files<cr>
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+nnoremap <F5> :call ToggleDrawingMode()<CR>
 
 " bookmark - fix for quickfix window
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
@@ -83,3 +84,13 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
+function! ToggleDrawingMode()
+	if &virtualedit ==# ""
+		set virtualedit=all
+		echo "Drawing mode"
+	else
+		set virtualedit=
+		echo "Exit drawing mode"
+	endif
+endfunction
