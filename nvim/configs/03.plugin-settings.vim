@@ -74,10 +74,10 @@ let g:autocwd_patternwd_pairs = [
 	\['*', '*REPO*'],
 \]
 
-" " SimpylFold
-" let g:SimpylFold_fold_docstring=0
-" let b:SimpylFold_fold_docstring=0
-" let g:SimpylFold_docstring_preview=1
+" git
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gs :G<CR>
 
 " Enable hidden file search for Rg
 command! -bang -nargs=* Rg

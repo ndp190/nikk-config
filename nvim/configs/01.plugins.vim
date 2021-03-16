@@ -9,8 +9,8 @@ Plug 'ayu-theme/ayu-vim' " ayu theme
 Plug 'vim-airline/vim-airline' " status line
 " " Highlight when using f to find word(s)
 " Plug 'unblevable/quick-scope'
-" Auto pairs for '(' '[' '{'
-Plug 'jiangmiao/auto-pairs'
+" " Auto pairs for '(' '[' '{'
+" Plug 'jiangmiao/auto-pairs'
 " Closetags
 Plug 'alvan/vim-closetag'
 " Better Comments - type `gcc`
