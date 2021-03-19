@@ -45,4 +45,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'yssl/AutoCWD.vim'
 " Drawing in vim
 Plug 'gyim/vim-boxdraw'
+" Ctrl + h/j/k/l to move between panel
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
