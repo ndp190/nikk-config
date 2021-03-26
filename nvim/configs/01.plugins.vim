@@ -47,4 +47,7 @@ Plug 'yssl/AutoCWD.vim'
 Plug 'gyim/vim-boxdraw'
 " Ctrl + h/j/k/l to move between panel
 Plug 'christoomey/vim-tmux-navigator'
+" :Far foo bar **/*.py
+" :Fardo
+Plug 'brooth/far.vim'
 call plug#end()

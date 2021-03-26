@@ -33,9 +33,10 @@ install-nvim:
 	# install neovim plugin
 	nvim +PlugInstall +qall
 	# install coc plugins
-	nvim '+CocInstall -sync coc-phpls coc-python' +qall
+	nvim '+CocInstall -sync coc-phpls coc-python coc-tsserver' +qall
 	# install ranger icon
 	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+	ln -sf `pwd`/rifle.conf ~/.config/ranger/rifle.conf
 	echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
 	echo "map <DELETE> shell -s trash-put %s" >> ~/.config/ranger/rc.conf
 	echo "set show_hidden true" >> ~/.config/ranger/rc.conf

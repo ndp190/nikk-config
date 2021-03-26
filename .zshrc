@@ -119,7 +119,7 @@ export LANG=en_US.UTF-8
 
 # pip
 #export PATH=~/Library/Python/2.7/bin:$PATH
-export PYTHONPATH=/usr/local/lib/python3.9/site-packages
+#export PYTHONPATH=/usr/local/lib/python3.9/site-packages
 
 export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 export PATH="/usr/local/opt/php@7.2/bin:$PATH"
@@ -133,3 +133,9 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+
+# Load pyenv automatically by appending
+# the following to ~/.zshrc:
+eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"

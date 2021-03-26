@@ -19,6 +19,7 @@ packages=(
     kubectl
     node
 	python3
+	pyenv
     autojump
     watch
     lynx
