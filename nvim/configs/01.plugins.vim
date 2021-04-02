@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/bundle')
 " run `:so %` to reload and `:PlugInstall` to install plugins
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'scrooloose/nerdtree'
 " Plug 'morhetz/gruvbox' " theme
 Plug 'ayu-theme/ayu-vim' " ayu theme
 Plug 'vim-airline/vim-airline' " status line

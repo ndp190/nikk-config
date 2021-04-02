@@ -2,7 +2,8 @@ let mapleader = "\<Space>" " prefix for triggering functions or events
 filetype plugin on
 filetype plugin indent on
 
-autocmd BufEnter * :set scroll=10 " set scroll line 
+" autocmd BufEnter * :set scroll=10 " set scroll line -> this sometime break
+" coc find reference method
 syntax on
 
 set encoding=UTF-8

@@ -68,6 +68,8 @@ nnoremap <F5> :call ToggleDrawingMode()<CR>
 
 " bookmark - fix for quickfix window
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+let g:bookmark_auto_close = 1
+let g:bookmark_auto_save = 1
 
 " auto cwd
 let g:autocwd_patternwd_pairs = [
