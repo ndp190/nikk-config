@@ -3,8 +3,8 @@ call plug#begin('~/.config/nvim/bundle')
 " run `:so %` to reload and `:PlugInstall` to install plugins
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'morhetz/gruvbox' " theme
-Plug 'ayu-theme/ayu-vim' " ayu theme
+Plug 'morhetz/gruvbox' " theme
+" Plug 'ayu-theme/ayu-vim' " ayu theme
 Plug 'vim-airline/vim-airline' " status line
 " " Highlight when using f to find word(s)
 " Plug 'unblevable/quick-scope'
@@ -26,6 +26,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pechorin/any-jump.vim'
 " auto set indent settings
 Plug 'tpope/vim-sleuth'
+" " :Autoformat or <F5>
+" Plug 'chiel92/vim-autoformat'
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
 " Line number display - F3 to toggle number, F4 to toggle on/off

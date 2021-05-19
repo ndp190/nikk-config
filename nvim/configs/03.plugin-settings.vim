@@ -6,16 +6,21 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+"" auto import for ts
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-" Theme
+"" Theme
 syntax enable
 set background=dark
 highlight Normal ctermbg=None
-" colorscheme gruvbox
-" let g:airline_theme='gruvbox'
-colorscheme ayu
+" gruvbox theme
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
+" ayu theme
+" colorscheme ayu
+
 set termguicolors
 let g:airline#extensions#wordcount#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -64,7 +69,9 @@ nnoremap <silent> <leader>F :Files<cr>
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
-nnoremap <F5> :call ToggleDrawingMode()<CR>
+nnoremap <F5> :CocCommand prettier.formatFile<CR>
+vmap <F5> <Plug>(coc-format-selected)
+nnoremap <F6> :call ToggleDrawingMode()<CR>
 
 " bookmark - fix for quickfix window
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>

@@ -33,7 +33,7 @@ install-nvim:
 	# install neovim plugin
 	nvim +PlugInstall +qall
 	# install coc plugins
-	nvim '+CocInstall -sync coc-phpls coc-python coc-tsserver' +qall
+	nvim '+CocInstall -sync coc-phpls coc-python coc-tsserver coc-prettier coc-go' +qall
 	# install ranger icon
 	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 	ln -sf `pwd`/rifle.conf ~/.config/ranger/rifle.conf
