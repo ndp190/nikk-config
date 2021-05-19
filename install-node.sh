@@ -3,6 +3,7 @@
 # EDIT HERE for node packages to install
 packages=(
 	bitcoin-chart-cli
+	bash-language-server
 )
 
 for pkg in "${packages[@]}"; do
