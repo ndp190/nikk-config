@@ -12,3 +12,5 @@
         tree = log --graph --decorate
 [pager]
 	branch = false
+[pull]
+	rebase = true

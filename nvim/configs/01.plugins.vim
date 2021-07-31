@@ -21,7 +21,12 @@ Plug 'moll/vim-bbye'
 " Smooth scroll
 Plug 'psliwka/vim-smoothie'
 " Intellisense
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall' " https://github.com/kabouzeid/nvim-lspinstall
+Plug 'hrsh7th/nvim-compe' " auto complete
+" Code highlight
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
  " Jump to definition - <leader>j
 Plug 'pechorin/any-jump.vim'
 " auto set indent settings
@@ -41,8 +46,10 @@ Plug 'mhinz/vim-startify'
 " Bookmark - mm to toggle, mi to annotate, mn mp to navigate, ma to show all,
 " mc to clear, mx to clear all
 Plug 'MattesGroeger/vim-bookmarks'
+" git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+" Auto change working directory (to root git dir)
 Plug 'yssl/AutoCWD.vim'
 " Drawing in vim
 Plug 'gyim/vim-boxdraw'
@@ -51,4 +58,6 @@ Plug 'christoomey/vim-tmux-navigator'
 " :Far foo bar **/*.py
 " :Fardo
 Plug 'brooth/far.vim'
+" VimTeX for LateX
+Plug 'lervag/vimtex'
 call plug#end()

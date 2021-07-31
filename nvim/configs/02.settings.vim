@@ -13,8 +13,8 @@ set incsearch
 set hlsearch " highlight text for search 
 
 set tabstop=4
-set softtabstop=0
-set shiftwidth=4
+set softtabstop=0 expandtab " this affect tab or space character
+set shiftwidth=4 smarttab
 
 " Enable switch buffer without saving modified contents
 set hidden
