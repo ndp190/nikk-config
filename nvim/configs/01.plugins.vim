@@ -1,8 +1,11 @@
 call plug#begin('~/.config/nvim/bundle')
 " Plugins has to sit between plug#begin & plug#end
 " run `:so %` to reload and `:PlugInstall` to install plugins
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" theme
 Plug 'morhetz/gruvbox' " theme
 " Plug 'ayu-theme/ayu-vim' " ayu theme
 Plug 'vim-airline/vim-airline' " status line
@@ -27,6 +30,8 @@ Plug 'kabouzeid/nvim-lspinstall' " https://github.com/kabouzeid/nvim-lspinstall
 Plug 'hrsh7th/nvim-compe' " auto complete
 " Code highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Quickfix preview pane (usually use when find code references)
+Plug 'ronakg/quickr-preview.vim'
  " Jump to definition - <leader>j
 Plug 'pechorin/any-jump.vim'
 " auto set indent settings
@@ -51,8 +56,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Auto change working directory (to root git dir)
 Plug 'yssl/AutoCWD.vim'
-" Drawing in vim
-Plug 'gyim/vim-boxdraw'
 " Ctrl + h/j/k/l to move between panel
 Plug 'christoomey/vim-tmux-navigator'
 " :Far foo bar **/*.py

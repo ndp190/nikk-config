@@ -9,21 +9,33 @@
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> gr <cmd>Telescope lsp_references<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
-"" auto import for ts
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" telescope
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>P <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>Telescope lsp_document_symbols default_text=:function:<cr>
 
-" Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+" quickfix preview
+let g:quickr_preview_keymaps = 0 " disable default quickr keymap
+let g:quickr_preview_position = 'right'
+let g:quickr_preview_on_cursor = 1
+
+"" change behaviour when press enter on popup
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>(" : "\<C-g>u\<CR>"
+
 "" Theme
 syntax enable
 set background=dark
@@ -67,7 +79,6 @@ nnoremap <silent> <Leader>o :RnvimrToggle<CR>
 " Make Ranger replace netrw and be the file explorer
 let g:rnvimr_ex_enable = 1
 let g:NERDTreeHijackNetrw = 0
-" Map Rnvimr action
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
             \ '<C-x>': 'NvimEdit split',
@@ -75,21 +86,16 @@ let g:rnvimr_action = {
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }
-" fzf
-nnoremap <silent> <leader>f :Rg<cr>
-nnoremap <silent> <leader>F :Files<cr>
 
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
-" nnoremap <F5> :CocCommand prettier.formatFile<CR>
-" vmap <F5> <Plug>(coc-format-selected)
-nnoremap <F6> :call ToggleDrawingMode()<CR>
 
-" bookmark - fix for quickfix window
-autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+" bookmark
 let g:bookmark_auto_close = 1
 let g:bookmark_auto_save = 1
+" quickfix close after select
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
 " auto cwd
 let g:autocwd_patternwd_pairs = [
@@ -100,22 +106,6 @@ let g:autocwd_patternwd_pairs = [
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
-
-" Enable hidden file search for Rg
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-function! ToggleDrawingMode()
-	if &virtualedit ==# ""
-		set virtualedit=all
-		echo "Drawing mode"
-	else
-		set virtualedit=
-		echo "Exit drawing mode"
-	endif
-endfunction
 
 lua << EOF
 require'lspinstall'.setup() -- important
@@ -229,4 +219,52 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+----------------------
+-- TELESCOPE CONFIG --
+----------------------
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {"node_modules", "vendor/.*"},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    winblend = 0,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    path_display = {},
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
 EOF
