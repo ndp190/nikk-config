@@ -2,7 +2,7 @@
 
 # EDIT HERE for pip packages to install
 packages=(
-	ranger-fm
+	# ranger-fm
 	pynvim
 	iterm2
 )

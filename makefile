@@ -36,13 +36,13 @@ install-nvim:
 	# nvim '+CocInstall -sync coc-phpls coc-python coc-tsserver coc-prettier coc-go' +qall
 	# install lsp plugins
 	nvim "+call lspinstall#install_server('go') | call lspinstall#install_server('yaml') | call lspinstall#install_server('bash') | call lspinstall#install_server('php') | call lspinstall#install_server('typescript') | call lspinstall#install_server('terraform')"
-	nvim '+TSInstall php typescript bash javascript go yaml python'
-	# install ranger icon
-	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-	ln -sf `pwd`/rifle.conf ~/.config/ranger/rifle.conf
-	echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
-	echo "map <DELETE> shell -s trash-put %s" >> ~/.config/ranger/rc.conf
-	echo "set show_hidden true" >> ~/.config/ranger/rc.conf
+	nvim '+TSInstall php typescript javascript go yaml python'
+	# # install ranger icon
+	# git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+	# ln -sf `pwd`/rifle.conf ~/.config/ranger/rifle.conf
+	# echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
+	# echo "map <DELETE> shell -s trash-put %s" >> ~/.config/ranger/rc.conf
+	# echo "set show_hidden true" >> ~/.config/ranger/rc.conf
 
 install-tmux:
 	mkdir -p ~/.tmux/plugins

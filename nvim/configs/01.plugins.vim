@@ -17,8 +17,14 @@ Plug 'vim-airline/vim-airline' " status line
 Plug 'alvan/vim-closetag'
 " Better Comments - type `gcc`
 Plug 'tpope/vim-commentary'
+" Code format
+" Plug 'beanworks/vim-phpfmt'
+Plug 'junegunn/vim-easy-align'
 " Ranger in popup
-Plug 'kevinhwang91/rnvimr'
+" Plug 'kevinhwang91/rnvimr'
+" Treeview
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 " Intuitive buffer closing - type space-q
 Plug 'moll/vim-bbye'
 " Smooth scroll

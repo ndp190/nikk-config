@@ -14,15 +14,16 @@ nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+" nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+" nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
 " telescope
-nnoremap <leader>p <cmd>Telescope find_files<cr>
+" nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>p <cmd>lua require"telescope.builtin".find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git', '-u'} })<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -34,7 +35,7 @@ let g:quickr_preview_position = 'right'
 let g:quickr_preview_on_cursor = 1
 
 "" change behaviour when press enter on popup
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>(" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "" Theme
 syntax enable
@@ -72,24 +73,33 @@ set laststatus=2    " enables vim-airline.
 :nnoremap <Leader>w :Bdelete<CR>
 :nnoremap <Leader>W :Bdelete!<CR>
 
-" rnvimr ranger popup
-" tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
-nnoremap <silent> <Leader>o :RnvimrToggle<CR>
-" tnoremap <silent> <M-o> <C-\><C-n>:RnvimrToggle<CR>
-" Make Ranger replace netrw and be the file explorer
-let g:rnvimr_ex_enable = 1
-let g:NERDTreeHijackNetrw = 0
-let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
+" " rnvimr ranger popup
+" nnoremap <silent> <Leader>o :RnvimrToggle<CR>
+" " tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
+" " tnoremap <silent> <M-o> <C-\><C-n>:RnvimrToggle<CR>
+" " Make Ranger replace netrw and be the file explorer
+" let g:rnvimr_ex_enable = 1
+" let g:NERDTreeHijackNetrw = 0
+" let g:rnvimr_action = {
+"             \ '<C-t>': 'NvimEdit tabedit',
+"             \ '<C-x>': 'NvimEdit split',
+"             \ '<C-v>': 'NvimEdit vsplit',
+"             \ 'gw': 'JumpNvimCwd',
+"             \ 'yw': 'EmitRangerCwd'
+"             \ }
 
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
+
+" nvimtree
+nnoremap <silent> kb :NvimTreeToggle<CR>
+nnoremap <silent> kr :NvimTreeRefresh<CR>
+nnoremap <silent> kv :NvimTreeFindFile<CR>
+
+" Splitting window
+noremap <C-w>- :split<cr>
+noremap <C-w>\| :vsplit<cr>
 
 " bookmark
 let g:bookmark_auto_close = 1
@@ -107,15 +117,23 @@ nmap <leader>gh :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
+" " php code format
+" let g:phpfmt_standard = 'PSR2'
+" let g:phpfmt_autosave = 0
+
+" Press CR to import
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
+
 lua << EOF
 require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
   require'lspconfig'[server].setup{
-	-- settings = {
+	settings = {
 	--   rootMarkers = {".git/"},
-	--   languages = {
+	   languages = {
+           php = {prettier}
 	-- 	["="] = {misspell},
 	-- 	vim = {vint},
 	-- 	lua = {luafmt},
@@ -133,8 +151,8 @@ for _, server in pairs(servers) do
 	-- 	markdown = {prettier},
 	-- 	sh = {shellcheck},
 	-- 	tf = {terraform}
-	--   }
-	-- }
+	   }
+	}
   }
 end
 
@@ -234,8 +252,8 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
-    prompt_prefix = "> ",
-    selection_caret = "> ",
+    prompt_prefix = "🙈 ",
+    selection_caret = "🐒 ",
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
