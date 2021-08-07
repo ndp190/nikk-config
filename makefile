@@ -35,8 +35,7 @@ install-nvim:
 	# install coc plugins
 	# nvim '+CocInstall -sync coc-phpls coc-python coc-tsserver coc-prettier coc-go' +qall
 	# install lsp plugins
-	nvim "+call lspinstall#install_server('go') | call lspinstall#install_server('yaml') | call lspinstall#install_server('bash') | call lspinstall#install_server('php') | call lspinstall#install_server('typescript') | call lspinstall#install_server('terraform')"
-	nvim '+TSInstall php typescript javascript go yaml python'
+	nvim "+call lspinstall#install_server('go') | call lspinstall#install_server('json') | call lspinstall#install_server('yaml') | call lspinstall#install_server('bash') | call lspinstall#install_server('php') | call lspinstall#install_server('typescript') | call lspinstall#install_server('terraform')"
 	# # install ranger icon
 	# git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 	# ln -sf `pwd`/rifle.conf ~/.config/ranger/rifle.conf

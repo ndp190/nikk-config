@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'https://github.com/tom-anders/telescope-vim-bookmarks.nvim' " integrate vim-bookmarks to telescope
 " theme
 Plug 'morhetz/gruvbox' " theme
 " Plug 'ayu-theme/ayu-vim' " ayu theme
@@ -69,4 +70,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'brooth/far.vim'
 " VimTeX for LateX
 Plug 'lervag/vimtex'
+" Multiple cursor
+"" <c-n>to select next | \\A to select all
+Plug 'mg979/vim-visual-multi' 
 call plug#end()

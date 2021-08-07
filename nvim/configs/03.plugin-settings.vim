@@ -1,10 +1,3 @@
-" coc
-" let g:coc_config_file='$HOME/.config/nvim/coc-settings.json'
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-
 " lsp
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -14,20 +7,20 @@ nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-" nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> gp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> gn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
 nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
 " telescope
-" nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>p <cmd>lua require"telescope.builtin".find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git', '-u'} })<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>ff <cmd>Telescope lsp_document_symbols default_text=:function:<cr>
+nnoremap <silent>fb <cmd>Telescope buffers<cr>
+nnoremap <silent>fh <cmd>Telescope help_tags<cr>
+nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:function:<cr>
 
 " quickfix preview
 let g:quickr_preview_keymaps = 0 " disable default quickr keymap
@@ -93,17 +86,32 @@ nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 
 " nvimtree
-nnoremap <silent> kb :NvimTreeToggle<CR>
-nnoremap <silent> kr :NvimTreeRefresh<CR>
-nnoremap <silent> kv :NvimTreeFindFile<CR>
+nnoremap <silent>tt :NvimTreeToggle<CR>
+nnoremap <silent>tr :NvimTreeRefresh<CR>
+nnoremap <silent>tv :NvimTreeFindFile<CR>
 
 " Splitting window
-noremap <C-w>- :split<cr>
-noremap <C-w>\| :vsplit<cr>
+noremap <C-w>x :split<cr>
+noremap <C-w>v :vsplit<cr>
 
 " bookmark
 let g:bookmark_auto_close = 1
 let g:bookmark_auto_save = 1
+let g:bookmark_no_default_key_mappings = 1
+let g:bookmark_manage_per_buffer = 0
+nmap <silent>mm <Plug>BookmarkToggle
+nmap <silent>mi <Plug>BookmarkAnnotate
+nmap <silent>mn <Plug>BookmarkNext
+nmap <silent>mp <Plug>BookmarkPrev
+nmap <silent>mc <Plug>BookmarkClear
+nmap <silent>mx <Plug>BookmarkClearAll
+" nmap <silent>ma <Plug>BookmarkShowAll
+" nmap <silent>ma <Plug>BookmarkMoveUp
+" nmap <silent>ma <Plug>BookmarkMoveDown
+" nmap <silent>ma <Plug>BookmarkMoveToLine
+" nmap <silent>ma <cmd>Telescope vim_bookmarks all<cr>
+nmap <silent>ma <cmd>lua require('telescope').extensions.vim_bookmarks.all({ on_complete = { function() vim.cmd"stopinsert" end } })<cr>
+
 " quickfix close after select
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
@@ -116,10 +124,6 @@ let g:autocwd_patternwd_pairs = [
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
-
-" " php code format
-" let g:phpfmt_standard = 'PSR2'
-" let g:phpfmt_autosave = 0
 
 " Press CR to import
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
@@ -268,7 +272,7 @@ require('telescope').setup{
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {"node_modules", "vendor/.*"},
+    file_ignore_patterns = {"node_modules", "vendor/.*", "packages/.*"},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -284,5 +288,15 @@ require('telescope').setup{
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
   }
+}
+
+require('telescope').load_extension('vim_bookmarks')
+local bookmark_actions = require('telescope').extensions.vim_bookmarks.actions
+require('telescope').extensions.vim_bookmarks.all {
+    attach_mappings = function(_, map) 
+        map('n', 'dd', bookmark_actions.delete_selected_or_at_cursor)
+
+        return true
+    end
 }
 EOF
