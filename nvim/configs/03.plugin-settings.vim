@@ -10,10 +10,14 @@ nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> gn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
+vnoremap <silent> gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
 nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
+
+" Easy align - normally use for assignment format
+vnoremap <silent> =1 :EasyAlign 1=<CR>
 
 " telescope
 nnoremap <leader>p <cmd>lua require"telescope.builtin".find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git', '-u'} })<cr>
@@ -89,6 +93,9 @@ nnoremap <F4> :NumbersOnOff<CR>
 nnoremap <silent>tt :NvimTreeToggle<CR>
 nnoremap <silent>tr :NvimTreeRefresh<CR>
 nnoremap <silent>tv :NvimTreeFindFile<CR>
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
 
 " Splitting window
 noremap <C-w>x :split<cr>
