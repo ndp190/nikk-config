@@ -18,8 +18,8 @@ nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 
 " Vim multicursor
 let g:VM_maps = {}
-let g:VM_maps['Find Under'] = 'gd' " normal mode multicursor
-let g:VM_maps['Find Subword Under'] = 'gd' " visual mode multicursor
+let g:VM_maps['Find Under'] = '<C-g>' " normal mode multicursor
+let g:VM_maps['Find Subword Under'] = '<C-g>' " visual mode multicursor
 
 
 " Easy align - normally use for assignment format
@@ -104,7 +104,7 @@ nnoremap <F4> :NumbersOnOff<CR>
 " let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
 nnoremap <silent> tt :NERDTreeToggle<CR>
 nnoremap <silent> tv :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeChDirMode = 2
