@@ -23,13 +23,17 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 " Ranger in popup
 " Plug 'kevinhwang91/rnvimr'
+
 " Treeview
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'scrooloose/nerdtree'
+
 " Intuitive buffer closing - type space-q
 Plug 'moll/vim-bbye'
-" Smooth scroll
-Plug 'psliwka/vim-smoothie'
+" " Smooth scroll
+" Plug 'psliwka/vim-smoothie'
+" Scrollbar
+Plug 'gcavallanti/vim-noscrollbar'
+Plug 'ompugao/vim-airline-noscrollbar'
 " Intellisense
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
@@ -73,4 +77,6 @@ Plug 'lervag/vimtex'
 " Multiple cursor
 "" <c-n>to select next | \\A to select all
 Plug 'mg979/vim-visual-multi' 
+" Autojump (zsh) vim integration
+Plug 'padde/jump.vim'
 call plug#end()

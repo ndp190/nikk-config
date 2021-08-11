@@ -1,8 +1,8 @@
 " lsp
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-" nnoremap <silent> gr <cmd>Telescope lsp_references<CR>
+" nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gr <cmd>lua require('telescope.builtin').lsp_references({ on_complete = { function() vim.cmd"stopinsert" end } })<cr>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
@@ -24,7 +24,7 @@ nnoremap <leader>p <cmd>lua require"telescope.builtin".find_files({ find_command
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
 nnoremap <silent>fb <cmd>Telescope buffers<cr>
 nnoremap <silent>fh <cmd>Telescope help_tags<cr>
-nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:function:<cr>
+nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:method:<cr>
 
 " quickfix preview
 let g:quickr_preview_keymaps = 0 " disable default quickr keymap
@@ -89,13 +89,20 @@ set laststatus=2    " enables vim-airline.
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 
-" nvimtree
-nnoremap <silent>tt :NvimTreeToggle<CR>
-nnoremap <silent>tr :NvimTreeRefresh<CR>
-nnoremap <silent>tv :NvimTreeFindFile<CR>
-let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
+" Treeview
+" nnoremap <silent>tt :NvimTreeToggle<CR>
+" nnoremap <silent>tr :NvimTreeRefresh<CR>
+" nnoremap <silent>tv :NvimTreeFindFile<CR>
+" let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+" let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+" let g:nvim_tree_hide_dotfiles = 1 "0 by default, this option hides files and folders starting with a dot `.`
+nnoremap <silent> tt :NERDTreeToggle<CR>
+nnoremap <silent> tv :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeChDirMode = 2
+autocmd BufEnter * silent! call SetProjectDirectory()
 
 " Splitting window
 noremap <C-w>x :split<cr>
