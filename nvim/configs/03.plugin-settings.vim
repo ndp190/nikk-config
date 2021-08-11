@@ -16,6 +16,12 @@ nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
+" Vim multicursor
+let g:VM_maps = {}
+let g:VM_maps['Find Under'] = 'gd' " normal mode multicursor
+let g:VM_maps['Find Subword Under'] = 'gd' " visual mode multicursor
+
+
 " Easy align - normally use for assignment format
 vnoremap <silent> =1 :EasyAlign 1=<CR>
 
@@ -141,6 +147,7 @@ nmap <leader>gs :G<CR>
 
 " Press CR to import
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
+
 
 lua << EOF
 require'lspinstall'.setup() -- important
