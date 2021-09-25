@@ -2,15 +2,11 @@ let mapleader = "\<Space>" " prefix for triggering functions or events
 filetype plugin on
 filetype plugin indent on
 
-" autocmd BufEnter * :set scroll=10 " set scroll line -> this sometime break
-" coc find reference method
-syntax on
+" set regex engine to 'old' to improve performance
+set re=1
 
 set encoding=UTF-8
 set mouse=a " enable mouse in neovim context
-
-set incsearch 
-set hlsearch " highlight text for search 
 
 set tabstop=4
 set softtabstop=0 expandtab " this affect tab or space character
@@ -22,9 +18,7 @@ set hidden
 set cmdheight=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+" set updatetime=300
 
 " key mapping
 nnoremap <silent> <C-n> :bnext<CR>

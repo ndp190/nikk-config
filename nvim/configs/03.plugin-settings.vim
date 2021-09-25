@@ -44,13 +44,14 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 syntax enable
 set background=dark
 highlight Normal ctermbg=None
+
 " gruvbox theme
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 " ayu theme
 " colorscheme ayu
 
-set termguicolors
+" set termguicolors
 let g:airline#extensions#wordcount#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -135,10 +136,10 @@ nmap <silent>ma <cmd>lua require('telescope').extensions.vim_bookmarks.all({ on_
 " quickfix close after select
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
-" auto cwd
-let g:autocwd_patternwd_pairs = [
-	\['*', '*REPO*'],
-\]
+" " auto cwd
+" let g:autocwd_patternwd_pairs = [
+" 	\['*', '*REPO*'],
+" \]
 
 " git
 nmap <leader>gh :diffget //3<CR>

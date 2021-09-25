@@ -65,8 +65,8 @@ Plug 'MattesGroeger/vim-bookmarks'
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-" Auto change working directory (to root git dir)
-Plug 'yssl/AutoCWD.vim'
+" " Auto change working directory (to root git dir)
+" Plug 'yssl/AutoCWD.vim'
 " Ctrl + h/j/k/l to move between panel
 Plug 'christoomey/vim-tmux-navigator'
 " :Far foo bar **/*.py
