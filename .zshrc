@@ -10,7 +10,7 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="avit"
+ZSH_THEME="amuse"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -98,10 +98,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dc='docker-compose -f docker-compose.yml -f docker-compose-fn.yml'
+# alias dc='docker-compose -f docker-compose.yml -f docker-compose-fn.yml'
+alias dc='docker-compose'
 alias ll='ls -la'
 alias vim="nvim"
 alias vi="nvim"
+alias c='clear'
 
 bindkey "[D" backward-word
 bindkey "[C" forward-word
@@ -142,3 +144,16 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$HOME/.symfony/bin:$PATH"
+
+# iTerm2 settings
+DISABLE_AUTO_TITLE="true"
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
+# dash doc (API document)
+export PATH=$PATH:/Users/nikk/nikk-config/dasht-2.4.0/bin
+export MANPATH=/Users/nikk/nikk-config/dasht-2.4.0/man:$MANPATH

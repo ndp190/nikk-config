@@ -26,6 +26,7 @@ packages=(
     newsboat
     nvim
 	ripgrep
+    w3m
 )
 packages_cask=(
     karabiner-elements
