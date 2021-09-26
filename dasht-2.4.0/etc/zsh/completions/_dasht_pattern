@@ -1,3 +1,0 @@
-#compdef
-
-compadd -i "'" -I "'" -- ''

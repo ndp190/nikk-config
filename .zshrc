@@ -153,7 +153,3 @@ precmd() {
   # sets the tab title to current dir
   echo -ne "\e]1;${PWD##*/}\a"
 }
-
-# dash doc (API document)
-export PATH=$PATH:/Users/nikk/nikk-config/dasht-2.4.0/bin
-export MANPATH=/Users/nikk/nikk-config/dasht-2.4.0/man:$MANPATH

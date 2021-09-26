@@ -79,6 +79,4 @@ Plug 'lervag/vimtex'
 Plug 'mg979/vim-visual-multi' 
 " Autojump (zsh) vim integration
 Plug 'padde/jump.vim'
-" Dasht API document
-Plug 'https://github.com/sunaku/vim-dasht.git'
 call plug#end()

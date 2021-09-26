@@ -1,3 +1,0 @@
-#compdef dasht-docsets dasht-docsets-remove dasht-docsets-update
-
-compadd -P '\^' -S '\$' -- $(dasht-docsets | tr 'A-Z' 'a-z')
