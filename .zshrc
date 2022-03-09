@@ -153,3 +153,24 @@ precmd() {
   # sets the tab title to current dir
   echo -ne "\e]1;${PWD##*/}\a"
 }
+
+# utilities
+function pfwd {
+    ARGS=${@:2}
+    echo Forwarding port ${ARGS[@]/#/-p }
+  # for i in ${@:2}
+  # do
+  #   # echo Forwarding port ${1}:$i
+  #   echo Forwarding port ${ARGS[@:2]/#/-p }
+  #   # ARGS=("$@") echo ${ARGS[@]/#/-p }
+
+  #   # ssh -N -L $i:${1}:$i $1 &
+  #   # ssh -L $i:${1}:$i $1 &
+  # done  
+}
+
+function pbwd {
+    pgrep -af '^ssh.*ubuntu' | xargs kill
+}
+
+

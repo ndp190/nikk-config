@@ -149,7 +149,6 @@ nmap <leader>gs :G<CR>
 " Press CR to import
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
-
 lua << EOF
 require'lspinstall'.setup() -- important
 

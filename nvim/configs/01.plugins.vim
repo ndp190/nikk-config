@@ -49,6 +49,10 @@ Plug 'pechorin/any-jump.vim'
 Plug 'tpope/vim-sleuth'
 " " :Autoformat or <F5>
 " Plug 'chiel92/vim-autoformat'
+
+" disable indent to use indentation configuration from 02.settings.vim
+" set it here because it need to be set before loading vim-polyglot
+let g:polyglot_disabled = ['autoindent'] 
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
 " Line number display - F3 to toggle number, F4 to toggle on/off
