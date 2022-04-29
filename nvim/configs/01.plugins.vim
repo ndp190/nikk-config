@@ -83,4 +83,7 @@ Plug 'lervag/vimtex'
 Plug 'mg979/vim-visual-multi' 
 " Autojump (zsh) vim integration
 Plug 'padde/jump.vim'
+" Toggle full screen
+" <c-w>o to toggle maximize
+Plug 'troydm/zoomwintab.vim'
 call plug#end()
