@@ -11,7 +11,7 @@ packages=(
     # watch
     # lynx
     # newsboat
-    nvim
+    neovim
     # ripgrep
 )
 
