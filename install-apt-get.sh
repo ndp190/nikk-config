@@ -16,5 +16,5 @@ packages=(
 )
 
 for pkg in "${packages[@]}"; do
-    sudo apt-get install $pkg
+    sudo apt-get -y install $pkg
 done

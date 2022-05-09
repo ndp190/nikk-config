@@ -8,7 +8,7 @@
 	sh = ~/.gitignore_global
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = /usr/bin/vim
+	editor = nvim
 [alias]
         tree = log --graph --decorate
 [pager]
