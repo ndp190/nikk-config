@@ -110,14 +110,15 @@ bindkey "[C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
-export PATH=~/.composer/vendor/bin:$PATH
-export GOPATH=~/Projects/go1/monolith/golang
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-export PATH="/usr/local/opt/node@8/bin:$PATH"
+export DOCKER_HOST=tcp://localhost:2375
+# export PATH=~/.composer/vendor/bin:$PATH
+# export GOPATH=~/Projects/go1/monolith/golang
+# export GOBIN=$GOPATH/bin
+# export PATH=$PATH:$GOBIN
+# export PATH="/usr/local/opt/node@8/bin:$PATH"
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # pip
 #export PATH=~/Library/Python/2.7/bin:$PATH
@@ -156,17 +157,13 @@ precmd() {
 
 # utilities
 function pfwd {
-    ARGS=${@:2}
-    echo Forwarding port ${ARGS[@]/#/-p }
-  # for i in ${@:2}
-  # do
-  #   # echo Forwarding port ${1}:$i
-  #   echo Forwarding port ${ARGS[@:2]/#/-p }
-  #   # ARGS=("$@") echo ${ARGS[@]/#/-p }
-
-  #   # ssh -N -L $i:${1}:$i $1 &
-  #   # ssh -L $i:${1}:$i $1 &
-  # done  
+    ARGS=""
+    for i in ${@:2}
+    do
+      ARGS+=" -L ${i}:localhost:${i}"
+    done
+    echo "ssh $1$ARGS"
+    eval "ssh $1${ARGS}"
 }
 
 function pbwd {
@@ -174,3 +171,4 @@ function pbwd {
 }
 
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

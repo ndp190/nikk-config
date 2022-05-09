@@ -1,4 +1,12 @@
-install: prerequisite \
+#Detect OS
+UNAME := $(shell uname)
+
+# Build based on OS name
+DetectOS:
+	-@make $(UNAME)
+
+# Mac OS
+Darwin: prerequisite \
     install-custom-script \
     install-karabiner \
     install-nvim \
@@ -8,11 +16,20 @@ install: prerequisite \
     install-git \
     install-newsboat
 
+Linux: prerequisite-linux \
+    install-nvim \
+    install-zsh \
+    install-git
+
 prerequisite:
 	chmod +x `pwd`/install-brew.sh `pwd`/install-node.sh `pwd`/install-pip.sh
 	`pwd`/install-brew.sh
 	`pwd`/install-node.sh
 	`pwd`/install-pip.sh
+
+prerequisite-linux:
+	chmod +x `pwd`/install-apt-get.sh
+	`pwd`/install-apt-get.sh
 
 install-custom-script:
 	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
