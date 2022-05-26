@@ -62,7 +62,7 @@ Plug 'christoomey/vim-system-copy'
 " Jump to definition - <leader>j
 " Plug 'pechorin/any-jump.vim'
 " Start page
-Plug 'mhinz/vim-startify'
+"Plug 'startup-nvim/startup.nvim'
 " Bookmark - mm to toggle, mi to annotate, mn mp to navigate, ma to show all,
 " mc to clear, mx to clear all
 Plug 'MattesGroeger/vim-bookmarks'

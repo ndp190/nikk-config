@@ -35,6 +35,7 @@ install-custom-script:
 	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
 	ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
 	ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
+	ln -sf `pwd`/custom-script/tmux-nikk.sh /usr/local/bin/tmux-nikk
 
 install-karabiner:
 	mkdir -p ~/.config/karabiner

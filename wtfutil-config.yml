@@ -1,0 +1,107 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    # columns: [32, 32, 32, 32, 90]
+    # rows: [10, 10, 10, 4, 4, 90]
+    columns: [40,40]
+    rows: [5,5,10,15,15]
+  refreshInterval: 1
+  mods:
+    clocks_a:
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      enabled: true
+      locations:
+        Brisbane: "Australia/Brisbane"
+        Perth: "Australia/Perth"
+        Berlin: "Europe/Berlin"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+      title: "🕚"
+      type: "clocks"
+    prettyweather:
+      title: "🌥"
+      enabled: true
+      city: "ho chi minh"
+      position:
+        top: 0
+        left: 1
+        height: 2
+        width: 1
+      refreshInterval: 5m
+      unit: "m"
+      view: 0
+      language: "en"
+    ipinfo:
+      colors:
+        name: "lightblue"
+        value: "white"
+      enabled: true
+      position:
+        top: 2
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 150
+    power:
+      enabled: true
+      position:
+        top: 2
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 15
+      title: "⚡️"
+    spotify:
+      enabled: true
+      colors:
+        label: "green"
+        text: "white"
+      position:
+        top: 1
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 0
+    jira:
+      position:
+        top: 3
+        left: 0
+        height: 1
+        width: 2
+      apiKey: "5s4vllBa4Fdr8FTou3qzAEF9"
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      domain: "https://go1web.atlassian.net"
+      email: "phuc.nguyen@go1.com"
+      enabled: true
+      jql: "issueType = Story AND status != Done"
+      project: "COD"
+      refreshInterval: 15m
+      username: "Nikk Nguyen"
+      verifyServerCertificate: true
+    gitlabtodo:
+      position:
+        top: 4
+        left: 0
+        height: 1
+        width: 2
+      apiKey: "glpat-kuRQww2dor3m9DacsVZP"
+      domain: "https://code.go1.com.au"
+      enabled: true
+      numberOfTodos: 12,
+      refreshInterval: 5m
+      showProject: true
