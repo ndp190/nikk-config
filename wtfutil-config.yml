@@ -5,8 +5,6 @@ wtf:
       focused: orange
       normal: gray
   grid:
-    # columns: [32, 32, 32, 32, 90]
-    # rows: [10, 10, 10, 4, 4, 90]
     columns: [40,40]
     rows: [5,5,10,15,15]
   refreshInterval: 1
@@ -88,7 +86,7 @@ wtf:
       domain: "https://go1web.atlassian.net"
       email: "phuc.nguyen@go1.com"
       enabled: true
-      jql: "issueType = Story AND status != Done"
+      jql: "issueType in (Story, Task, Subtask) AND status != Done"
       project: "COD"
       refreshInterval: 15m
       username: "Nikk Nguyen"
