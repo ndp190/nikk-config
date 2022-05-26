@@ -80,7 +80,7 @@ wtf:
         left: 0
         height: 1
         width: 2
-      apiKey: "5s4vllBa4Fdr8FTou3qzAEF9"
+      apiKey: ""
       colors:
         rows:
           even: "lightblue"
@@ -99,7 +99,7 @@ wtf:
         left: 0
         height: 1
         width: 2
-      apiKey: "glpat-kuRQww2dor3m9DacsVZP"
+      apiKey: ""
       domain: "https://code.go1.com.au"
       enabled: true
       numberOfTodos: 12,
