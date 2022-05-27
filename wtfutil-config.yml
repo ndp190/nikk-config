@@ -6,7 +6,7 @@ wtf:
       normal: gray
   grid:
     columns: [40,40]
-    rows: [5,5,10,15,15]
+    rows: [5,7,10,15,15]
   refreshInterval: 1
   mods:
     clocks_a:
@@ -86,7 +86,7 @@ wtf:
       domain: "https://go1web.atlassian.net"
       email: "phuc.nguyen@go1.com"
       enabled: true
-      jql: "issueType in (Story, Task, Subtask) AND status != Done"
+      jql: "issueType in (Story, Task, Subtask, Bug, Defect) AND status not in (Done, Rejected)"
       project: "COD"
       refreshInterval: 15m
       username: "Nikk Nguyen"
