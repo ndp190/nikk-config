@@ -27,8 +27,6 @@ Plug 'junegunn/vim-easy-align'
 " Treeview
 Plug 'scrooloose/nerdtree'
 
-" Intuitive buffer closing - type space-q
-Plug 'moll/vim-bbye'
 " " Smooth scroll
 " Plug 'psliwka/vim-smoothie'
 " Scrollbar
@@ -88,4 +86,6 @@ Plug 'padde/jump.vim'
 Plug 'troydm/zoomwintab.vim'
 " Terminal
 Plug 'akinsho/toggleterm.nvim'
+" Close buffer
+Plug 'Asheq/close-buffers.vim'
 call plug#end()

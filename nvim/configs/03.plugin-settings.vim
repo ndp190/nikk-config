@@ -73,9 +73,9 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 set laststatus=2    " enables vim-airline.
 
-" bbye
-:nnoremap <Leader>w :Bdelete<CR>
-:nnoremap <Leader>W :Bdelete!<CR>
+" close-buffers
+:nnoremap <Leader>w :Bdelete this<CR>
+:nnoremap <Leader>W :Bdelete! this<CR>
 
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
