@@ -82,6 +82,9 @@ install-newsboat:
 	ln -sf `pwd`/.newsboat/urls ~/.newsboat/urls
 	ln -sf `pwd`/.newsboat/config ~/.newsboat/config
 
+install-alacritty:
+	ln -sf `pwd`/.alacritty.yml ~/.alacritty.yml
+
 clean: clean-karabiner \
     clean-vim \
     clean-tmux \
