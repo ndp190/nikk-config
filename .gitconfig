@@ -1,7 +1,8 @@
 [user]
 	email = ndp190@gmail.com
 	name = Nikk
-	signingkey = E5B83D7622165C8D
+	signingkey = E5B83D7622165C8D ; Macbook Pro Intel
+	signingkey = 3DDC403900CEEE6D ; Macbook Pro M1
 [url "git@code.go1.com.au:"]
 	insteadOf = https://code.go1.com.au/
 [test "local"]
