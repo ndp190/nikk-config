@@ -75,6 +75,7 @@ install-lynx:
 
 install-git:
 	ln -sf `pwd`/.gitconfig ~/.gitconfig
+	ln -sf `pwd`/.gitconfig_go1 ~/.gitconfig_go1
 	ln -sf `pwd`/.gitignore_global ~/.gitignore_global
 
 install-newsboat:
