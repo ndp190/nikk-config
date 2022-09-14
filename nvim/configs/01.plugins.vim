@@ -34,8 +34,9 @@ Plug 'gcavallanti/vim-noscrollbar'
 Plug 'ompugao/vim-airline-noscrollbar'
 " Intellisense
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall' " https://github.com/kabouzeid/nvim-lspinstall
 Plug 'hrsh7th/nvim-compe' " auto complete
 " Code highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

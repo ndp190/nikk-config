@@ -3,16 +3,16 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 " nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr <cmd>lua require('telescope.builtin').lsp_references({ on_complete = { function() vim.cmd"stopinsert" end } })<cr>
+nnoremap <silent> gR <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> gn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> gp <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> gn <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
 vnoremap <silent> gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
-nnoremap <F6> <cmd>lua vim.lsp.buf.rename()<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
@@ -26,11 +26,11 @@ let g:VM_maps['Find Subword Under'] = '<C-g>' " visual mode multicursor
 vnoremap <silent> =1 :EasyAlign 1=<CR>
 
 " telescope
-nnoremap <leader>p <cmd>lua require"telescope.builtin".find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git', '-u'} })<cr>
+nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
-nnoremap <silent>fb <cmd>Telescope buffers<cr>
-nnoremap <silent>fh <cmd>Telescope help_tags<cr>
-nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:method:<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+" nnoremap <silent>fh <cmd>Telescope help_tags<cr>
+" nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:method:<cr>
 
 " quickfix preview
 let g:quickr_preview_keymaps = 0 " disable default quickr keymap
@@ -74,8 +74,10 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 set laststatus=2    " enables vim-airline.
 
 " close-buffers
-:nnoremap <Leader>w :Bdelete this<CR>
-:nnoremap <Leader>W :Bdelete! this<CR>
+" :nnoremap <Leader>w :Bdelete this<CR>
+" :nnoremap <Leader>W :Bdelete! this<CR>
+:nnoremap <Leader>w :bp<BAR>bd#<CR>
+:nnoremap <Leader>W :bp<BAR>bd!#<CR>
 
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
@@ -94,6 +96,7 @@ let NERDTreeQuitOnOpen = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeChDirMode = 2
+let NERDTreeShowHidden = 1
 autocmd BufEnter * silent! call SetProjectDirectory()
 
 " Splitting window
@@ -105,18 +108,18 @@ let g:bookmark_auto_close = 1
 let g:bookmark_auto_save = 1
 let g:bookmark_no_default_key_mappings = 1
 let g:bookmark_manage_per_buffer = 0
-nmap <silent>mm <Plug>BookmarkToggle
-nmap <silent>mi <Plug>BookmarkAnnotate
-nmap <silent>mn <Plug>BookmarkNext
-nmap <silent>mp <Plug>BookmarkPrev
-nmap <silent>mc <Plug>BookmarkClear
-nmap <silent>mx <Plug>BookmarkClearAll
+nmap <silent>Mm <Plug>BookmarkToggle
+nmap <silent>Mi <Plug>BookmarkAnnotate
+nmap <silent>Mn <Plug>BookmarkNext
+nmap <silent>Mp <Plug>BookmarkPrev
+nmap <silent>Mc <Plug>BookmarkClear
+nmap <silent>Mx <Plug>BookmarkClearAll
 " nmap <silent>ma <Plug>BookmarkShowAll
 " nmap <silent>ma <Plug>BookmarkMoveUp
 " nmap <silent>ma <Plug>BookmarkMoveDown
 " nmap <silent>ma <Plug>BookmarkMoveToLine
 " nmap <silent>ma <cmd>Telescope vim_bookmarks all<cr>
-nmap <silent>ma <cmd>lua require('telescope').extensions.vim_bookmarks.all({ on_complete = { function() vim.cmd"stopinsert" end } })<cr>
+nmap <silent>Ma <cmd>lua require('telescope').extensions.vim_bookmarks.all({ on_complete = { function() vim.cmd"stopinsert" end } })<cr>
 
 " quickfix close after select
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
@@ -142,36 +145,20 @@ inoremap <silent><expr> <CR> compe#confirm('<CR>')
 " inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 lua << EOF
-require'lspinstall'.setup() -- important
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {
+      "intelephense",
+--      "phpactor",
+--      "psalm"
+    },
+    automatic_installation = true,
+})
 
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{
-	settings = {
-	--   rootMarkers = {".git/"},
-	   languages = {
-           php = {prettier}
-	-- 	["="] = {misspell},
-	-- 	vim = {vint},
-	-- 	lua = {luafmt},
-	-- 	go = {golint, goimports},
-	-- 	python = {black, isort, flake8, mypy},
-	-- 	typescript = {prettier, eslint},
-	-- 	javascript = {prettier, eslint},
-	-- 	typescriptreact = {prettier, eslint},
-	-- 	javascriptreact = {prettier, eslint},
-	-- 	yaml = {prettier},
-	-- 	json = {prettier},
-	-- 	html = {prettier},
-	-- 	scss = {prettier},
-	-- 	css = {prettier},
-	-- 	markdown = {prettier},
-	-- 	sh = {shellcheck},
-	-- 	tf = {terraform}
-	   }
-	}
-  }
-end
+-- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
+require'lspconfig'.intelephense.setup{}
+-- require'lspconfig'.phpactor.setup{}
+-- require'lspconfig'.psalm.setup{}
 
 require("toggleterm").setup{
   -- size can be a number or function which is passed the current terminal
@@ -320,6 +307,16 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 -- TELESCOPE CONFIG --
 ----------------------
 require('telescope').setup{
+  pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return {"--hidden"}
+      end
+    },
+    find_files = {
+      find_command = {'rg', '--files', '--hidden', '-g', '!.git', '-u'}
+    },
+  },
   defaults = {
     vimgrep_arguments = {
       'rg',

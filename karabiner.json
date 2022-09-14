@@ -2174,7 +2174,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'iTerm'"
+                                        "shell_command": "open -a 'Alacritty'"
                                     }
                                 ],
                                 "type": "basic"
@@ -2251,7 +2251,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'Alfred 4'"
+                                        "shell_command": "open -a 'Alfred 5'"
                                     }
                                 ],
                                 "type": "basic"
