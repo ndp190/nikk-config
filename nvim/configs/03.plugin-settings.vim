@@ -1,6 +1,8 @@
 " lsp
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd <cmd>Telescope lsp_definitions<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+" nnoremap <silent> gD <cmd>lua require('telescope.builtin').lsp_declaration()<cr>
 " nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gr <cmd>lua require('telescope.builtin').lsp_references({ on_complete = { function() vim.cmd"stopinsert" end } })<cr>
 nnoremap <silent> gR <cmd>lua vim.lsp.buf.rename()<CR>
@@ -29,6 +31,8 @@ vnoremap <silent> =1 :EasyAlign 1=<CR>
 nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>f <cmd>Telescope lsp_document_symbols ignore_symbols=namespace,class,constant,variable,property,function<cr>
+nnoremap <leader>F <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 " nnoremap <silent>fh <cmd>Telescope help_tags<cr>
 " nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:method:<cr>
 
@@ -149,16 +153,16 @@ require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
       "intelephense",
---      "phpactor",
---      "psalm"
+      "tsserver",
+      "quick_lint_js",
     },
     automatic_installation = true,
 })
 
 -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
 require'lspconfig'.intelephense.setup{}
--- require'lspconfig'.phpactor.setup{}
--- require'lspconfig'.psalm.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.quick_lint_js.setup{}
 
 require("toggleterm").setup{
   -- size can be a number or function which is passed the current terminal
@@ -307,16 +311,6 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 -- TELESCOPE CONFIG --
 ----------------------
 require('telescope').setup{
-  pickers = {
-    live_grep = {
-      additional_args = function(opts)
-        return {"--hidden"}
-      end
-    },
-    find_files = {
-      find_command = {'rg', '--files', '--hidden', '-g', '!.git', '-u'}
-    },
-  },
   defaults = {
     vimgrep_arguments = {
       'rg',
@@ -325,7 +319,9 @@ require('telescope').setup{
       '--with-filename',
       '--line-number',
       '--column',
-      '--smart-case'
+      '--smart-case',
+      '--no-ignore',
+      '--hidden',
     },
     prompt_prefix = "🙈 ",
     selection_caret = "🐒 ",
@@ -343,7 +339,7 @@ require('telescope').setup{
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {"node_modules", "vendor/.*", "packages/.*"},
+    file_ignore_patterns = {"node_modules", "vendor/.*", "packages/.*", ".git/", ".gitignore", ".gitkeep"},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -358,6 +354,21 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  },
+  pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return {"--hidden"}
+      end
+    },
+    find_files = {
+      find_command = {
+        'rg',
+        '--ignore',
+        '--files',
+        '--hidden',
+      },
+    },
   }
 }
 
