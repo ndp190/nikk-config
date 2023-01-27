@@ -89,4 +89,6 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'akinsho/toggleterm.nvim'
 " Close buffer
 Plug 'Asheq/close-buffers.vim'
+" Copilot
+Plug 'github/copilot.vim'
 call plug#end()

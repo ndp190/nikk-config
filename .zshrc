@@ -110,11 +110,12 @@ bindkey "[C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 
-export DOCKER_HOST=tcp://localhost:2375
+# export DOCKER_HOST=tcp://localhost:2375
+export DOCKER_HOST=unix:///var/run/docker.sock
 # export PATH=~/.composer/vendor/bin:$PATH
-# export GOPATH=~/Projects/go1/monolith/golang
-# export GOBIN=$GOPATH/bin
-# export PATH=$PATH:$GOBIN
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 # export LC_ALL=en_US.UTF-8
@@ -139,9 +140,9 @@ export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 
 # Load pyenv automatically by appending
 # the following to ~/.zshrc:
-eval "$(pyenv init -)"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -172,3 +173,13 @@ function pbwd {
 
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/phuc.nguyen/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# The following lines were added by compinstall
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
