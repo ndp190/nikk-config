@@ -34,3 +34,11 @@ Ex:
 ```bash
 autogen-pyinit <directory-to-generate>
 ```
+
+# FAQ
+
+### Q: Error when ssh to another server in kitty and try to run tmux?
+
+Run this command
+
+	runkitty +kitten ssh Nikk\ Ga@192.168.1.202
