@@ -91,4 +91,5 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'Asheq/close-buffers.vim'
 " Copilot
 Plug 'github/copilot.vim'
+" Jupyter notebook support
 call plug#end()

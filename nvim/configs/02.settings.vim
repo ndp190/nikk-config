@@ -15,8 +15,8 @@ set mouse=a " enable mouse in neovim context
 autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl softtabstop=4
 autocmd FileType python setl tabstop=4|setl shiftwidth=4|setl softtabstop=4
 autocmd FileType html setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
-autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
-autocmd FileType typescript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
+" autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
+" autocmd FileType typescript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
 autocmd FileType css setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
 autocmd Filetype ruby setlocal tabstop=2|setl shiftwidth=2|setl softtabstop=2
 
@@ -40,3 +40,11 @@ nnoremap <leader>s :w<cr>
 
 " open empty buffer
 nnoremap <leader>n :enew<cr>
+
+" visualize tab character
+set list
+set listchars=tab:▸·,trail:·
+
+" let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
+

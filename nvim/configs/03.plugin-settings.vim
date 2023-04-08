@@ -18,6 +18,11 @@ nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
+" tmux
+" set-option -sg escape-time 10
+" set-option -g focus-events on
+" set-option -sa terminal-overrides ',xterm-256color:RGB'
+
 " Vim multicursor
 let g:VM_maps = {}
 let g:VM_maps['Find Under'] = '<C-g>' " normal mode multicursor
@@ -208,7 +213,7 @@ require("toggleterm").setup{
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
   terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
   persist_size = true,
-  direction = 'vertical',
+  direction = 'float',
   -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
   close_on_exit = true, -- close the terminal window when the process exits
   shell = vim.o.shell, -- change the default shell
@@ -339,7 +344,7 @@ require('telescope').setup{
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {"node_modules", "vendor/.*", "packages/.*", ".git/", ".gitignore", ".gitkeep"},
+    file_ignore_patterns = {"dist/.*", "node_modules/.*", "vendor/.*", "packages/.*", ".git/", ".gitignore", ".gitkeep", ".next", "package-lock.json"},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
