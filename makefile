@@ -56,7 +56,7 @@ install-tmux:
 install-zsh:
 	$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)")
 	ln -sf `pwd`/.zshrc ~/.zshrc
-	if [ ! -d "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
+	if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
 
 install-lynx:
 	ln -sf `pwd`/.lynxrc ~/.lynxrc

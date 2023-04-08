@@ -1,8 +1,7 @@
 [user]
 	email = ndp190@gmail.com
 	name = Nikk Nguyen
-	signingkey = E5B83D7622165C8D ; Macbook Pro Intel
-	signingkey = 3DDC403900CEEE6D ; Macbook Pro M1
+	signingkey = ~/.ssh/github_ndp190.pub
 [includeIf "gitdir:~/Projects/go1/"]
     path = .gitconfig_go1
 [url "git@code.go1.com.au:"]
@@ -20,3 +19,6 @@
 	rebase = true
 [commit]
 	gpgsign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
+	format = ssh

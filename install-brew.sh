@@ -27,6 +27,7 @@ packages=(
     nvim
     ripgrep
     go
+    gnupg
 )
 packages_cask=(
     karabiner-elements
