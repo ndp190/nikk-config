@@ -4,7 +4,6 @@
 packages=(
 	# ranger-fm
 	pynvim
-	iterm2
 )
 
 for pkg in "${packages[@]}"; do

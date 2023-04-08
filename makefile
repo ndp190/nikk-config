@@ -32,43 +32,31 @@ prerequisite-linux:
 	`pwd`/install-apt-get.sh
 
 install-custom-script:
+	sudo mkdir -p /usr/local/bin
 	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
-	ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
-	ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
-	ln -sf `pwd`/custom-script/tmux-nikk.sh /usr/local/bin/tmux-nikk
+	sudo ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
+	sudo ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
+	sudo ln -sf `pwd`/custom-script/tmux-nikk.sh /usr/local/bin/tmux-nikk
 
 install-karabiner:
 	mkdir -p ~/.config/karabiner
 	ln -sf `pwd`/karabiner.json ~/.config/karabiner/karabiner.json
-
-#install-vim:
-#	ln -sf `pwd`/.vimrc ~/.vimrc
-#	vim +PluginInstall +qall
 
 install-nvim:
 	mkdir -p ~/.config
 	ln -sf `pwd`/nvim ~/.config
 	# install neovim plugin
 	nvim +PlugInstall +qall
-	# install coc plugins
-	# nvim '+CocInstall -sync coc-phpls coc-python coc-tsserver coc-prettier coc-go' +qall
-	# install lsp plugins
-	nvim "+call lspinstall#install_server('go') | call lspinstall#install_server('json') | call lspinstall#install_server('yaml') | call lspinstall#install_server('bash') | call lspinstall#install_server('php') | call lspinstall#install_server('typescript') | call lspinstall#install_server('terraform')"
-	# # install ranger icon
-	# git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
-	# ln -sf `pwd`/rifle.conf ~/.config/ranger/rifle.conf
-	# echo "default_linemode devicons" >> ~/.config/ranger/rc.conf
-	# echo "map <DELETE> shell -s trash-put %s" >> ~/.config/ranger/rc.conf
-	# echo "set show_hidden true" >> ~/.config/ranger/rc.conf
 
 install-tmux:
 	mkdir -p ~/.tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 	ln -sf `pwd`/.tmux.conf ~/.tmux.conf
 
 install-zsh:
 	$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)")
 	ln -sf `pwd`/.zshrc ~/.zshrc
+	if [ ! -d "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
 
 install-lynx:
 	ln -sf `pwd`/.lynxrc ~/.lynxrc

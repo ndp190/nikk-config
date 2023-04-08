@@ -164,6 +164,14 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
+-- install language server
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.jsonls.setup{}
+require'lspconfig'.yamlls.setup{}
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.phan.setup{}
+require'lspconfig'.terraformls.setup{}
+
 -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
 require'lspconfig'.intelephense.setup{}
 require'lspconfig'.tsserver.setup{}
