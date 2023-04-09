@@ -15,6 +15,7 @@ taps=(
 
 # EDIT HERE for brew packages to install
 packages=(
+    tmux
     htop
     kubectl
     node
@@ -28,10 +29,12 @@ packages=(
     ripgrep
     go
     gnupg
+    ansible
 )
 packages_cask=(
     karabiner-elements
     font-hack-nerd-font
+    kitty
 )
 
 for pkg in "${taps[@]}"; do
