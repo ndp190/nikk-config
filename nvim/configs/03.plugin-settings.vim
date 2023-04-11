@@ -167,7 +167,6 @@ require("mason-lspconfig").setup({
 -- install language server
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.jsonls.setup{}
-require'lspconfig'.yamlls.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.phan.setup{}
 require'lspconfig'.terraformls.setup{}

@@ -1,9 +1,10 @@
 [user]
 	email = ndp190@gmail.com
 	name = Nikk Nguyen
-	signingkey = ~/.ssh/github_ndp190.pub
+	; signingkey = ~/.ssh/github_ndp190.pub
+	signingkey = 3DDC403900CEEE6D
 [includeIf "gitdir:~/Projects/go1/"]
-    path = .gitconfig_go1
+	path = .gitconfig_go1
 [url "git@code.go1.com.au:"]
 	insteadOf = https://code.go1.com.au/
 [test "local"]
@@ -20,5 +21,4 @@
 [commit]
 	gpgsign = true
 [gpg]
-	program = /opt/homebrew/bin/gpg
-	format = ssh
+	program = /usr/local/bin/gpg
