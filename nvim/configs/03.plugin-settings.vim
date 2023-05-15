@@ -170,6 +170,7 @@ require'lspconfig'.jsonls.setup{}
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.phan.setup{}
 require'lspconfig'.terraformls.setup{}
+require'lspconfig'.jedi_language_server.setup{} -- python
 
 -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
 require'lspconfig'.intelephense.setup{}

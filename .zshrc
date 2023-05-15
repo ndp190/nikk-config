@@ -1,3 +1,6 @@
+# Profiling zsh
+# zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -144,9 +147,6 @@ export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 # export PYENV_ROOT="$HOME/.pyenv"
 # export PATH="$PYENV_ROOT/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 export PATH="$HOME/.symfony/bin:$PATH"
 
 # iTerm2 settings
@@ -171,15 +171,31 @@ function pbwd {
     pgrep -af '^ssh.*ubuntu' | xargs kill
 }
 
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+source /usr/local/bin/lazy-nvm.sh
 
 # The following lines were added by compinstall
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+
+# Created by `pipx` on 2023-02-27 15:01:38
+export PATH="$PATH:/Users/phuc.nguyen/.local/bin"
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
+
+test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --silent)
+
+eval $(thefuck --alias)
+
+# Profiling zsh
+# zprof

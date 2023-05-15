@@ -37,6 +37,7 @@ install-custom-script:
 	sudo ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
 	sudo ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
 	sudo ln -sf `pwd`/custom-script/tmux-nikk.sh /usr/local/bin/tmux-nikk
+	sudo ln -sf `pwd`/custom-script/lazy-nvm.sh /usr/local/bin/lazy-nvm.sh
 
 install-karabiner:
 	mkdir -p ~/.config/karabiner
