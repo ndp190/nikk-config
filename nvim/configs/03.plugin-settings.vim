@@ -12,7 +12,7 @@ nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gp <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> gn <cmd>lua vim.diagnostic.goto_next()<CR>
-nnoremap <silent> gf <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> gf <cmd>lua vim.lsp.buf.format({async=true})<CR>
 vnoremap <silent> gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
 " autoformat
