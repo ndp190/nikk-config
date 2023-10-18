@@ -90,6 +90,6 @@ Plug 'akinsho/toggleterm.nvim'
 " Close buffer
 Plug 'Asheq/close-buffers.vim'
 " Copilot
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 " Jupyter notebook support
 call plug#end()

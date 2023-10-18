@@ -168,7 +168,7 @@ require("mason-lspconfig").setup({
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.jsonls.setup{}
 require'lspconfig'.bashls.setup{}
-require'lspconfig'.phan.setup{}
+-- require'lspconfig'.phan.setup{}
 require'lspconfig'.terraformls.setup{}
 require'lspconfig'.jedi_language_server.setup{} -- python
 
