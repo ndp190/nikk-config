@@ -91,5 +91,9 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'Asheq/close-buffers.vim'
 " Copilot
 Plug 'github/copilot.vim'
-" Jupyter notebook support
+" Display color when there is color code
+Plug 'norcalli/nvim-colorizer.lua'
+" Auto close tag & pair (using treesitter)
+Plug 'windwp/nvim-ts-autotag'
+Plug 'windwp/nvim-autopairs'
 call plug#end()

@@ -36,7 +36,7 @@ vnoremap <silent> =1 :EasyAlign 1=<CR>
 nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>f <cmd>Telescope lsp_document_symbols ignore_symbols=namespace,class,constant,variable,property,function<cr>
+nnoremap <leader>f <cmd>Telescope lsp_document_symbols ignore_symbols=namespace,class,constant,variable,property<cr>
 nnoremap <leader>F <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 " nnoremap <silent>fh <cmd>Telescope help_tags<cr>
 " nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:method:<cr>
@@ -153,16 +153,43 @@ inoremap <silent><expr> <CR> compe#confirm('<CR>')
 " nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 " inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
+" pre-requisite for colorizer
+set termguicolors
+
+" set fold to treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
+
 lua << EOF
+require'colorizer'.setup()
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
       "intelephense",
       "tsserver",
       "quick_lint_js",
+      "prismals",
+      "astro",
     },
     automatic_installation = true,
 })
+
+require'nvim-treesitter.configs'.setup{
+  auto_install = true,
+  highlight = {
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  }
+}
+
+require('nvim-ts-autotag').setup()
+require('nvim-autopairs').setup{}
 
 -- install language server
 require'lspconfig'.gopls.setup{}
@@ -176,6 +203,8 @@ require'lspconfig'.jedi_language_server.setup{} -- python
 require'lspconfig'.intelephense.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.quick_lint_js.setup{}
+require'lspconfig'.astro.setup{}
+require'lspconfig'.prismals.setup{}
 
 require("toggleterm").setup{
   -- size can be a number or function which is passed the current terminal
@@ -242,7 +271,6 @@ require("toggleterm").setup{
 -- AUTO COMPLETE CONFIG --
 --------------------------
 vim.o.completeopt = "menuone,noselect"
-
 require'compe'.setup {
   enabled = true;
   autocomplete = true;

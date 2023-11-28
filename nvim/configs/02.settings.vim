@@ -48,3 +48,5 @@ set listchars=tab:▸·,trail:·
 " let g:python3_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
+" detect astro file type
+autocmd BufRead,BufNewFile *.astro set filetype=astro
