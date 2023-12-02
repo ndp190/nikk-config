@@ -8,10 +8,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'https://github.com/tom-anders/telescope-vim-bookmarks.nvim' " integrate vim-bookmarks to telescope
 " theme
 Plug 'morhetz/gruvbox' " theme
-" Plug 'ayu-theme/ayu-vim' " ayu theme
 Plug 'vim-airline/vim-airline' " status line
-" " Highlight when using f to find word(s)
-" Plug 'unblevable/quick-scope'
 " " Auto pairs for '(' '[' '{'
 " Plug 'jiangmiao/auto-pairs'
 " Closetags
@@ -95,5 +92,4 @@ Plug 'github/copilot.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 " Auto close tag & pair (using treesitter)
 Plug 'windwp/nvim-ts-autotag'
-Plug 'windwp/nvim-autopairs'
 call plug#end()

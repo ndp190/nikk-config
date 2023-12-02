@@ -28,9 +28,15 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under'] = '<C-g>' " normal mode multicursor
 let g:VM_maps['Find Subword Under'] = '<C-g>' " visual mode multicursor
 
+" vim-commentary
+autocmd FileType prisma setlocal commentstring=//\ %s
 
 " Easy align - normally use for assignment format
 vnoremap <silent> =1 :EasyAlign 1=<CR>
+" " Start interactive EasyAlign in visual mode (e.g. vipga)
+" xmap ga <Plug>(EasyAlign)
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" nmap ga <Plug>(EasyAlign)
 
 " telescope
 nnoremap <leader>p <cmd>Telescope find_files<cr>
@@ -161,6 +167,9 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
 
+""""""""""""""""""""""""
+""" START LUA CONFIG """
+""""""""""""""""""""""""
 lua << EOF
 require'colorizer'.setup()
 require("mason").setup()
@@ -189,7 +198,6 @@ require'nvim-treesitter.configs'.setup{
 }
 
 require('nvim-ts-autotag').setup()
-require('nvim-autopairs').setup{}
 
 -- install language server
 require'lspconfig'.gopls.setup{}

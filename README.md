@@ -12,6 +12,10 @@ Clean: this will *remove all* current configuration, use with cautious
 make clean
 ```
 
+Manual steps
+
+* tmux: in order to install tmux plugins you need to go into a tmux session and input `<leader> I`
+
 # Add package
 
 To add more package for brew, update it in `install-brew.sh`
