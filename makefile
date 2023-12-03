@@ -14,6 +14,7 @@ Darwin: prerequisite \
     install-zsh \
     install-lynx \
     install-git \
+    install-wezterm \
     install-newsboat
 
 Linux: prerequisite-linux \
@@ -74,6 +75,9 @@ install-newsboat:
 
 install-alacritty:
 	ln -sf `pwd`/.alacritty.yml ~/.alacritty.yml
+
+install-wezterm:
+	ln -sf `pwd`/.wezterm.lua ~/.wezterm.lua
 
 clean: clean-karabiner \
     clean-vim \

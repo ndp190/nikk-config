@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline' " status line
 Plug 'alvan/vim-closetag'
 " Better Comments - type `gcc`
 Plug 'tpope/vim-commentary'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring' " support comment for ts
 " Code format
 " Plug 'beanworks/vim-phpfmt'
 Plug 'junegunn/vim-easy-align'
