@@ -76,7 +76,7 @@ Plug 'brooth/far.vim'
 " VimTeX for LateX
 Plug 'lervag/vimtex'
 " Multiple cursor
-"" <c-n>to select next | \\A to select all
+"" <c-g>to select next | \\A to select all
 Plug 'mg979/vim-visual-multi' 
 " Autojump (zsh) vim integration
 Plug 'padde/jump.vim'

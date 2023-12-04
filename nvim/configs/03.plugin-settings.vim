@@ -39,13 +39,23 @@ vnoremap <silent> =1 :EasyAlign 1=<CR>
 " nmap ga <Plug>(EasyAlign)
 
 " telescope
-nnoremap <leader>p <cmd>Telescope find_files<cr>
-nnoremap <leader>P <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>p :call OpenWithTelescope('find_files')<cr>
+nnoremap <leader>P :call OpenWithTelescope('live_grep')<cr>
+nnoremap <leader>b :call OpenWithTelescope('buffers')<cr>
 nnoremap <leader>f <cmd>Telescope lsp_document_symbols ignore_symbols=namespace,class,constant,variable,property<cr>
 nnoremap <leader>F <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
-" nnoremap <silent>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
 " nnoremap <silent>ff <cmd>Telescope lsp_document_symbols default_text=:method:<cr>
+
+" Avoid open file in NERDTree buffer
+function! OpenWithTelescope(command)
+  if &ft !=# 'nerdtree'
+    exe 'Telescope ' . a:command
+  else
+    wincmd p
+    exe 'Telescope ' . a:command
+  endif
+endfunction
 
 " quickfix preview
 let g:quickr_preview_keymaps = 0 " disable default quickr keymap
