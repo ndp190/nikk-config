@@ -9,14 +9,15 @@ set re=0
 set encoding=UTF-8
 set mouse=a " enable mouse in neovim context
 
-" set tabstop=4
-" set softtabstop=0 expandtab " this affect tab or space character
-" set shiftwidth=4 smarttab
+set tabstop=4
+set softtabstop=0 expandtab " this affect tab or space character
+set shiftwidth=4 smarttab
 autocmd FileType php setl tabstop=4|setl shiftwidth=4|setl softtabstop=4
 autocmd FileType python setl tabstop=4|setl shiftwidth=4|setl softtabstop=4
 autocmd FileType html setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
-" autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
-" autocmd FileType typescript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
+autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
+autocmd FileType typescript setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
+autocmd FileType typescriptreact setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
 autocmd FileType css setl tabstop=2|setl shiftwidth=2|setl softtabstop=2
 autocmd Filetype ruby setlocal tabstop=2|setl shiftwidth=2|setl softtabstop=2
 

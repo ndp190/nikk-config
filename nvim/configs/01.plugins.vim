@@ -43,15 +43,15 @@ Plug 'ronakg/quickr-preview.vim'
  " Jump to definition - <leader>j
 Plug 'pechorin/any-jump.vim'
 " auto set indent settings
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 " " :Autoformat or <F5>
 " Plug 'chiel92/vim-autoformat'
 
-" disable indent to use indentation configuration from 02.settings.vim
-" set it here because it need to be set before loading vim-polyglot
-let g:polyglot_disabled = ['autoindent'] 
-" Better Syntax Support
-Plug 'sheerun/vim-polyglot'
+" " disable indent to use indentation configuration from 02.settings.vim
+" " set it here because it need to be set before loading vim-polyglot
+" let g:polyglot_disabled = ['autoindent'] 
+" " Better Syntax Support
+" Plug 'sheerun/vim-polyglot'
 " Line number display - F3 to toggle number, F4 to toggle on/off
 Plug 'myusuf3/numbers.vim'
 " Copy to clipboard - cp to copy, cv to paste, cP to copy current line

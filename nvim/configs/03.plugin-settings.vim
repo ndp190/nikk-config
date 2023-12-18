@@ -18,6 +18,8 @@ nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
+nnoremap <leader>l :noh<CR>
+
 " tmux
 " set-option -sg escape-time 10
 " set-option -g focus-events on
@@ -176,6 +178,7 @@ set termguicolors
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
+set foldlevelstart=1
 
 """"""""""""""""""""""""
 """ START LUA CONFIG """
@@ -196,6 +199,9 @@ require("mason-lspconfig").setup({
 
 require'nvim-treesitter.configs'.setup{
   auto_install = true,
+  indent = {
+    enable = true
+  },
   highlight = {
     enable = true,
 

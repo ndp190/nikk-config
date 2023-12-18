@@ -69,7 +69,7 @@ autocmd VimEnter * execute "normal \<C-w>w"
 
 " editor settings
 set backspace=indent,eol,start
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab smartindent autoindent
+" set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab smartindent autoindent
 set hlsearch    " highlight all search results
 set ignorecase  " do case insensitive search
 set incsearch   " show incremental search results as you type
