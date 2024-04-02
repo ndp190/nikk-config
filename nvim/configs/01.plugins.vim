@@ -93,4 +93,8 @@ Plug 'github/copilot.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 " Auto close tag & pair (using treesitter)
 Plug 'windwp/nvim-ts-autotag'
+
+Plug 'olimorris/codecompanion.nvim'
+" panel for codecompanion
+Plug 'folke/edgy.nvim'
 call plug#end()

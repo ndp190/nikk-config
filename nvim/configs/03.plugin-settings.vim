@@ -15,6 +15,8 @@ nnoremap <silent> gn <cmd>lua vim.diagnostic.goto_next()<CR>
 nnoremap <silent> gf <cmd>lua vim.lsp.buf.format({async=true})<CR>
 vnoremap <silent> gf <cmd>lua vim.lsp.buf.range_formatting()<CR>
 nnoremap <silent> gm <cmd>:exec ":setf " .input("set language: ")<CR>
+nnoremap <silent> gA <cmd>CodeCompanionToggle<CR>
+nnoremap <silent> gI <cmd>CodeCompanionActions<CR>
 " autoformat
 " autocmd BufWritePre *.php lua vim.lsp.buf.formatting_sync(nil, 100)
 
@@ -193,6 +195,7 @@ require("mason-lspconfig").setup({
       "quick_lint_js",
       "prismals",
       "astro",
+      "svelte",
     },
     automatic_installation = true,
 })
@@ -229,6 +232,47 @@ require'lspconfig'.tsserver.setup{}
 require'lspconfig'.quick_lint_js.setup{}
 require'lspconfig'.astro.setup{}
 require'lspconfig'.prismals.setup{}
+require'lspconfig'.svelte.setup{}
+
+require("codecompanion").setup({
+  adapters = {
+    inline = require("codecompanion.adapters").use("openai", {
+      env = {
+        api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+      },
+    }),
+    chat = require("codecompanion.adapters").use("openai", {
+      env = {
+        api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+      },
+    }),
+  },
+})
+require("edgy").setup({
+  animate = {
+    enabled = false,
+  },
+  left = {
+    {
+      ft = "nerdtree",
+      size = { width = 0.25 }
+    },
+  },
+  right = {
+    {
+      ft = "codecompanion",
+      title = "Code Companion Chat",
+      size = { width = 0.45 }
+    },
+  },
+  bottom = {
+    {
+      ft = "toggleterm",
+      title = "Terminal",
+      size = { width = 0.45 }
+    },
+  },
+})
 
 require("toggleterm").setup{
   -- size can be a number or function which is passed the current terminal
