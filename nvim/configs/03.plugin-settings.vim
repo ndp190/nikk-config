@@ -255,7 +255,7 @@ require("edgy").setup({
   left = {
     {
       ft = "nerdtree",
-      size = { width = 0.25 }
+      size = { width = 0.2 }
     },
   },
   right = {
