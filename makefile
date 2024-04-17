@@ -12,10 +12,11 @@ Darwin: prerequisite \
     install-nvim \
     install-tmux \
     install-zsh \
-    install-lynx \
+    # install-lynx \
     install-git \
     install-wezterm \
-    install-newsboat
+	install-taskwarrior
+    # install-newsboat
 
 Linux: prerequisite-linux \
     install-nvim \
@@ -78,6 +79,9 @@ install-alacritty:
 
 install-wezterm:
 	ln -sf `pwd`/.wezterm.lua ~/.wezterm.lua
+
+install-taskwarrior:
+	ln -sf `pwd`/.taskrc ~/.taskrc
 
 clean: clean-karabiner \
     clean-vim \

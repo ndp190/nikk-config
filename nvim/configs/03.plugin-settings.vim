@@ -233,6 +233,18 @@ require'lspconfig'.quick_lint_js.setup{}
 require'lspconfig'.astro.setup{}
 require'lspconfig'.prismals.setup{}
 require'lspconfig'.svelte.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+--     settings = {
+--         ['rust-analyzer'] = {
+--             -- check = {
+--             --     command = "clippy";
+--             -- },
+--             diagnostics = {
+--                 enable = false;
+--             }
+--         }
+--     }
+-- }
 
 require("codecompanion").setup({
   adapters = {
@@ -265,13 +277,13 @@ require("edgy").setup({
       size = { width = 0.45 }
     },
   },
-  bottom = {
-    {
-      ft = "toggleterm",
-      title = "Terminal",
-      size = { width = 0.45 }
-    },
-  },
+  -- bottom = {
+  --   {
+  --     ft = "toggleterm",
+  --     title = "Terminal",
+  --     size = { width = 0.45 }
+  --   },
+  -- },
 })
 
 require("toggleterm").setup{
