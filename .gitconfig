@@ -1,7 +1,3 @@
-[user]
-    email = $GIT_EMAIL
-    name = $GIT_NAME
-    signingkey = $GIT_SIGNING_KEY
 [includeIf "gitdir:~/Projects/go1/"]
 	path = .gitconfig_go1
 [url "git@code.go1.com.au:"]
