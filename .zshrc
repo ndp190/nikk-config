@@ -149,4 +149,4 @@ compinit
 # zprof
 
 # additional config
-source ~/.zsh_additional_config.zsh
+source ~/.zsh_custom.zsh

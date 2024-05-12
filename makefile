@@ -38,7 +38,6 @@ install-custom-script:
 	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
 	sudo ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
 	sudo ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
-	sudo ln -sf `pwd`/custom-script/tmux-nikk.sh /usr/local/bin/tmux-nikk
 	sudo ln -sf `pwd`/custom-script/lazy-nvm.sh /usr/local/bin/lazy-nvm.sh
 
 install-karabiner:
@@ -60,6 +59,7 @@ install-zsh:
 	$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)")
 	ln -sf `pwd`/.zshrc ~/.zshrc
 	if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
+	if [ ! -f "${HOME}/.zsh_custom.zsh" ]; then cp `pwd`/.zsh_custom.zsh.example ~/.zsh_custom.zsh; fi
 
 install-lynx:
 	ln -sf `pwd`/.lynxrc ~/.lynxrc

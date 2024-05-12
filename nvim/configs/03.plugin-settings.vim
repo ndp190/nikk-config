@@ -248,16 +248,24 @@ require'lspconfig'.rust_analyzer.setup{}
 
 require("codecompanion").setup({
   adapters = {
-    inline = require("codecompanion.adapters").use("openai", {
-      env = {
-        api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
-      },
+    inline = "ollama",
+    chat = require("codecompanion.adapters").use("ollama", {
+        schema = {
+            model = {
+                default = "llama3",
+            },
+        },
     }),
-    chat = require("codecompanion.adapters").use("openai", {
-      env = {
-        api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
-      },
-    }),
+    -- inline = require("codecompanion.adapters").use("openai", {
+    --   env = {
+    --     api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+    --   },
+    -- }),
+    -- chat = require("codecompanion.adapters").use("openai", {
+    --   env = {
+    --     api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+    --   },
+    -- }),
   },
 })
 require("edgy").setup({

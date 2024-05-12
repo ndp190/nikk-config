@@ -1,29 +1,33 @@
 # Nikk config
 
-Install
+* Install
 
 ```bash
 make
 ```
 
-Clean: this will *remove all* current configuration, use with cautious
+* [Optional] Update custom configurations located at `~/.zsh_custom.zsh`, use cases:
+    * git gpg sign
+    * specific host's shell configurations
+
+* Manual steps
+
+    * tmux: in order to install tmux plugins you need to go into a tmux session and input `<leader> I`
+
+* (*)Clean: this will *remove all* current configuration, use with cautious
 
 ```bash
 make clean
 ```
 
-Manual steps
-
-* tmux: in order to install tmux plugins you need to go into a tmux session and input `<leader> I`
-
-# Add package
+## Brew & node package
 
 To add more package for brew, update it in `install-brew.sh`
 To add more package for node, update it in `install-node.sh`
 
-# Custom script
+## Custom scripts
 
-## Colorized output
+### Colorized output
 
 Ex:
 
@@ -31,7 +35,7 @@ Ex:
 echo-colorized '[0;31mConflictError[0m:'
 ```
 
-## Auto generate `__init__.py`
+### Auto generate `__init__.py`
 
 Ex:
 
@@ -39,7 +43,7 @@ Ex:
 autogen-pyinit <directory-to-generate>
 ```
 
-# Notes
+## Other notes
 
 * Midnight commander: configuration is put in `/mc` folder, not included in install script
 
