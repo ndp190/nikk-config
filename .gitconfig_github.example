@@ -1,0 +1,8 @@
+[user]
+    email = ndp190@gmail.com
+    name = Nikk Nguyen
+    signingkey = 
+[commit]
+    gpgsign = true
+[gpg]
+    program = /usr/local/bin/gpg

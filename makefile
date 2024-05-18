@@ -66,8 +66,9 @@ install-lynx:
 
 install-git:
 	ln -sf `pwd`/.gitconfig ~/.gitconfig
-	ln -sf `pwd`/.gitconfig_go1 ~/.gitconfig_go1
 	ln -sf `pwd`/.gitignore_global ~/.gitignore_global
+	if [ ! -f "${HOME}/.gitconfig_go1" ]; then cp `pwd`/.gitconfig_go1.example ~/.gitconfig_go1; fi
+	if [ ! -f "${HOME}/.gitconfig_github" ]; then cp `pwd`/.gitconfig_github.example ~/.gitconfig_github; fi
 
 install-newsboat:
 	mkdir -p ~/.newsboat

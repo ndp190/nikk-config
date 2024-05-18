@@ -1,9 +1,9 @@
-[includeIf "gitdir:~/Projects/go1/"]
-	path = .gitconfig_go1
 [url "git@code.go1.com.au:"]
 	insteadOf = https://code.go1.com.au/
-[test "local"]
-	sh = ~/.gitignore_global
+[includeIf "hasconfig:remote.*.url:git@github.com*/**"]
+    path = "~/.gitconfig_github"
+[includeIf "hasconfig:remote.*.url:git@code.go1.com.au*/**"]
+	path = "~/.gitconfig_go1"
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim
@@ -13,7 +13,3 @@
 	branch = false
 [pull]
 	rebase = true
-[commit]
-	gpgsign = true
-[gpg]
-	program = /usr/local/bin/gpg
