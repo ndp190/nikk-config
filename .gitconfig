@@ -1,8 +1,10 @@
 [url "git@code.go1.com.au:"]
 	insteadOf = https://code.go1.com.au/
-[includeIf "hasconfig:remote.*.url:git@github.com*/**"]
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
     path = "~/.gitconfig_github"
-[includeIf "hasconfig:remote.*.url:git@code.go1.com.au*/**"]
+[includeIf "hasconfig:remote.*.url:git@github.com:go1com*/**"]
+    path = "~/.gitconfig_go1"
+[includeIf "hasconfig:remote.*.url:git@code.go1.com.au:*/**"]
 	path = "~/.gitconfig_go1"
 [core]
 	excludesfile = ~/.gitignore_global
