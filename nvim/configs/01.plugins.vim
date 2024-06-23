@@ -35,7 +35,14 @@ Plug 'ompugao/vim-airline-noscrollbar'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe' " auto complete
+
+" Autocomplete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
 " Code highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Quickfix preview pane (usually use when find code references)
