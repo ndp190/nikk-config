@@ -104,4 +104,8 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'olimorris/codecompanion.nvim'
 " panel for codecompanion
 Plug 'folke/edgy.nvim'
+
+" Auto generate comment
+Plug 'kkoomen/vim-doge'
+
 call plug#end()
