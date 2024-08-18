@@ -106,6 +106,7 @@ alias ll='ls -la'
 alias vim="nvim"
 alias vi="nvim"
 alias c='clear'
+alias k='kubectl'
 
 bindkey "[D" backward-word
 bindkey "[C" forward-word

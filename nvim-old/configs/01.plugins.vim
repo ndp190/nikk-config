@@ -72,6 +72,7 @@ Plug 'christoomey/vim-system-copy'
 Plug 'MattesGroeger/vim-bookmarks'
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " fugitive github
 Plug 'airblade/vim-gitgutter'
 " " Auto change working directory (to root git dir)
 " Plug 'yssl/AutoCWD.vim'
@@ -107,5 +108,7 @@ Plug 'folke/edgy.nvim'
 
 " Auto generate comment
 Plug 'kkoomen/vim-doge'
+
+Plug 'mechatroner/rainbow_csv'
 
 call plug#end()
