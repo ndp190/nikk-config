@@ -1,0 +1,293 @@
+--- Startup times for process: Primary/TUI ---
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.000  000.000: --- NVIM STARTING ---
+000.089  000.089: event init
+000.250  000.161: early init
+000.912  000.662: locale set
+000.945  000.033: init first window
+001.307  000.362: inits 1
+001.312  000.005: window checked
+001.315  000.003: parsing arguments
+001.663  000.023  000.023: require('vim.shared')
+001.714  000.025  000.025: require('vim.inspect')
+001.742  000.022  000.022: require('vim._options')
+001.744  000.078  000.032: require('vim._editor')
+001.745  000.142  000.041: require('vim._init_packages')
+001.746  000.289: init lua interpreter
+002.120  000.373: --- NVIM STARTED ---
+
+--- Startup times for process: Embedded ---
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.000  000.000: --- NVIM STARTING ---
+000.076  000.076: event init
+000.176  000.100: early init
+000.945  000.769: locale set
+001.020  000.075: init first window
+001.467  000.447: inits 1
+001.484  000.017: window checked
+001.489  000.004: parsing arguments
+001.813  000.025  000.025: require('vim.shared')
+001.864  000.025  000.025: require('vim.inspect')
+001.894  000.024  000.024: require('vim._options')
+001.896  000.080  000.032: require('vim._editor')
+001.897  000.147  000.042: require('vim._init_packages')
+001.898  000.262: init lua interpreter
+003.869  001.971: expanding arguments
+003.889  000.020: inits 2
+004.070  000.181: init highlight
+004.071  000.001: waiting for UI
+004.254  000.183: done waiting for UI
+004.261  000.006: clear screen
+004.314  000.005  000.005: require('vim.keymap')
+004.878  000.613  000.608: require('vim._defaults')
+004.879  000.005: init default mappings & autocommands
+006.050  000.055  000.055: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/ftplugin.vim
+006.240  000.027  000.027: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/indent.vim
+008.128  001.063  001.063: require('lazy')
+008.153  000.015  000.015: require('ffi')
+008.206  000.032  000.032: require('vim.fs')
+008.469  000.247  000.247: require('vim.uri')
+008.489  000.333  000.055: require('vim.loader')
+008.782  000.275  000.275: require('lazy.stats')
+008.938  000.122  000.122: require('lazy.core.util')
+009.222  000.280  000.280: require('lazy.core.config')
+009.609  000.175  000.175: require('lazy.core.handler')
+010.180  000.252  000.252: require('lazy.pkg')
+010.183  000.414  000.162: require('lazy.core.meta')
+010.193  000.582  000.168: require('lazy.core.plugin')
+010.198  000.973  000.216: require('lazy.core.loader')
+010.626  000.146  000.146: require('lazy.core.fragments')
+012.456  000.156  000.156: require('vim.treesitter.language')
+012.604  000.145  000.145: require('vim.func')
+012.739  000.132  000.132: require('vim.func._memoize')
+012.751  000.586  000.154: require('vim.treesitter.query')
+012.884  000.132  000.132: require('vim.treesitter._range')
+012.948  001.039  000.321: require('vim.treesitter.languagetree')
+012.953  001.563  000.525: require('vim.treesitter')
+013.117  000.162  000.162: require('vim.treesitter._fold')
+013.123  000.003  000.003: require('vim.F')
+014.295  000.210  000.210: require('lazy.core.handler.event')
+014.432  000.134  000.134: require('lazy.core.handler.ft')
+014.559  000.098  000.098: require('lazy.core.handler.cmd')
+014.707  000.145  000.145: require('lazy.core.handler.keys')
+015.654  000.387  000.387: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/filetype.lua
+018.412  000.977  000.977: require('cmp.utils.api')
+018.678  000.110  000.110: require('cmp.types.cmp')
+018.939  000.122  000.122: require('cmp.utils.misc')
+018.947  000.267  000.146: require('cmp.types.lsp')
+019.040  000.092  000.092: require('cmp.types.vim')
+019.043  000.627  000.158: require('cmp.types')
+019.154  000.110  000.110: require('cmp.utils.highlight')
+019.555  000.197  000.197: require('cmp.utils.debug')
+019.561  000.405  000.208: require('cmp.utils.autocmd')
+019.814  002.543  000.423: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/nvim-cmp/plugin/cmp.lua
+020.750  000.133  000.133: require('cmp.utils.char')
+020.756  000.322  000.189: require('cmp.utils.str')
+021.150  000.110  000.110: require('cmp.utils.buffer')
+021.154  000.247  000.137: require('cmp.utils.keymap')
+021.155  000.398  000.151: require('cmp.utils.feedkeys')
+021.472  000.094  000.094: require('cmp.config.mapping')
+021.609  000.136  000.136: require('cmp.utils.cache')
+021.829  000.099  000.099: require('cmp.config.compare')
+021.831  000.220  000.121: require('cmp.config.default')
+021.844  000.568  000.117: require('cmp.config')
+021.852  000.696  000.129: require('cmp.utils.async')
+022.056  000.083  000.083: require('cmp.utils.pattern')
+022.058  000.205  000.122: require('cmp.context')
+022.400  000.141  000.141: require('cmp.utils.snippet')
+022.527  000.126  000.126: require('cmp.matcher')
+022.532  000.373  000.107: require('cmp.entry')
+022.538  000.479  000.105: require('cmp.source')
+022.830  000.122  000.122: require('cmp.utils.event')
+023.297  000.115  000.115: require('cmp.utils.options')
+023.301  000.318  000.203: require('cmp.utils.window')
+023.303  000.470  000.152: require('cmp.view.docs_view')
+023.462  000.158  000.158: require('cmp.view.custom_entries_view')
+023.633  000.170  000.170: require('cmp.view.wildmenu_entries_view')
+023.810  000.173  000.173: require('cmp.view.native_entries_view')
+023.999  000.187  000.187: require('cmp.view.ghost_text_view')
+024.008  001.469  000.189: require('cmp.view')
+024.354  004.208  000.639: require('cmp.core')
+024.576  000.136  000.136: require('cmp.config.sources')
+024.740  000.161  000.161: require('cmp.config.window')
+024.796  004.916  000.411: require('cmp')
+029.561  002.530  002.530: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/gruvbox/colors/gruvbox.vim
+030.253  000.161  000.161: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-tmux-navigator/plugin/tmux_navigator.vim
+031.541  000.026  000.026: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/plenary.nvim/plugin/plenary.vim
+032.093  000.306  000.306: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/telescope.nvim/plugin/telescope.lua
+033.440  000.204  000.204: require('telescope._extensions')
+033.448  001.318  001.114: require('telescope')
+034.383  000.255  000.255: require('plenary.bit')
+034.526  000.141  000.141: require('plenary.functional')
+034.553  000.648  000.252: require('plenary.path')
+034.602  000.798  000.150: require('plenary.log')
+034.615  000.944  000.146: require('telescope.log')
+035.276  000.172  000.172: require('plenary.compat')
+035.283  000.462  000.290: require('plenary.job')
+035.476  000.192  000.192: require('plenary.strings')
+035.762  000.283  000.283: require('telescope.state')
+035.787  001.171  000.234: require('telescope.utils')
+035.791  002.336  000.221: require('telescope.sorters')
+036.255  000.189  000.189: require('telescope.previewers.previewer')
+036.759  000.161  000.161: require('telescope.deprecated')
+037.989  001.567  001.406: require('telescope.config')
+038.155  000.163  000.163: require('telescope.from_entry')
+038.338  000.181  000.181: require('telescope.previewers.utils')
+038.659  002.402  000.490: require('telescope.previewers.term_previewer')
+041.205  002.206  002.206: require('plenary.scandir')
+041.389  002.729  000.523: require('telescope.previewers.buffer_previewer')
+041.394  005.601  000.280: require('telescope.previewers')
+043.424  000.185  000.185: require('telescope.config.resolve')
+043.427  000.423  000.238: require('telescope.pickers.entry_display')
+043.436  000.677  000.254: require('telescope.make_entry')
+044.266  000.140  000.140: require('plenary.tbl')
+044.270  000.286  000.146: require('plenary.vararg.rotate')
+044.271  000.437  000.151: require('plenary.vararg')
+044.617  000.344  000.344: require('plenary.errors')
+044.624  000.933  000.152: require('plenary.async.async')
+045.224  000.133  000.133: require('plenary.async.structs')
+045.253  000.326  000.193: require('plenary.async.control')
+045.261  000.475  000.149: require('plenary.async.util')
+045.263  000.637  000.162: require('plenary.async.tests')
+045.264  001.692  000.122: require('plenary.async')
+045.266  001.828  000.136: require('telescope.finders.async_static_finder')
+045.935  000.149  000.149: require('plenary.class')
+045.969  000.573  000.424: require('telescope._')
+045.971  000.704  000.132: require('telescope.finders.async_oneshot_finder')
+046.095  000.123  000.123: require('telescope.finders.async_job_finder')
+046.100  003.516  000.183: require('telescope.finders')
+047.575  000.367  000.367: require('plenary.window.border')
+047.753  000.175  000.175: require('plenary.window')
+047.942  000.187  000.187: require('plenary.popup.utils')
+047.945  001.570  000.841: require('plenary.popup')
+048.575  000.368  000.368: require('telescope.pickers.scroller')
+048.719  000.143  000.143: require('telescope.actions.state')
+048.945  000.185  000.185: require('telescope.actions.utils')
+049.269  000.142  000.142: require('telescope.actions.mt')
+049.584  000.638  000.496: require('telescope.actions.set')
+049.867  001.921  000.588: require('telescope.actions')
+050.026  000.157  000.157: require('telescope.debounce')
+050.312  000.284  000.284: require('telescope.mappings')
+050.579  000.264  000.264: require('telescope.pickers.highlights')
+050.711  000.130  000.130: require('telescope.pickers.window')
+051.172  000.460  000.460: require('telescope.pickers.layout')
+051.640  000.282  000.282: require('telescope.algos.linked_list')
+051.643  000.469  000.187: require('telescope.entry_manager')
+051.861  000.217  000.217: require('telescope.pickers.multi')
+051.873  005.773  000.301: require('telescope.pickers')
+052.062  000.187  000.187: require('bookmarks.config')
+052.066  009.811  000.335: require('telescope._extensions.bookmarks')
+052.703  000.142  000.142: require('bookmarks.async')
+052.944  000.240  000.240: require('bookmarks.nvim')
+053.191  000.246  000.246: require('bookmarks.highlight')
+053.909  000.467  000.467: require('bookmarks.signs')
+054.073  000.163  000.163: require('bookmarks.util')
+054.079  000.885  000.256: require('bookmarks.actions')
+054.082  001.975  000.462: require('bookmarks')
+056.912  000.080  000.080: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/init.vim
+057.592  000.250  000.250: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/parts.vim
+057.993  000.011  000.011: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/formatter/short_path.vim
+059.013  000.104  000.104: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/util.vim
+059.075  003.421  002.976: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/plugin/airline.vim
+059.589  000.057  000.057: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-noscrollbar/plugin/noscrollbar.vim
+061.239  000.126  000.126: require('toggleterm.lazy')
+061.379  000.138  000.138: require('toggleterm.constants')
+061.533  000.153  000.153: require('toggleterm.terminal')
+061.538  001.362  000.946: require('toggleterm')
+061.773  000.111  000.111: require('toggleterm.colors')
+061.877  000.102  000.102: require('toggleterm.utils')
+061.881  000.339  000.125: require('toggleterm.config')
+062.118  000.151  000.151: require('vim.version')
+063.082  000.142  000.142: require('toggleterm.commandline')
+063.521  000.081  000.081: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/editorconfig.lua
+063.769  000.102  000.102: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/gzip.vim
+063.984  000.079  000.079: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/man.lua
+067.530  000.183  000.183: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+067.560  003.398  003.215: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/matchit.vim
+067.872  000.111  000.111: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/matchparen.vim
+068.298  000.184  000.184: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/netrwPlugin.vim
+068.688  000.151  000.151: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/osc52.lua
+069.278  000.008  000.008: sourcing /Users/phuc.nguyen/.local/share/nvim/rplugin.vim
+069.289  000.363  000.355: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/rplugin.vim
+069.539  000.059  000.059: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/shada.vim
+069.755  000.020  000.020: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/spellfile.vim
+069.981  000.065  000.065: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/tarPlugin.vim
+070.225  000.083  000.083: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/tohtml.lua
+070.380  000.012  000.012: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/tutor.vim
+070.608  000.072  000.072: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/plugin/zipPlugin.vim
+071.208  000.167  000.167: require('cmp_cmdline')
+071.227  000.266  000.099: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/cmp-cmdline/after/plugin/cmp_cmdline.lua
+071.690  000.163  000.163: require('cmp_path')
+071.699  000.241  000.077: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/cmp-path/after/plugin/cmp_path.lua
+072.499  000.091  000.091: require('cmp_buffer.timer')
+072.502  000.251  000.160: require('cmp_buffer.buffer')
+072.506  000.382  000.131: require('cmp_buffer.source')
+072.507  000.533  000.151: require('cmp_buffer')
+072.515  000.621  000.088: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/cmp-buffer/after/plugin/cmp_buffer.lua
+073.179  000.164  000.164: require('cmp_nvim_lsp.source')
+073.187  000.307  000.143: require('cmp_nvim_lsp')
+073.198  000.387  000.080: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua
+073.268  066.504  017.305: require('config.lazy')
+074.156  000.886  000.886: require('config.keymap')
+074.558  000.034  000.034: sourcing /Users/phuc.nguyen/.config/nvim/vim_scripts/tabs_to_space.vim
+074.567  067.875  000.450: sourcing /Users/phuc.nguyen/.config/nvim/init.lua
+074.593  001.757: sourcing vimrc file(s)
+075.375  000.089  000.089: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/filetype.lua
+075.860  000.101  000.101: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/buffers.vim
+076.275  000.058  000.058: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/syntax/synload.vim
+076.452  000.510  000.452: sourcing /opt/homebrew/Cellar/neovim/0.10.0/share/nvim/runtime/syntax/syntax.vim
+076.463  001.170: inits 3
+078.762  002.300: reading ShaDa
+079.259  000.195  000.195: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions.vim
+079.537  000.034  000.034: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/quickfix.vim
+079.821  000.096  000.096: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline.vim
+080.324  000.289  000.289: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/netrw.vim
+080.673  000.098  000.098: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/term.vim
+081.382  000.252  000.252: require('vim.lsp.log')
+081.981  000.595  000.595: require('vim.lsp.protocol')
+082.621  000.387  000.387: require('vim.lsp._snippet_grammar')
+082.807  000.180  000.180: require('vim.highlight')
+082.825  000.841  000.274: require('vim.lsp.util')
+083.140  000.167  000.167: require('vim.lsp.sync')
+083.148  000.320  000.153: require('vim.lsp._changetracking')
+083.437  000.287  000.287: require('vim.lsp.rpc')
+083.501  002.646  000.350: require('vim.lsp')
+083.786  000.047  000.047: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/nvimlsp.vim
+084.170  000.100  000.100: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/whitespace.vim
+084.576  000.043  000.043: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/po.vim
+084.844  000.057  000.057: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/wordcount.vim
+085.167  000.120  000.120: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline.vim
+085.560  000.027  000.027: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/autoshow.vim
+085.968  000.050  000.050: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/tabs.vim
+086.300  000.030  000.030: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/xkblayout.vim
+086.541  000.020  000.020: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/keymap.vim
+086.957  000.028  000.028: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/searchcount.vim
+088.190  000.032  000.032: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline-noscrollbar/autoload/airline/extensions/noscrollbar.vim
+089.987  000.040  000.040: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/section.vim
+090.351  000.113  000.113: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/highlighter.vim
+092.917  000.046  000.046: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/themes.vim
+093.671  001.263  001.218: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/gruvbox/autoload/airline/themes/gruvbox.vim
+104.813  000.093  000.093: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/builder.vim
+105.334  000.074  000.074: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/default.vim
+131.006  046.748: opening buffers
+131.031  000.025: BufEnter autocommands
+131.033  000.002: editing files in windows
+131.471  000.438: VimEnter autocommands
+131.826  000.355: UIEnter autocommands
+131.827  000.002: before starting main loop
+132.339  000.096  000.096: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/ctrlspace.vim
+132.759  000.068  000.068: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/tabws.vim
+133.218  000.078  000.078: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/builder.vim
+133.655  000.076  000.076: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/buflist.vim
+135.335  000.032  000.032: sourcing /Users/phuc.nguyen/.local/share/nvim/lazy/vim-airline/autoload/airline/extensions/tabline/formatters/default.vim
+143.324  011.146: first screen update
+143.326  000.002: --- NVIM STARTED ---
+
