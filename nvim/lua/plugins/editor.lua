@@ -5,16 +5,6 @@ vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '…', precedes = '�
 -- enable mouse in neovim context
 -- vim.opt.mouse = 'a'
 
--- set regex engine to 'old' to improve performance
--- vim.opt.re = 0
-
-vim.api.nvim_create_autocmd("VimEnter", {
-    command = "set nornu nonu | Neotree toggle",
-})
-vim.api.nvim_create_autocmd("BufEnter", {
-    command = "set rnu nu",
-})
-
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -121,6 +111,19 @@ return {
           "MunifTanjim/nui.nvim",
           -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         },
+        -- open neotree (override netrw) when 'vim .'
+        init = function()
+          if vim.fn.argc(-1) == 1 then
+            local stat = vim.loop.fs_stat(vim.fn.argv(0))
+            if stat and stat.type == "directory" then
+              require("neo-tree").setup({
+                filesystem = {
+                  hijack_netrw_behavior = "open_current",
+                },
+              })
+            end
+          end
+        end,
         config = function()
           require('neo-tree').setup({
             filesystem = {
@@ -137,6 +140,10 @@ return {
                 always_show_by_pattern = { -- uses glob style patterns
                   ".env*",
                 },
+              },
+              follow_current_file = {
+                  enabled = true,
+                  leave_dirs_open = false,
               },
             },
           })
