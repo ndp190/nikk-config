@@ -8,7 +8,12 @@ vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '…', precedes = '�
 -- set regex engine to 'old' to improve performance
 -- vim.opt.re = 0
 
--- TODO bookmark see https://github.com/tomasky/bookmarks.nvim
+vim.api.nvim_create_autocmd("VimEnter", {
+    command = "set nornu nonu | Neotree toggle",
+})
+vim.api.nvim_create_autocmd("BufEnter", {
+    command = "set rnu nu",
+})
 
 return {
     {
@@ -134,16 +139,6 @@ return {
                 },
               },
             },
-            -- event_handlers = { 
-            --      { 
-            --          event = "vim_buffer_enter", 
-            --          handler = function() 
-            --              if vim.bo.filetype == "neo-tree" then 
-            --                  vim.cmd("setlocal nonumber") 
-            --              end 
-            --          end, 
-            --      },
-            -- },
           })
         end
     },
@@ -156,12 +151,6 @@ return {
     -- copy to clipboard
     {
         "christoomey/vim-system-copy",
-        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    },
-
-    -- relative number
-    {
-       "myusuf3/numbers.vim",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     },
 

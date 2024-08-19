@@ -4,6 +4,12 @@ local function map(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
+vim.api.nvim_create_user_command('ToggleRelativeNumber', function()
+    vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end, {})
+
+map("n", "=3", "<CMD>:ToggleRelativeNumber<CR>")
+
 -- buffer
 map("n", "<leader>q", "<CMD>:q<CR>")
 map("n", "<leader>Q", "<CMD>:q!<CR>")
@@ -45,9 +51,6 @@ map("n", "ma", "<CMD>lua require('telescope').extensions.bookmarks.list()<CR>")
 
 -- Align
 map("v", "=1", "<CMD>:EasyAlign 1=<CR>")
-
--- gutter number
-map("n", "=3", "<CMD>:NumbersToggle<CR>")
 
 -- git
 map("n", "<leader>gs", "<CMD>:G<CR>")
