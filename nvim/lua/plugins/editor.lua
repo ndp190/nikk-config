@@ -5,6 +5,36 @@ vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '…', precedes = '�
 -- enable mouse in neovim context
 -- vim.opt.mouse = 'a'
 
+local neo_tree_setup = {
+  filesystem = {
+    hijack_netrw_behavior = "open_current",
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = true,
+      hide_by_name = {
+        "node_modules",
+        ".git",
+        ".vscode",
+      },
+      hide_by_pattern = { -- uses glob style patterns
+        -- "*.git",
+        -- "*.vscode",
+      },
+      always_show = {
+        ".env",
+        ".github",
+      },
+      always_show_by_pattern = { -- uses glob style patterns
+        ".env*",
+      },
+    },
+    follow_current_file = {
+      enabled = true,
+      leave_dirs_open = false,
+    },
+  },
+}
+
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -116,37 +146,12 @@ return {
           if vim.fn.argc(-1) == 1 then
             local stat = vim.loop.fs_stat(vim.fn.argv(0))
             if stat and stat.type == "directory" then
-              require("neo-tree").setup({
-                filesystem = {
-                  hijack_netrw_behavior = "open_current",
-                },
-              })
+              require("neo-tree").setup(neo_tree_setup)
             end
           end
         end,
         config = function()
-          require('neo-tree').setup({
-            filesystem = {
-              filtered_items = {
-                hide_dotfiles = false,
-                hide_gitignored = true,
-                hide_by_pattern = { -- uses glob style patterns
-                  "*.git",
-                  "*.vscode",
-                },
-                always_show = {
-                  ".env",
-                },
-                always_show_by_pattern = { -- uses glob style patterns
-                  ".env*",
-                },
-              },
-              follow_current_file = {
-                  enabled = true,
-                  leave_dirs_open = false,
-              },
-            },
-          })
+          require('neo-tree').setup(neo_tree_setup)
         end
     },
 
