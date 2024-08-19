@@ -1,5 +1,11 @@
 vim.g.mapleader = " "
 
+-- mg979/vim-visual-multi key mappings
+vim.g.VM_maps = {
+  ["Find Under"] = "<C-g>", -- normal mode multicursor
+  ["Find Subword Under"] = "<C-g>", -- visual mode multicursor
+}
+
 local function map(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
@@ -19,6 +25,8 @@ map("n", "<leader>w", "<CMD>:bp<BAR>bd#<CR>")
 map("n", "<leader>W", "<CMD>:bp<BAR>bd!#<CR>")
 map("n", "<C-n>", "<CMD>:bnext<CR>")
 map("n", "<C-p>", "<CMD>:bprev<CR>")
+map("n", "<C-w>x", "<CMD>:split<CR>")
+map("n", "<C-w>v", "<CMD>:vsplit<CR>")
 
 -- NeoTree
 map("n", "<leader>e", "<CMD>Neotree toggle<CR>")

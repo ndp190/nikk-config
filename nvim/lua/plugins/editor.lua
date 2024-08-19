@@ -2,6 +2,9 @@
 vim.opt.list = true
 vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '…', precedes = '…', nbsp = '␣' }
 
+-- enable line numbers
+vim.opt.number = true
+
 -- enable mouse in neovim context
 -- vim.opt.mouse = 'a'
 
