@@ -307,6 +307,7 @@ return {
           },
           -- Set to false to disable all of the above keymaps
           use_default_keymaps = false,
+          delete_to_trash = true,
           view_options = {
             -- Show files and directories that start with "."
             show_hidden = true,

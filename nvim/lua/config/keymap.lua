@@ -14,7 +14,13 @@ vim.api.nvim_create_user_command('ToggleRelativeNumber', function()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end, {})
 
+vim.api.nvim_create_user_command('CurrentPath', function()
+    local buffer_path = vim.api.nvim_buf_get_name(0)
+    print(buffer_path)
+end, {})
+
 map("n", "=3", "<CMD>:ToggleRelativeNumber<CR>")
+map("n", "~", "<CMD>:CurrentPath<CR>")
 
 -- buffer
 map("n", "<leader>q", "<CMD>:q<CR>")
