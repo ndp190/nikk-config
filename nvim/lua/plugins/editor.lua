@@ -4,6 +4,7 @@ vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '…', precedes = '�
 
 -- enable line numbers
 vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- enable mouse in neovim context
 -- vim.opt.mouse = 'a'
@@ -43,6 +44,8 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
+          local z_utils = require("telescope._extensions.zoxide.utils")
+          local oil = require("oil")
           require('telescope').setup({
               defaults = {
                 vimgrep_arguments = {
@@ -103,9 +106,41 @@ return {
                   },
                 },
               },
+              extensions = {
+                zoxide = {
+                  prompt_title = "[ Jump to folder ]",
+                  mappings = {
+                    default = {
+                      after_action = function(selection)
+                        print("Update to (" .. selection.z_score .. ") " .. selection.path)
+                        oil.open(selection.path)
+                      end
+                    },
+                    -- ["<C-s>"] = {
+                    --   before_action = function(selection) print("before C-s") end,
+                    --   action = function(selection)
+                    --     vim.cmd.edit(selection.path)
+                    --   end
+                    -- },
+                    -- Opens the selected entry in a new split
+                    ["<C-q>"] = { action = z_utils.create_basic_command("split") },
+                  },
+                }
+              }
           })
           require('telescope').load_extension('bookmarks')
+          require("telescope").load_extension('zoxide')
         end
+    },
+
+    -- telescope zoxide (better 'cd') integration
+    {
+        "jvgrootveld/telescope-zoxide",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-lua/popup.nvim"
+        },
     },
 
 
@@ -245,9 +280,9 @@ return {
           -- See :help oil-columns
           columns = {
             "icon",
-            "permissions",
-            "size",
-            "mtime",
+            -- "permissions",
+            -- "size",
+            -- "mtime",
           },
           -- Set to true to watch the filesystem for changes and reload oil
           watch_for_changes = false,
@@ -255,10 +290,10 @@ return {
           keymaps = {
             ["g?"] = "actions.show_help",
             ["<CR>"] = "actions.select",
-            ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-            ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
-            ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
-            ["<C-p>"] = "actions.preview",
+            ["gv"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+            ["gx"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+            ["gt"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
+            ["gp"] = "actions.preview",
             ["<C-c>"] = "actions.close",
             ["<C-r>"] = "actions.refresh",
             ["-"] = "actions.parent",
@@ -285,7 +320,7 @@ return {
             end,
             -- Sort file names in a more intuitive order for humans. Is less performant,
             -- so you may want to set to false if you work with large directories.
-            natural_order = true,
+            natural_order = false,
             -- Sort file and directory names case insensitive
             case_insensitive = false,
             sort = {
@@ -294,88 +329,9 @@ return {
               { "type", "asc" },
               { "name", "asc" },
             },
-          },
-          -- Extra arguments to pass to SCP when moving/copying files over SSH
-          extra_scp_args = {},
-          -- EXPERIMENTAL support for performing file operations with git
-          git = {
-            -- Return true to automatically git add/mv/rm files
-            add = function(path)
-              return false
-            end,
-            mv = function(src_path, dest_path)
-              return false
-            end,
-            rm = function(path)
-              return false
-            end,
-          },
-          -- Configuration for the floating window in oil.open_float
-          float = {
-            -- Padding around the floating window
-            padding = 2,
-            max_width = 0,
-            max_height = 0,
-            border = "rounded",
-            win_options = {
-              winblend = 0,
-            },
-            -- preview_split: Split direction: "auto", "left", "right", "above", "below".
-            preview_split = "auto",
-            -- This is the config that will be passed to nvim_open_win.
-            -- Change values here to customize the layout
-            override = function(conf)
-              return conf
-            end,
-          },
-          -- Configuration for the actions floating preview window
-          preview = {
-            -- Width dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-            -- min_width and max_width can be a single value or a list of mixed integer/float types.
-            -- max_width = {100, 0.8} means "the lesser of 100 columns or 80% of total"
-            max_width = 0.9,
-            -- min_width = {40, 0.4} means "the greater of 40 columns or 40% of total"
-            min_width = { 40, 0.4 },
-            -- optionally define an integer/float for the exact width of the preview window
-            width = nil,
-            -- Height dimensions can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-            -- min_height and max_height can be a single value or a list of mixed integer/float types.
-            -- max_height = {80, 0.9} means "the lesser of 80 columns or 90% of total"
-            max_height = 0.9,
-            -- min_height = {5, 0.1} means "the greater of 5 columns or 10% of total"
-            min_height = { 5, 0.1 },
-            -- optionally define an integer/float for the exact height of the preview window
-            height = nil,
-            border = "rounded",
-            win_options = {
-              winblend = 0,
-            },
-            -- Whether the preview window is automatically updated when the cursor is moved
-            update_on_cursor_moved = true,
-          },
-          -- Configuration for the floating progress window
-          progress = {
-            max_width = 0.9,
-            min_width = { 40, 0.4 },
-            width = nil,
-            max_height = { 10, 0.9 },
-            min_height = { 5, 0.1 },
-            height = nil,
-            border = "rounded",
-            minimized_border = "none",
-            win_options = {
-              winblend = 0,
-            },
-          },
-          -- Configuration for the floating SSH window
-          ssh = {
-            border = "rounded",
-          },
-          -- Configuration for the floating keymaps help window
-          keymaps_help = {
-            border = "rounded",
-          },
+          }
         })
       end,
-    }
+    },
+
 }

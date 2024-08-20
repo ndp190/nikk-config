@@ -33,6 +33,8 @@ map("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 map("n", "<leader>r", "<CMD>Neotree reveal<CR>")
 -- Oil
 map("n", "<leader>E", "<CMD>Oil .<CR>")
+-- Zoxide
+map("n", "<leader>z", require("telescope").extensions.zoxide.list)
 
 -- Clear highlights
 map("n", "<leader>l", "<CMD>:noh<CR>")

@@ -17,24 +17,27 @@ taps=(
 packages=(
     tmux
     htop
-    kubectl
-    node
-    python3
-    pyenv
-    autojump
     watch
-    lynx
-    newsboat
     nvim
-    ripgrep
-    go
+    # better cd
+    zoxide
+    # for zoxide 'zi'
+    fzf
     gnupg
-    ansible
+    # kubectl
+    # node
+    # python3
+    # pyenv
+    # autojump
+    # lynx
+    # newsboat
+    # ripgrep
+    # go
+    # ansible
 )
 packages_cask=(
     karabiner-elements
     font-hack-nerd-font
-    kitty
 )
 
 for pkg in "${taps[@]}"; do
