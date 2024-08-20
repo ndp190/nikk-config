@@ -270,20 +270,15 @@ return {
       'stevearc/oil.nvim',
       opts = {},
       -- Optional dependencies
-      -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
       dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
       config = function()
+        local columns_enabled = false
         require("oil").setup({
           -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
           -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
           default_file_explorer = true,
           -- See :help oil-columns
-          columns = {
-            "icon",
-            -- "permissions",
-            -- "size",
-            -- "mtime",
-          },
+          columns = { "icon" },
           -- Set to true to watch the filesystem for changes and reload oil
           watch_for_changes = false,
           -- See :help oil-actions for a list of all available actions
@@ -304,6 +299,19 @@ return {
             ["gx"] = "actions.open_external",
             ["g."] = "actions.toggle_hidden",
             ["g\\"] = "actions.toggle_trash",
+            ["gc"] = function()
+                if columns_enabled then
+                  require("oil").set_columns({ "icon" })
+                else
+                  require("oil").set_columns({
+                    "icon",
+                    "permissions",
+                    "size",
+                    "mtime",
+                  })
+                end
+                columns_enabled = not columns_enabled
+            end,
           },
           -- Set to false to disable all of the above keymaps
           use_default_keymaps = false,
