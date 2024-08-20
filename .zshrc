@@ -158,7 +158,7 @@ compinit
 # zprof
 
 # zoxide (better 'cd')
-eval "$(zoxide init bash)"
+eval "$(zoxide init zsh)"
 
 # additional config
 source ~/.zsh_custom.zsh
