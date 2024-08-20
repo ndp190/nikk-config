@@ -31,6 +31,8 @@ map("n", "<C-w>v", "<CMD>:vsplit<CR>")
 -- NeoTree
 map("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 map("n", "<leader>r", "<CMD>Neotree reveal<CR>")
+-- Oil
+map("n", "<leader>E", "<CMD>Oil .<CR>")
 
 -- Clear highlights
 map("n", "<leader>l", "<CMD>:noh<CR>")
