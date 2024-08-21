@@ -11,7 +11,6 @@ vim.opt.relativenumber = true
 
 local neo_tree_setup = {
   filesystem = {
-    hijack_netrw_behavior = "open_current",
     filtered_items = {
       hide_dotfiles = false,
       hide_gitignored = true,
@@ -296,7 +295,7 @@ return {
             ["`"] = "actions.cd",
             ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
             ["gs"] = "actions.change_sort",
-            ["gx"] = "actions.open_external",
+            ["go"] = "actions.open_external",
             ["g."] = "actions.toggle_hidden",
             ["g\\"] = "actions.toggle_trash",
             ["gc"] = function()
