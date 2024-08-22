@@ -276,6 +276,12 @@ return {
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     },
 
+    -- buffer close
+    {
+        "Asheq/close-buffers.vim",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    },
+
     {
       'stevearc/oil.nvim',
       opts = {},

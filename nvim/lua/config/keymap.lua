@@ -10,6 +10,8 @@ local function map(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
+map("n", "na", "<CMD>:lua open_custom_actions()<CR>")
+
 vim.api.nvim_create_user_command('ToggleRelativeNumber', function()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end, {})
@@ -20,7 +22,7 @@ vim.api.nvim_create_user_command('CurrentPath', function()
 end, {})
 
 map("n", "=3", "<CMD>:ToggleRelativeNumber<CR>")
-map("n", "~", "<CMD>:CurrentPath<CR>")
+map("n", "==", "<CMD>:CurrentPath<CR>")
 
 -- buffer
 map("n", "<leader>q", "<CMD>:q<CR>")
@@ -60,8 +62,8 @@ map("n", "gi", "<CMD>Telescope lsp_implementations<CR>")
 map("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>")
 map("n", "ga", "<CMD>lua vim.lsp.buf.code_action()<CR>")
 map("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>")
-map("n", "gp", "<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>")
-map("n", "gn", "<CMD>lua vim.lsp.diagnostic.goto_next()<CR>")
+map("n", "gp", "<CMD>lua vim.diagnostic.goto_prev()<CR>")
+map("n", "gn", "<CMD>lua vim.diagnostic.goto_next()<CR>")
 map("n", "gf", "<CMD>lua vim.lsp.buf.format({ async=true })<CR>")
 map("v", "gf", "<CMD>lua vim.lsp.buf.range_formatting()<CR>")
 map("n", "gm", "<CMD>:exec ':setf ' .input('set language: ')<CR>")
