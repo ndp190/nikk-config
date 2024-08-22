@@ -1,4 +1,5 @@
 require("config.lazy")
+require("config.custom_actions")
 require("config.keymap")
 
 -- Load vim_scripts

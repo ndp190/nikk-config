@@ -47,8 +47,6 @@ install-karabiner:
 install-nvim:
 	mkdir -p ~/.config
 	ln -sf `pwd`/nvim ~/.config
-	# install neovim plugin
-	nvim +PlugInstall +qall +':call doge#install()'
 
 install-tmux:
 	mkdir -p ~/.tmux/plugins
