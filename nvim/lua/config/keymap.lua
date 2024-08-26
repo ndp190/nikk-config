@@ -10,6 +10,9 @@ local function map(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
+map("n", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
+map("t", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
+
 map("n", "na", "<CMD>:lua open_custom_actions()<CR>")
 
 vim.api.nvim_create_user_command('ToggleRelativeNumber', function()

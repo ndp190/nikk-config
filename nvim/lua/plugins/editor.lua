@@ -63,32 +63,22 @@ return {
                     entry_prefix = "  ",
                     initial_mode = "insert",
                     selection_strategy = "reset",
-                    sorting_strategy = "descending",
-                    layout_strategy = "horizontal",
+                    sorting_strategy = "ascending",
+                    layout_strategy = "flex",
                     layout_config = {
                         horizontal = {
+                            anchor = "SE",
                             mirror = false,
+                            prompt_position = "top",
                         },
                         vertical = {
-                            mirror = false,
+                            anchor = "S",
+                            mirror = true,
+                            prompt_position = "top",
                         },
                     },
                     file_sorter = require 'telescope.sorters'.get_fuzzy_file,
                     file_ignore_patterns = { "dist/.*", "node_modules/.*", "vendor/.*", "packages/.*", ".git/", ".gitignore", ".gitkeep", ".next", "package-lock.json" },
-                    generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
-                    winblend = 0,
-                    border = {},
-                    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-                    color_devicons = true,
-                    use_less = true,
-                    path_display = {},
-                    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-                    file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
-                    grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
-                    qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
-
-                    -- Developer configurations: Not meant for general override
-                    buffer_previewer_maker = require 'telescope.previewers'.buffer_previewer_maker
                 },
                 pickers = {
                     live_grep = {
@@ -131,17 +121,6 @@ return {
             require("telescope").load_extension('zoxide')
         end
     },
-
-    -- -- fzfLua
-    -- {
-    --   "ibhagwan/fzf-lua",
-    --   -- optional for icon support
-    --   dependencies = { "nvim-tree/nvim-web-devicons" },
-    --   config = function()
-    --     -- calling `setup` is optional for customization
-    --     require("fzf-lua").setup({})
-    --   end
-    -- },
 
     -- telescope zoxide (better 'cd') integration
     {
@@ -242,33 +221,6 @@ return {
     {
         "troydm/zoomwintab.vim",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    },
-
-    -- terminal
-    {
-        "akinsho/toggleterm.nvim",
-        config = function()
-            require("toggleterm").setup {
-                size = function(term)
-                    if term.direction == "horizontal" then
-                        return 20
-                    elseif term.direction == "vertical" then
-                        return vim.o.columns * 0.4
-                    end
-                end,
-                open_mapping = [[<c-t>]],
-                hide_numbers = true, -- hide the number column in toggleterm buffers
-                shade_filetypes = {},
-                shade_terminals = false,
-                start_in_insert = true,
-                insert_mappings = true,   -- whether or not the open mapping applies in insert mode
-                terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
-                persist_size = true,
-                direction = 'float',
-                close_on_exit = true, -- close the terminal window when the process exits
-                shell = vim.o.shell,  -- change the default shell
-            }
-        end,
     },
 
     -- terminal
