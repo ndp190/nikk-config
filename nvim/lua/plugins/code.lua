@@ -27,6 +27,24 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- List of all LSP servers to be configured
+local servers = {
+    'lua_ls',
+    'gopls',
+    'jsonls',
+    'bashls',
+    'terraformls',
+    'jedi_language_server', -- Python
+    'intelephense', -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
+    'tsserver',
+    'quick_lint_js',
+    'astro',
+    'prismals',
+    'svelte',
+    'rust_analyzer',
+    'ast_grep',
+}
+
 return {
     {
         "neovim/nvim-lspconfig",
@@ -35,31 +53,17 @@ return {
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "intelephense",
-                    "tsserver",
-                    "quick_lint_js",
-                    "prismals",
-                    "astro",
-                },
+                ensure_installed = servers,
                 automatic_installation = true,
             })
-            require 'lspconfig'.lua_ls.setup {}
-            require 'lspconfig'.gopls.setup {}
-            require 'lspconfig'.jsonls.setup {}
-            require 'lspconfig'.bashls.setup {}
-            require 'lspconfig'.terraformls.setup {}
-            require 'lspconfig'.jedi_language_server.setup {} -- python
-            -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
-            require 'lspconfig'.intelephense.setup {}
-            require 'lspconfig'.tsserver.setup {}
-            require 'lspconfig'.quick_lint_js.setup {}
-            require 'lspconfig'.astro.setup {}
-            require 'lspconfig'.prismals.setup {}
-            require 'lspconfig'.svelte.setup {}
-            require 'lspconfig'.rust_analyzer.setup {}
+            local lspconfig = require 'lspconfig'
+            -- Loop through each server and call setup
+            for _, lsp in ipairs(servers) do
+                lspconfig[lsp].setup {}
+            end
         end,
     },
+
     {
         "nvim-treesitter/nvim-treesitter",
         build = ':TSUpdate',
@@ -82,6 +86,30 @@ return {
                 }
             }
         end,
+    },
+
+    -- like cursor AI
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        build = "make",
+        opts = {
+            provider = "copilot",
+        },
+        dependencies = {
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below is optional, make sure to setup it properly if you have lazy=true
+            {
+                'MeanderingProgrammer/render-markdown.nvim',
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
     },
 
     -- autocomplete

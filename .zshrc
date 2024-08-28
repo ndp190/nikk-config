@@ -70,10 +70,12 @@ plugins=(
   composer
   dotenv
   zsh-autosuggestions
-  autojump
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# additional config
+source ~/.zsh_custom.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -160,5 +162,3 @@ compinit
 # zoxide (better 'cd')
 eval "$(zoxide init zsh)"
 
-# additional config
-source ~/.zsh_custom.zsh
