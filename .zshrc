@@ -105,7 +105,8 @@ source ~/.zsh_custom.zsh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias dc='docker-compose -f docker-compose.yml -f docker-compose-fn.yml'
 alias ll='ls -la'
-alias vi="nvim"
+alias v=vim
+alias vi=vim
 alias c='clear'
 alias k='kubectl'
 

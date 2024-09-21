@@ -35,8 +35,8 @@ local servers = {
     'bashls',
     'terraformls',
     'jedi_language_server', -- Python
-    'intelephense', -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
-    'tsserver',
+    'intelephense',         -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
+    'ts_ls',
     'quick_lint_js',
     'astro',
     'prismals',
@@ -91,10 +91,10 @@ return {
     -- like cursor AI
     {
         "yetone/avante.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
         build = "make",
         opts = {
-            provider = "copilot",
+            provider = "openai",
         },
         dependencies = {
             "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
@@ -216,4 +216,13 @@ return {
         "junegunn/vim-easy-align",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     },
+
+    -- have error when enter nvim with a file directly
+    -- {
+    --     "norcalli/nvim-colorizer.lua",
+    --     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    --     config = function()
+    --         require("colorizer").setup()
+    --     end,
+    -- },
 }
