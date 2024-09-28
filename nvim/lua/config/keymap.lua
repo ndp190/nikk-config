@@ -88,3 +88,14 @@ map("n", "<leader>6", "<Plug>AirlineSelectTab6")
 map("n", "<leader>7", "<Plug>AirlineSelectTab7")
 map("n", "<leader>8", "<Plug>AirlineSelectTab8")
 map("n", "<leader>9", "<Plug>AirlineSelectTab9")
+print("keymap.lua loaded")
+
+-- Specific buffer mapping
+-- rest nvim
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'http',
+    callback = function()
+        map("n", "gr", "<CMD>:Rest run<CR>")
+    end,
+})
+

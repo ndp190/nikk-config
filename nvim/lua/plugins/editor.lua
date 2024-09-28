@@ -318,4 +318,14 @@ return {
         opts = { useDefaultKeymaps = true },
     },
 
+    {
+        "rest-nvim/rest.nvim",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+        config = function()
+            require('rest-nvim').setup({
+                -- Add any configuration options here if needed
+            })
+        end,
+    }
+
 }
