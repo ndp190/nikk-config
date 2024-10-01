@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 
 -- mg979/vim-visual-multi key mappings
 vim.g.VM_maps = {
-  ["Find Under"] = "<C-g>", -- normal mode multicursor
-  ["Find Subword Under"] = "<C-g>", -- visual mode multicursor
+    ["Find Under"] = "<C-g>",         -- normal mode multicursor
+    ["Find Subword Under"] = "<C-g>", -- visual mode multicursor
 }
 
 local function map(mode, lhs, rhs)
@@ -59,7 +59,8 @@ map("n", "<leader>F", "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>")
 map("n", "<leader>h", "<CMD>Telescope help_tags<CR>")
 map("n", "gd", "<CMD>Telescope lsp_definitions<CR>")
 map("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
-map("n", "gr", "<CMD>lua require('telescope.builtin').lsp_references({ on_complete = { function() vim.cmd'stopinsert' end } })<CR>")
+map("n", "gr",
+    "<CMD>lua require('telescope.builtin').lsp_references({ on_complete = { function() vim.cmd'stopinsert' end } })<CR>")
 map("n", "gR", "<CMD>lua vim.lsp.buf.rename()<CR>")
 map("n", "gi", "<CMD>Telescope lsp_implementations<CR>")
 map("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>")
@@ -92,10 +93,33 @@ print("keymap.lua loaded")
 
 -- Specific buffer mapping
 -- rest nvim
+local selected_env = nil
+-- Override vim.notify to catch environment notifications
+local original_notify = nil
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'http',
     callback = function()
+        if not original_notify then
+            original_notify = vim.notify
+            vim.notify = function(msg, level, opts)
+                -- Check if the notification is from rest.nvim and contains the env file registration message
+                if opts and opts.title == "rest.nvim" and msg:match("Env file '.*' has been registered") then
+                    selected_env = msg:match("Env file '(.*)' has been registered")
+                end
+
+                -- Call the original vim.notify function to keep standard behavior
+                original_notify(msg, level, opts)
+            end
+        end
+
+        -- If an environment is already selected, set it
+        if selected_env then
+            vim.cmd("Rest env set " .. selected_env)
+        end
+
         map("n", "gr", "<CMD>:Rest run<CR>")
+        map("n", "ge", "<CMD>:Rest env select<CR>")
+        map("n", "go", "<CMD>:Rest open<CR>")
+        map("n", "gu", "<CMD>:Rest curl comment<CR>")
     end,
 })
-

@@ -326,6 +326,13 @@ return {
                 -- Add any configuration options here if needed
             })
         end,
-    }
+    },
 
+    {
+        "rcarriga/nvim-notify",
+        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+        config = function()
+            vim.notify = require("notify")
+        end,
+    }
 }
