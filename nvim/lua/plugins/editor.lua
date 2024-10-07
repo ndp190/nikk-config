@@ -332,6 +332,9 @@ return {
         "rcarriga/nvim-notify",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
         config = function()
+            require("notify").setup({
+                stages = "static",
+            })
             vim.notify = require("notify")
         end,
     }
