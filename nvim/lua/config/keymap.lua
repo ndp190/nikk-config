@@ -92,7 +92,7 @@ map("n", "<leader>9", "<Plug>AirlineSelectTab9")
 print("keymap.lua loaded")
 
 -- K8s
-map("n", "<leader>k", "<cmd>lua require('kubectl').toggle()<cr>")
+map("n", "<leader>K", "<cmd>lua require('kubectl').toggle()<cr>")
 
 -- Specific buffer mapping
 -- rest nvim
