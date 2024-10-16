@@ -15,6 +15,16 @@ report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Descriptio
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
 report.next.filter=(status:pending or status:waiting) page:limit
 
+# define report
+report.go1.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.go1.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
+report.go1.filter=(status:pending or status:waiting) page:limit (project:Go1 or project:"")
+report.go1.sort=urgency-
+report.side.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.side.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
+report.side.filter=(status:pending or status:waiting) page:limit (project:Side or project:"")
+report.side.sort=urgency-
+
 ### taskwarrior-tui configuration options
 
 uda.taskwarrior-tui.keyconfig.done=x
