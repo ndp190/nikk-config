@@ -41,6 +41,7 @@ local neo_tree_setup = {
 return {
     {
         'nvim-telescope/telescope.nvim',
+        event = { "BufReadPost", "BufNewFile", "BufWritePre" },
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local z_utils = require("telescope._extensions.zoxide.utils")
@@ -337,5 +338,5 @@ return {
             })
             vim.notify = require("notify")
         end,
-    }
+    },
 }

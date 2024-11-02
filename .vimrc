@@ -45,9 +45,6 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Fix typescript file detection
-autocmd BufNewFile,BufRead *.ts set filetype=typescript
-
 " Auto launch vim NerdTree at vim startup
 autocmd VimEnter * NERDTree
 autocmd StdinReadPre * let s:std_in=1

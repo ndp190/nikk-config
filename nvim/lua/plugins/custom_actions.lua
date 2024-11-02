@@ -37,7 +37,7 @@ local function display_timezones(input_time)
 
     local message = "Your time (" .. your_timezone .. "): " .. your_time .. "\n"
                  .. "Casey time (" .. casey_timezone .. "): " .. casey_time .. "\n"
-                 .. "Gary time: (" .. gary_timezone .. "): " .. gary_time
+                 .. "Sang/Gary time: (" .. gary_timezone .. "): " .. gary_time
 
     vim.api.nvim_echo({{message}}, false, {})
 end
@@ -101,3 +101,5 @@ open_custom_actions = function()
         end,
     }):find()
 end
+
+return {}

@@ -110,6 +110,8 @@ alias vi=vim
 alias c='clear'
 alias g='git'
 alias k='kubectl'
+alias k-qa='kubectl --context=k8s-qa'
+alias k-prod='kubectl --context=k8s-prod'
 
 # alias vim, make 'vim' = 'vim .'
 vim() {

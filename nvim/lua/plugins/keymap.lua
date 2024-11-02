@@ -13,7 +13,7 @@ end
 map("n", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
 map("t", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
 
-map("n", "na", "<CMD>:lua open_custom_actions()<CR>")
+map("n", "<leader>Na", "<CMD>:lua open_custom_actions()<CR>")
 
 vim.api.nvim_create_user_command('ToggleRelativeNumber', function()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
@@ -126,3 +126,5 @@ vim.api.nvim_create_autocmd('FileType', {
         map("n", "gu", "<CMD>:Rest curl comment<CR>")
     end,
 })
+
+return {}

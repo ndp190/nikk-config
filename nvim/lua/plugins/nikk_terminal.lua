@@ -41,3 +41,4 @@ function _G.toggle_nikk_terminal()
     end
 end
 
+return {}
