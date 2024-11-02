@@ -9,6 +9,7 @@ DetectOS:
 Darwin: prerequisite \
     install-custom-script \
     install-karabiner \
+	install-yabai-skhd \
     install-nvim \
     install-tmux \
     install-zsh \
@@ -43,6 +44,10 @@ install-custom-script:
 install-karabiner:
 	mkdir -p ~/.config/karabiner
 	ln -sf `pwd`/karabiner.json ~/.config/karabiner/karabiner.json
+
+install-yabai-skhd:
+	ln -sf `pwd`/.yabairc ~/.yabairc
+	ln -sf `pwd`/.skhdrc ~/.skhdrc
 
 install-nvim:
 	mkdir -p ~/.config
