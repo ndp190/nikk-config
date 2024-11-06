@@ -9,15 +9,13 @@ DetectOS:
 Darwin: prerequisite \
     install-custom-script \
     install-karabiner \
-	install-yabai-skhd \
+	install-aerospace \
     install-nvim \
     install-tmux \
     install-zsh \
-    # install-lynx \
     install-git \
     install-wezterm \
 	install-taskwarrior
-    # install-newsboat
 
 Linux: prerequisite-linux \
     install-nvim \
@@ -45,9 +43,8 @@ install-karabiner:
 	mkdir -p ~/.config/karabiner
 	ln -sf `pwd`/karabiner.json ~/.config/karabiner/karabiner.json
 
-install-yabai-skhd:
-	ln -sf `pwd`/.yabairc ~/.yabairc
-	ln -sf `pwd`/.skhdrc ~/.skhdrc
+install-aerospace:
+	ln -sf `pwd`/.aerospace.toml ~/.aerospace.toml
 
 install-nvim:
 	mkdir -p ~/.config
@@ -64,19 +61,11 @@ install-zsh:
 	if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
 	if [ ! -f "${HOME}/.zsh_custom.zsh" ]; then cp `pwd`/.zsh_custom.zsh.example ~/.zsh_custom.zsh; fi
 
-install-lynx:
-	ln -sf `pwd`/.lynxrc ~/.lynxrc
-
 install-git:
 	ln -sf `pwd`/.gitconfig ~/.gitconfig
 	ln -sf `pwd`/.gitignore_global ~/.gitignore_global
 	if [ ! -f "${HOME}/.gitconfig_go1" ]; then cp `pwd`/.gitconfig_go1.example ~/.gitconfig_go1; fi
 	if [ ! -f "${HOME}/.gitconfig_github" ]; then cp `pwd`/.gitconfig_github.example ~/.gitconfig_github; fi
-
-install-newsboat:
-	mkdir -p ~/.newsboat
-	ln -sf `pwd`/.newsboat/urls ~/.newsboat/urls
-	ln -sf `pwd`/.newsboat/config ~/.newsboat/config
 
 install-alacritty:
 	ln -sf `pwd`/.alacritty.yml ~/.alacritty.yml

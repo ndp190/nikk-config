@@ -240,14 +240,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["right_command", "right_control", "right_shift", "right_option"] }
-                                },
-                                "to": [{ "shell_command": "pmset displaysleepnow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "u",
                                     "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_shift", "right_option"] }
                                 },
@@ -1127,14 +1119,6 @@
                                     "modifiers": { "mandatory": ["right_command", "right_control", "right_shift", "right_option"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Slack'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "y",
-                                    "modifiers": { "mandatory": ["right_command", "right_control", "right_shift", "right_option"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Siri'" }],
                                 "type": "basic"
                             },
                             {
