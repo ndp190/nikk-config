@@ -219,7 +219,18 @@ if.app-id = 'com.github.wez.wezterm'
 run = ['move-node-to-workspace 1']
 [[on-window-detected]]
 if.app-id = 'org.mozilla.com.zen.browser'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'
+check-further-callbacks = true
+[[on-window-detected]]
+if.app-id = 'org.mozilla.com.zen.browser'
 run = ['move-node-to-workspace 1']
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['move-node-to-workspace 2']
+[[on-window-detected]]
+if.app-id = 'com.apple.ScreenSharing'
+run = ['move-node-to-workspace 2']
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = ['move-node-to-workspace P']
