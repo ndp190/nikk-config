@@ -130,6 +130,9 @@ bindkey "^[e" end-of-line
 export VISUAL=nvim
 export EDITOR=nvim
 
+# Disable software flow control (ctrl-s/ctrl-q) to hopefully fix vim freezing when using with tmux
+stty -ixon
+
 # iTerm2 settings
 DISABLE_AUTO_TITLE="true"
 precmd() {
@@ -166,3 +169,17 @@ compinit
 # zoxide (better 'cd')
 eval "$(zoxide init zsh)"
 
+codeartifact() {
+    CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile codeartifact --output text`
+    if [ -z "$CODEARTIFACT_AUTH_TOKEN" ]; then
+        echo "Failed to get CodeArtifact token"
+        return 1
+    else
+        echo "CodeArtifact token set"
+        export CODEARTIFACT_AUTH_TOKEN=${CODEARTIFACT_AUTH_TOKEN}
+    fi
+}
+
+codeartifact-login() {
+    aws sso login --profile codeartifact
+}

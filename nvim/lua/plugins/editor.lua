@@ -314,12 +314,6 @@ return {
     },
 
     {
-        "chrisgrieser/nvim-various-textobjs",
-        event = "UIEnter",
-        opts = { useDefaultKeymaps = true },
-    },
-
-    {
         "rest-nvim/rest.nvim",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
         config = function()

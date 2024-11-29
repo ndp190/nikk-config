@@ -22,14 +22,23 @@ config.keys = {
   {key="RightArrow", mods="OPT", action=wezterm.action{SendString="\x1bf"}},
 }
 
+config.window_decorations = "RESIZE | INTEGRATED_BUTTONS | MACOS_FORCE_DISABLE_SHADOW"
+
 config.font =
   -- wezterm.font 'Ac437 Verite 8x8'
   -- wezterm.font 'ProggyClean Nerd Font'
-  wezterm.font 'Hack Nerd Font'
+  -- wezterm.font 'Hack Nerd Font'
+  -- wezterm.font 'JetBrains Mono'
+  -- wezterm.font 'Iosevka Term'
   -- wezterm.font('Terminess Nerd Font', {bold=false, italic=false})
   -- wezterm.font('GohuFont uni11 Nerd Font', {bold=false, italic=false})
   -- wezterm.font('3270 Nerd Font Propo', {bold=false, italic=false})
   -- wezterm.font('DaddyTimeMono Nerd Font', {bold=false, italic=false})
+  wezterm.font_with_fallback {
+    'Iosevka Term',
+    'JetBrains Mono',
+    'Hack Nerd Font',
+  }
 
 -- and finally, return the configuration to wezterm
 return config
