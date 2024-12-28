@@ -26,6 +26,14 @@ vim.api.nvim_create_autocmd("FileType", {
         set_tab_and_indent(tabwidth, tabwidth, tabwidth)
     end,
 })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  command = "setlocal formatprg=jq"
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "html",
+  command = "setlocal formatprg=tidy"
+})
 
 -- List of all LSP servers to be configured
 local servers = {
@@ -191,6 +199,19 @@ return {
     {
         "junegunn/vim-easy-align",
         event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    },
+
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        dependencies = {
+            { "github/copilot.vim" },                           -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim", branch = "master" },     -- for curl, log and async functions
+        },
+        build = "make tiktoken",                                -- Only on MacOS or Linux
+        opts = {
+            -- See Configuration section for options
+        },
+        -- See Commands section for default commands if you want to lazy load on them
     },
 
     -- have error when enter nvim with a file directly

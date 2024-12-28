@@ -71,6 +71,7 @@ map("n", "gn", "<CMD>lua vim.diagnostic.goto_next()<CR>")
 map("n", "gf", "<CMD>lua vim.lsp.buf.format({ async=true })<CR>")
 map("v", "gf", "<CMD>lua vim.lsp.buf.range_formatting()<CR>")
 map("n", "gm", "<CMD>:exec ':setf ' .input('set language: ')<CR>")
+map("n", "gC", "<CMD>:CopilotChatToggle<CR>")
 map("n", "ma", "<CMD>lua require('telescope').extensions.bookmarks.list()<CR>")
 
 -- Align
