@@ -30,10 +30,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "json",
   command = "setlocal formatprg=jq"
 })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "html",
-  command = "setlocal formatprg=tidy"
-})
 
 -- List of all LSP servers to be configured
 local servers = {
@@ -210,6 +206,7 @@ return {
         build = "make tiktoken",                                -- Only on MacOS or Linux
         opts = {
             -- See Configuration section for options
+            model = "gpt-4o-2024-11-20",
         },
         -- See Commands section for default commands if you want to lazy load on them
     },

@@ -38,6 +38,29 @@ local neo_tree_setup = {
     },
 }
 
+local action_state = require("telescope.actions.state")
+
+-- to open files in background, maybe use quick fix instead (C-q)
+local function open_in_split()
+    local entry = action_state.get_selected_entry()
+    local filename = entry.path or entry.filename
+    if filename then
+        vim.cmd("split " .. vim.fn.fnameescape(filename))
+        vim.cmd("redraw")
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    end
+end
+
+local function open_in_vsplit()
+    local entry = action_state.get_selected_entry()
+    local filename = entry.path or entry.filename
+    if filename then
+        vim.cmd("vsplit " .. vim.fn.fnameescape(filename))
+        vim.cmd("redraw")
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    end
+end
+
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -64,7 +87,7 @@ return {
                     entry_prefix = "  ",
                     initial_mode = "insert",
                     selection_strategy = "reset",
-                    sorting_strategy = "ascending",
+                    sorting_strategy = "descending",
                     layout_strategy = "flex",
                     layout_config = {
                         horizontal = {
@@ -80,6 +103,18 @@ return {
                     },
                     file_sorter = require 'telescope.sorters'.get_fuzzy_file,
                     file_ignore_patterns = { "dist/.*", "node_modules/.*", "vendor/.*", "packages/.*", ".git/", ".gitignore", ".gitkeep", ".next", "package-lock.json" },
+                    mappings = {
+                        i = {
+                            ["<C-o>"] = open_buffer_in_background,
+                            ["<C-s>"] = open_in_split,
+                            ["<C-v>"] = open_in_vsplit,
+                        },
+                        n = {
+                            ["<C-o>"] = open_buffer_in_background,
+                            ["<C-s>"] = open_in_split,
+                            ["<C-v>"] = open_in_vsplit,
+                        }
+                    }
                 },
                 pickers = {
                     live_grep = {
@@ -113,7 +148,8 @@ return {
                             --   end
                             -- },
                             -- Opens the selected entry in a new split
-                            ["<C-q>"] = { action = z_utils.create_basic_command("split") },
+                            -- ["<C-s>"] = { action = z_utils.create_basic_command("split") },
+                            -- ["<C-v>"] = { action = z_utils.create_basic_command("vsplit") },
                         },
                     }
                 }
@@ -188,6 +224,8 @@ return {
     -- move between vim and tmux panes (using vim motions)
     {
         "christoomey/vim-tmux-navigator",
+        lazy = true,
+        event = "VeryLazy",
         cmd = {
             "TmuxNavigateLeft",
             "TmuxNavigateDown",
@@ -203,6 +241,18 @@ return {
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
     },
+    -- {
+    --     "https://git.sr.ht/~swaits/zellij-nav.nvim",
+    --     lazy = true,
+    --     event = "VeryLazy",
+    --     keys = {
+    --         { "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>",  { silent = true, desc = "navigate left or tab" } },
+    --         { "<c-j>", "<cmd>ZellijNavigateDown<cr>",     { silent = true, desc = "navigate down" } },
+    --         { "<c-k>", "<cmd>ZellijNavigateUp<cr>",       { silent = true, desc = "navigate up" } },
+    --         { "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
+    --     },
+    --     opts = {},
+    -- },
 
     -- copy to clipboard
     {
@@ -215,6 +265,7 @@ return {
         "morhetz/gruvbox",
         config = function()
             vim.cmd('colorscheme gruvbox')
+            vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
         end,
     },
 
@@ -305,8 +356,9 @@ return {
                     sort = {
                         -- sort order can be "asc" or "desc"
                         -- see :help oil-columns to see which columns are sortable
-                        { "type", "asc" },
-                        { "name", "asc" },
+                        { "type",  "asc" },  -- SogCrt by type (directories first)
+                        { "mtime", "desc" }, -- Modified time descending (newest files first)
+                        { "name",  "asc" },  -- Then sort by name
                     },
                 }
             })

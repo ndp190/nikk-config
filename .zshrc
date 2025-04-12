@@ -107,12 +107,13 @@ source ~/.zsh_custom.zsh
 alias ll='ls -la'
 alias v=vim
 alias vi=vim
-alias c='clear'
 alias g='git'
 alias k='kubectl'
 alias k-qa='kubectl --context=k8s-qa'
 alias k-prod='kubectl --context=k8s-prod'
 alias k-3s='kubectl --context=k3s'
+
+alias wtfutil='wtfutil --config=<(cat ~/nikk-config/wtfutil-config.yml | JIRA_API_KEY=$(op item get "JIRA API key wtfutil" --field "token" --reveal) envsubst)'
 
 # alias vim, make 'vim' = 'vim .'
 vim() {

@@ -50,6 +50,12 @@ install-nvim:
 	mkdir -p ~/.config
 	ln -sf `pwd`/nvim ~/.config
 
+install-zellij:
+	mkdir -p ~/.config/zellij
+	ln -sf `pwd`/zellij/config.kdl ~/.config/zellij/config.kdl
+	ln -sf `pwd`/zellij/go1-layout.kdl ~/.config/zellij/go1-layout.kdl
+	ln -sf `pwd`/zellij/side-layout.kdl ~/.config/zellij/side-layout.kdl
+
 install-tmux:
 	mkdir -p ~/.tmux/plugins
 	if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi

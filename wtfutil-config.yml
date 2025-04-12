@@ -4,9 +4,9 @@ wtf:
       focusable: darkslateblue
       focused: orange
       normal: gray
-  grid:
-    columns: [40,40]
-    rows: [5,7,10,15,15]
+  # grid:
+  #   columns: [55, 55]
+  #   rows: [5,7,10,15,15]
   refreshInterval: 1
   mods:
     clocks_a:
@@ -16,6 +16,7 @@ wtf:
           odd: "white"
       enabled: true
       locations:
+        Ho Chi Minh: "Asia/Ho_Chi_Minh"
         Brisbane: "Australia/Brisbane"
         Perth: "Australia/Perth"
         Berlin: "Europe/Berlin"
@@ -35,7 +36,7 @@ wtf:
       position:
         top: 0
         left: 1
-        height: 2
+        height: 1
         width: 1
       refreshInterval: 5m
       unit: "m"
@@ -47,7 +48,7 @@ wtf:
         value: "white"
       enabled: true
       position:
-        top: 2
+        top: 1
         left: 0
         height: 1
         width: 1
@@ -55,30 +56,30 @@ wtf:
     power:
       enabled: true
       position:
-        top: 2
+        top: 1
         left: 1
         height: 1
         width: 1
       refreshInterval: 15
       title: "⚡️"
-    spotify:
-      enabled: true
-      colors:
-        label: "green"
-        text: "white"
-      position:
-        top: 1
-        left: 0
-        height: 1
-        width: 1
-      refreshInterval: 0
+    # spotify:
+    #   enabled: true
+    #   colors:
+    #     label: "green"
+    #     text: "white"
+    #   position:
+    #     top: 1
+    #     left: 0
+    #     height: 1
+    #     width: 1
+    #   refreshInterval: 0
     jira:
       position:
-        top: 3
+        top: 2
         left: 0
         height: 1
         width: 2
-      apiKey: ""
+      apiKey: "${JIRA_API_KEY}"
       colors:
         rows:
           even: "lightblue"
@@ -86,20 +87,30 @@ wtf:
       domain: "https://go1web.atlassian.net"
       email: "phuc.nguyen@go1.com"
       enabled: true
-      jql: "issueType in (Story, Task, Subtask, Bug, Defect) AND status not in (Done, Rejected)"
-      project: "COD"
+      jql: "issueType in (Story, Task, Sub-task, Bug, Defect) AND status not in (Done, Rejected)"
+      project: "DO"
       refreshInterval: 15m
       username: "Nikk Nguyen"
       verifyServerCertificate: true
-    gitlabtodo:
+    cmdrunner:
       position:
-        top: 4
+        top: 3
         left: 0
         height: 1
         width: 2
-      apiKey: ""
-      domain: "https://code.go1.com.au"
+      args: ["modified.after:yesterday", "all"]
+      cmd: "task"
       enabled: true
-      numberOfTodos: 12,
-      refreshInterval: 5m
-      showProject: true
+      refreshInterval: 10m
+    # gitlabtodo:
+    #   position:
+    #     top: 4
+    #     left: 0
+    #     height: 1
+    #     width: 2
+    #   apiKey: ""
+    #   domain: "https://code.go1.com.au"
+    #   enabled: true
+    #   numberOfTodos: 12,
+    #   refreshInterval: 5m
+    #   showProject: true
