@@ -188,7 +188,7 @@ require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
       "intelephense",
-      "tsserver",
+      "ts_ls",
       "quick_lint_js",
       "prismals",
       "astro",
@@ -225,7 +225,7 @@ require'lspconfig'.jedi_language_server.setup{} -- python
 
 -- store intelephense license key at $HOME/intelephense/licence.txt (no I am not spelling it wrong)
 require'lspconfig'.intelephense.setup{}
-require'lspconfig'.tsserver.setup{}
+require'lspconfig'.ts_ls.setup{}
 require'lspconfig'.quick_lint_js.setup{}
 require'lspconfig'.astro.setup{}
 require'lspconfig'.prismals.setup{}

@@ -385,4 +385,10 @@ return {
             vim.notify = require("notify")
         end,
     },
+
+    {
+        "dhruvasagar/vim-table-mode",
+        lazy = true,
+        event = "VeryLazy",
+    },
 }
