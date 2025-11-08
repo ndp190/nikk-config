@@ -24,6 +24,7 @@ packages=(
     # for zoxide 'zi'
     fzf
     gnupg
+    lazygit
     # kubectl
     # node
     # python3

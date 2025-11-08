@@ -74,6 +74,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+
 # additional config
 source ~/.zsh_custom.zsh
 
@@ -105,6 +107,7 @@ source ~/.zsh_custom.zsh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias dc='docker-compose -f docker-compose.yml -f docker-compose-fn.yml'
 alias ll='ls -la'
+alias lg='lazygit'
 alias v=vim
 alias vi=vim
 alias g='git'
@@ -112,6 +115,14 @@ alias k='kubectl'
 alias k-qa='kubectl --context=k8s-qa'
 alias k-prod='kubectl --context=k8s-prod'
 alias k-3s='kubectl --context=k3s'
+
+function f () {
+  local file
+  file=$(fzf --preview 'bat --style=numbers --color=always {} | head -100')
+  if [[ -n "$file" ]]; then
+    vim "$file"
+  fi
+}
 
 alias wtfutil='wtfutil --config=<(cat ~/nikk-config/wtfutil-config.yml | JIRA_API_KEY=$(op item get "JIRA API key wtfutil" --field "token" --reveal) envsubst)'
 
@@ -162,11 +173,13 @@ source /usr/local/bin/lazy-nvm.sh
 # The following lines were added by compinstall
 
 autoload -Uz compinit
-compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 # End of lines added by compinstall
 
-# Profiling zsh
-# zprof
 
 # zoxide (better 'cd')
 eval "$(zoxide init zsh)"
@@ -185,3 +198,7 @@ codeartifact() {
 codeartifact-login() {
     aws sso login --profile codeartifact
 }
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
+# Profiling zsh !!ALWAYS AT THE END
+# zprof

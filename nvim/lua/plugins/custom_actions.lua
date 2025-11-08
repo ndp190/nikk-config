@@ -36,10 +36,10 @@ local function display_timezones(input_time)
     local gary_time = get_time_for_timezone(gary_timezone, base_time)
 
     local message = "Your time (" .. your_timezone .. "): " .. your_time .. "\n"
-                 .. "Casey time (" .. casey_timezone .. "): " .. casey_time .. "\n"
-                 .. "Sang/Gary time: (" .. gary_timezone .. "): " .. gary_time
+        .. "Casey time (" .. casey_timezone .. "): " .. casey_time .. "\n"
+        .. "Sang/Gary time: (" .. gary_timezone .. "): " .. gary_time
 
-    vim.api.nvim_echo({{message}}, false, {})
+    vim.api.nvim_echo({ { message } }, false, {})
 end
 
 local function prompt_for_time()
@@ -68,12 +68,21 @@ local custom_actions = {
         name = "Display timezones",
         action = prompt_for_time
     },
-    -- Add more custom actions here
+    {
+        name = "Toggle Diff Window",
+        action = function()
+            if vim.wo.diff then
+                vim.cmd('windo diffoff')
+            else
+                vim.cmd('windo diffthis')
+            end
+        end
+    },
 }
 
 
 open_custom_actions = function()
-    pickers.new(themes.get_cursor{}, {
+    pickers.new(themes.get_cursor {}, {
         prompt_title = "Nikk's Custom Actions 🐒",
         finder = finders.new_table {
             results = custom_actions,

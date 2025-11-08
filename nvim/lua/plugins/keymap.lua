@@ -75,8 +75,7 @@ map("n", "gC", "<CMD>:CopilotChatToggle<CR>")
 map("n", "ma", "<CMD>lua require('telescope').extensions.bookmarks.list()<CR>")
 
 -- Align
--- map("v", "=1", "<CMD>:EasyAlign 1=<CR>")
-map("v", "=1", "<CMD>:EasyAlign<CR>")
+map("v", "=1", ":EasyAlign 1=<CR>")
 
 -- git
 map("n", "<leader>gs", "<CMD>:G<CR>")

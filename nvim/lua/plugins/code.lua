@@ -27,8 +27,8 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "json",
-  command = "setlocal formatprg=jq"
+    pattern = "json",
+    command = "setlocal formatprg=jq"
 })
 
 -- List of all LSP servers to be configured
@@ -200,16 +200,37 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         dependencies = {
-            { "github/copilot.vim" },                           -- or zbirenbaum/copilot.lua
-            { "nvim-lua/plenary.nvim", branch = "master" },     -- for curl, log and async functions
+            { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
         },
-        build = "make tiktoken",                                -- Only on MacOS or Linux
+        build = "make tiktoken",                            -- Only on MacOS or Linux
         opts = {
             -- See Configuration section for options
-            model = "gpt-4o",
+            model = "grok-code-fast-1",
         },
         -- See Commands section for default commands if you want to lazy load on them
     },
+
+    {
+        "kdheepak/lazygit.nvim",
+        lazy = true,
+        cmd = {
+            "LazyGit",
+            "LazyGitConfig",
+            "LazyGitCurrentFile",
+            "LazyGitFilter",
+            "LazyGitFilterCurrentFile",
+        },
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        -- setting the keybinding for LazyGit with 'keys' is recommended in
+        -- order to load the plugin when the command is run for the first time
+        keys = {
+            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+        }
+    }
 
     -- have error when enter nvim with a file directly
     -- {
