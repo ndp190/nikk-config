@@ -32,7 +32,7 @@ wtf:
     prettyweather:
       title: "🌥"
       enabled: true
-      city: "ho chi minh"
+      city: "bien hoa"
       position:
         top: 0
         left: 1
@@ -87,11 +87,31 @@ wtf:
       domain: "https://go1web.atlassian.net"
       email: "phuc.nguyen@go1.com"
       enabled: true
-      jql: "issueType in (Story, Task, Sub-task, Bug, Defect) AND status not in (Done, Rejected)"
+      jql: "issueType in (Story, Task, Sub-task, Bug, Defect) AND status not in (Done, Rejected) AND assignee='${JIRA_USER_ID}' ORDER BY status"
       project: "DO"
       refreshInterval: 15m
-      username: "Nikk Nguyen"
       verifyServerCertificate: true
+    # github:
+    #   apiKey: "${GITHUB_API_KEY}"
+    #   baseURL: ""
+    #   # customQueries:
+    #   #   othersPRs:
+    #   #     title: "Others Pull Requests"
+    #   #     filter: "is:open is:pr -author:wtfutil"
+    #   enabled: true
+    #   enableStatus: true
+    #   position:
+    #     top: 2
+    #     left: 0
+    #     height: 1
+    #     width: 2
+    #   refreshInterval: 5m
+    #   repositories:
+    #     - "wtfutil/wtf"
+    #     - "wtfutil/docs"
+    #     - "umbrella-corp/wesker-api"
+    #   uploadURL: ""
+    #   username: "wtfutil"
     cmdrunner:
       position:
         top: 3

@@ -124,7 +124,17 @@ function f () {
   fi
 }
 
-alias wtfutil='wtfutil --config=<(cat ~/nikk-config/wtfutil-config.yml | JIRA_API_KEY=$(op item get "JIRA API key wtfutil" --field "token" --reveal) envsubst)'
+wtfutil() {
+  local JIRA_API_KEY
+  local JIRA_USER_ID
+
+  JIRA_API_KEY=$(op item get "JIRA API key wtfutil" --field "token" --reveal)
+  JIRA_USER_ID=$(op item get "JIRA API key wtfutil" --field "nikk_assignee_id" --reveal)
+
+  export JIRA_API_KEY JIRA_USER_ID
+
+  command wtfutil --config=<(envsubst < ~/nikk-config/wtfutil-config.yml)
+}
 
 # alias vim, make 'vim' = 'vim .'
 vim() {
