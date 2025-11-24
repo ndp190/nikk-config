@@ -2,12 +2,59 @@
 vim.opt.list = true
 vim.opt.listchars = { tab = '▸ ', trail = '·', extends = '…', precedes = '…', nbsp = '␣' }
 
--- enable line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-
 -- enable mouse in neovim context
 -- vim.opt.mouse = 'a'
+
+-- Show numbers only in active window for normal file buffers (exclude plugin windows)
+local function is_normal_buffer()
+  local buftype = vim.bo.buftype
+  local filetype = vim.bo.filetype
+
+  -- Exclude special buffer types
+  if buftype ~= "" and buftype ~= "acwrite" then
+    return false
+  end
+
+  -- Exclude plugin filetypes
+  local excluded_filetypes = {
+    "neo-tree",
+    "TelescopePrompt",
+    "TelescopeResults",
+    "help",
+    "qf",
+    "terminal",
+    "notify",
+    "lazy",
+    "mason",
+    "lspinfo",
+    "checkhealth",
+  }
+
+  for _, ft in ipairs(excluded_filetypes) do
+    if filetype == ft then
+      return false
+    end
+  end
+
+  return true
+end
+
+vim.api.nvim_create_autocmd({"WinEnter", "BufEnter", "FocusGained"}, {
+  pattern = "*",
+  callback = function()
+    if is_normal_buffer() then
+      vim.opt_local.number = true
+      vim.opt_local.relativenumber = true  -- if you use relative numbers
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({"WinLeave", "BufLeave", "FocusLost"}, {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
+})
 
 local neo_tree_setup = {
     filesystem = {
