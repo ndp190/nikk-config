@@ -63,6 +63,7 @@ map("n", "<leader>b", "<CMD>Telescope buffers<CR>")
 map("n", "<leader>f", "<CMD>Telescope lsp_document_symbols ignore_symbols=namespace,class,constant,variable,property<CR>")
 map("n", "<leader>F", "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>")
 map("n", "<leader>h", "<CMD>Telescope help_tags<CR>")
+map("n", "<leader>?", "<CMD>Telescope keymaps<CR>")
 map("n", "gd", "<CMD>Telescope lsp_definitions<CR>")
 map("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>")
 map("n", "gr",

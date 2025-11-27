@@ -27,7 +27,7 @@ function _G.open_nikk_lazygit()
         height = height,
         col = col,
         row = row,
-        border = "rounded",
+        border = "none",
     }
 
     local is_new_buf = false
