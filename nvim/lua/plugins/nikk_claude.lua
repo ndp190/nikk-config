@@ -63,7 +63,8 @@ function _G.open_nikk_claude()
     end
     _G.nikk_claude_win = vim.api.nvim_open_win(_G.nikk_claude_buf, true, opts)
     if need_new_terminal then
-        vim.fn.termopen("claude")
+        local chan = vim.fn.termopen(vim.o.shell)
+        vim.api.nvim_chan_send(chan, "claude\n")
     end
     vim.wo.number = false
     vim.wo.relativenumber = false
