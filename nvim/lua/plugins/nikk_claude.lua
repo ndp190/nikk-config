@@ -1,8 +1,14 @@
 local floating_term_buf = nil
 local floating_term_win = nil
 
+-- Claude theme colors
+local claude_bg = "#2d2a2e"
+
+-- Create Claude-themed highlight groups
+vim.api.nvim_set_hl(0, "ClaudeNormal", { bg = claude_bg })
+
 -- Toggle the floating terminal window - faster than ToggleTerm plugin
-function _G.toggle_nikk_terminal()
+function _G.toggle_nikk_claude()
     if floating_term_win ~= nil and vim.api.nvim_win_is_valid(floating_term_win) then
         -- Close the terminal window if it's already open
         vim.api.nvim_win_hide(floating_term_win)
@@ -20,8 +26,8 @@ function _G.toggle_nikk_terminal()
             relative = "editor",
             width = width,
             height = height,
-            col = col,
-            row = row,
+            col = col + 2,
+            row = row + 1,
             border = "none",
         }
 
@@ -33,10 +39,12 @@ function _G.toggle_nikk_terminal()
         end
         floating_term_win = vim.api.nvim_open_win(floating_term_buf, true, opts)
         if is_new_buf then
-            vim.fn.termopen(vim.o.shell)
+            vim.fn.termopen("claude")
         end
         vim.wo.number = false
         vim.wo.relativenumber = false
+        vim.wo.winhighlight = "Normal:ClaudeNormal"
+        -- Transparency: 0 = opaque, 100 = fully transparent
         vim.wo.winblend = 15
         vim.cmd("startinsert")
     end
