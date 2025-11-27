@@ -2,12 +2,6 @@
 _G.nikk_claude_buf = nil
 _G.nikk_claude_win = nil
 
--- Claude theme colors
-local claude_bg = "#2d2a2e"
-
--- Create Claude-themed highlight groups
-vim.api.nvim_set_hl(0, "ClaudeNormal", { bg = claude_bg })
-
 -- Toggle the floating terminal window - faster than ToggleTerm plugin
 function _G.toggle_nikk_claude()
     local claude_open = _G.nikk_claude_win ~= nil and vim.api.nvim_win_is_valid(_G.nikk_claude_win)
@@ -34,17 +28,17 @@ end
 
 function _G.open_nikk_claude()
     local width = math.floor(vim.o.columns * 0.8)
-    local height = math.floor(vim.o.lines * 0.8)
-    local col = math.floor((vim.o.columns - width) / 2)
-    local row = math.floor((vim.o.lines - height) / 2)
+    local height = vim.o.lines - 2  -- Full height minus statusline/cmdline
+    local col = vim.o.columns - width  -- Position at right edge
+    local row = 0
 
     local opts = {
         style = "minimal",
         relative = "editor",
         width = width,
         height = height,
-        col = col + 2,
-        row = row + 1,
+        col = col,
+        row = row,
         border = "none",
     }
 
@@ -59,7 +53,7 @@ function _G.open_nikk_claude()
     end
     vim.wo.number = false
     vim.wo.relativenumber = false
-    vim.wo.winhighlight = "Normal:ClaudeNormal"
+    -- vim.wo.winhighlight = "Normal:ClaudeNormal"
     vim.wo.winblend = 15
     -- Pass space through immediately without waiting for leader key timeout
     vim.api.nvim_buf_set_keymap(_G.nikk_claude_buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })

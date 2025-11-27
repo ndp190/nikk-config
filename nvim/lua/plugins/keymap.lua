@@ -16,8 +16,8 @@ map("n", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
 map("t", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
 map("t", "<leader>lg", "<CMD>:lua toggle_nikk_lazygit()<CR>")
 map("n", "<leader>lg", "<CMD>:lua toggle_nikk_lazygit()<CR>")
-map("n", "<C-c>", "<CMD>:lua toggle_nikk_claude()<CR>")
-map("t", "<C-c>", "<CMD>:lua toggle_nikk_claude()<CR>")
+map("n", "<C-a>", "<CMD>:lua toggle_nikk_claude()<CR>")
+map("t", "<C-a>", "<CMD>:lua toggle_nikk_claude()<CR>")
 
 map("n", "<leader>Na", "<CMD>:lua open_custom_actions()<CR>")
 

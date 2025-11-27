@@ -60,11 +60,11 @@ return {
                 ensure_installed = servers,
                 automatic_installation = true,
             })
-            local lspconfig = require 'lspconfig'
-            -- Loop through each server and call setup
+            -- Use vim.lsp.config (Neovim 0.11+) instead of deprecated lspconfig
             for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup {}
+                vim.lsp.config(lsp, {})
             end
+            vim.lsp.enable(servers)
         end,
     },
 
