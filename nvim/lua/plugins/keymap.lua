@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.opt.timeoutlen = 300  -- faster leader key response
+vim.opt.ttimeoutlen = 10  -- key code delay
 
 -- mg979/vim-visual-multi key mappings
 vim.g.VM_maps = {
@@ -12,6 +14,8 @@ end
 
 map("n", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
 map("t", "<C-t>", "<CMD>:lua toggle_nikk_terminal()<CR>")
+map("t", "<leader>lg", "<CMD>:lua toggle_nikk_lazygit()<CR>")
+map("n", "<leader>lg", "<CMD>:lua toggle_nikk_lazygit()<CR>")
 map("n", "<C-c>", "<CMD>:lua toggle_nikk_claude()<CR>")
 map("t", "<C-c>", "<CMD>:lua toggle_nikk_claude()<CR>")
 

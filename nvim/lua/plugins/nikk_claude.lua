@@ -61,6 +61,8 @@ function _G.open_nikk_claude()
     vim.wo.relativenumber = false
     vim.wo.winhighlight = "Normal:ClaudeNormal"
     vim.wo.winblend = 15
+    -- Pass space through immediately without waiting for leader key timeout
+    vim.api.nvim_buf_set_keymap(_G.nikk_claude_buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })
     vim.cmd("startinsert")
 end
 
