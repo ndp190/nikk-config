@@ -53,7 +53,8 @@ function _G.open_nikk_terminal()
     end
     vim.wo.number = false
     vim.wo.relativenumber = false
-    vim.wo.winblend = 15
+    -- Optional: set transparency, requires 'winblend' support
+    -- vim.wo.winblend = 15
     vim.api.nvim_buf_set_keymap(_G.nikk_terminal_buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })
     vim.cmd("startinsert")
 end

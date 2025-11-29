@@ -1,6 +1,4 @@
 vim.g.mapleader = " "
-vim.opt.timeoutlen = 300  -- faster leader key response
-vim.opt.ttimeoutlen = 10  -- key code delay
 
 -- mg979/vim-visual-multi key mappings
 vim.g.VM_maps = {

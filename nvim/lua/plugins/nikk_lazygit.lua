@@ -50,7 +50,8 @@ function _G.open_nikk_lazygit()
     end
     vim.wo.number = false
     vim.wo.relativenumber = false
-    vim.wo.winblend = 10
+    -- Optional: set transparency, requires 'winblend' support
+    -- vim.wo.winblend = 15
     vim.api.nvim_buf_set_keymap(_G.nikk_lazygit_buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })
     vim.cmd("startinsert")
 end
