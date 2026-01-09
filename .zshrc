@@ -210,9 +210,14 @@ codeartifact-login() {
 }
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
-claude() {
-    export CLAUDE_CODE_GH_PAT=$(op read "op://Private/PAT claude code mcp/token")
+claudeOp() {
+    export CLAUDE_CODE_GH_PAT=$(echo '{{op://Private/PAT claude code mcp/token}}' | op inject)
     command claude "$@"
+}
+
+opencodeOp() {
+    export CLAUDE_CODE_GH_PAT=$(echo '{{op://Private/PAT claude code mcp/token}}' | op inject)
+    command opencode "$@"
 }
 
 # Profiling zsh !!ALWAYS AT THE END

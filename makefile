@@ -34,10 +34,12 @@ prerequisite-linux:
 
 install-custom-script:
 	sudo mkdir -p /usr/local/bin
-	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh
+	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh `pwd`/custom-script/music-animation.sh
 	sudo ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
 	sudo ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
 	sudo ln -sf `pwd`/custom-script/lazy-nvm.sh /usr/local/bin/lazy-nvm.sh
+	mkdir -p ~/.config/tmux
+	ln -sf `pwd`/custom-script/music-animation.sh ~/.config/tmux/music-animation.sh
 
 install-karabiner:
 	mkdir -p ~/.config/karabiner
