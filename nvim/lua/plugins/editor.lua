@@ -57,6 +57,9 @@ vim.api.nvim_create_autocmd({"WinLeave", "BufLeave", "FocusLost"}, {
 })
 
 local neo_tree_setup = {
+    window = {
+        position = "right",
+    },
     filesystem = {
         filtered_items = {
             hide_dotfiles = false,
