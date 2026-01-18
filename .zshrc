@@ -220,5 +220,7 @@ opencodeOp() {
     command opencode "$@"
 }
 
+export LC_ALL=en_US.UTF-8
+
 # Profiling zsh !!ALWAYS AT THE END
 # zprof
