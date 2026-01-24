@@ -15,7 +15,8 @@ Darwin: prerequisite \
     install-zsh \
     install-git \
     install-wezterm \
-	install-taskwarrior
+	install-taskwarrior \
+	install-claude
 
 Linux: prerequisite-linux \
     install-nvim \
@@ -84,13 +85,19 @@ install-wezterm:
 install-taskwarrior:
 	ln -sf `pwd`/.taskrc ~/.taskrc
 
+install-claude:
+	mkdir -p ~/.claude/scripts
+	chmod +x `pwd`/claude/scripts/context-bar.sh
+	ln -sf `pwd`/claude/scripts/context-bar.sh ~/.claude/scripts/context-bar.sh
+
 clean: clean-karabiner \
     clean-vim \
     clean-tmux \
     clean-zsh \
     clean-lynx \
     clean-git \
-    clean-newsboat
+    clean-newsboat \
+    clean-claude
 
 distclean: clean
 
@@ -117,3 +124,6 @@ clean-git:
 clean-newsboat:
 	rm -f ~/.newsboat/config
 	rm -f ~/.newsboat/urls
+
+clean-claude:
+	rm -f ~/.claude/scripts/context-bar.sh
