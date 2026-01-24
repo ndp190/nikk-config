@@ -89,6 +89,7 @@ install-claude:
 	mkdir -p ~/.claude/scripts
 	chmod +x `pwd`/claude/scripts/context-bar.sh
 	ln -sf `pwd`/claude/scripts/context-bar.sh ~/.claude/scripts/context-bar.sh
+	ln -sf `pwd`/claude/settings.json ~/.claude/settings.json
 
 clean: clean-karabiner \
     clean-vim \
@@ -127,3 +128,4 @@ clean-newsboat:
 
 clean-claude:
 	rm -f ~/.claude/scripts/context-bar.sh
+	rm -f ~/.claude/settings.json
