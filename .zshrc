@@ -179,6 +179,9 @@ function pbwd {
 }
 
 source /usr/local/bin/lazy-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 
 # The following lines were added by compinstall
 
@@ -195,30 +198,52 @@ fi;
 eval "$(zoxide init zsh)"
 
 codeartifact() {
-    CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile codeartifact --output text`
-    if [ -z "$CODEARTIFACT_AUTH_TOKEN" ]; then
+    local result
+    result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile codeartifact --output text 2>&1)
+
+    # Check if SSO token expired and needs refresh
+    if [[ "$result" == *"Token has expired and refresh failed"* ]]; then
+        echo "SSO token expired, logging in..."
+        aws sso login --profile codeartifact
+        # Retry after login
+        result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile codeartifact --output text 2>&1)
+    fi
+
+    # Check if we got a valid token
+    if [[ -z "$result" ]] || [[ "$result" == *"Error"* ]]; then
         echo "Failed to get CodeArtifact token"
         return 1
-    else
-        echo "CodeArtifact token set"
-        export CODEARTIFACT_AUTH_TOKEN=${CODEARTIFACT_AUTH_TOKEN}
     fi
-}
 
-codeartifact-login() {
-    aws sso login --profile codeartifact
+    echo "CodeArtifact token set"
+    export CODEARTIFACT_AUTH_TOKEN="$result"
 }
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
+alias claude='claude --permission-mode bypassPermissions'
+
 claudeOp() {
     export CLAUDE_CODE_GH_PAT=$(echo '{{op://Private/PAT claude code mcp/token}}' | op inject)
-    command claude "$@"
+    command claude --permission-mode bypassPermissions "$@"
 }
 
 opencodeOp() {
     export CLAUDE_CODE_GH_PAT=$(echo '{{op://Private/PAT claude code mcp/token}}' | op inject)
     command opencode "$@"
 }
+
+# Usage: a find all pdfs and zip them
+_a() {
+  local prompt="$*"
+  local cmd
+  cmd=$(copilot --model claude-haiku-4.5 -p "Give me just the shell command (no explanation) to: $prompt" -s 2>/dev/null | sed -n '/^```/,/^```$/p' | sed '1d;$d')
+  if [[ -n "$cmd" ]]; then
+    print -z "$cmd"
+  else
+    echo "Failed to get command suggestion"
+  fi
+}
+alias a='noglob _a'
 
 export LC_ALL=en_US.UTF-8
 

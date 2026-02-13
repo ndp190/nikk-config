@@ -59,4 +59,17 @@ function _G.open_nikk_terminal()
     vim.cmd("startinsert")
 end
 
+-- Cleanup terminal when vim exits
+vim.api.nvim_create_autocmd("VimLeavePre", {
+    callback = function()
+        if _G.nikk_terminal_buf and vim.api.nvim_buf_is_valid(_G.nikk_terminal_buf) then
+            local chan = vim.bo[_G.nikk_terminal_buf].channel
+            if chan and chan > 0 then
+                vim.fn.jobstop(chan)
+            end
+            vim.api.nvim_buf_delete(_G.nikk_terminal_buf, { force = true })
+        end
+    end
+})
+
 return {}
