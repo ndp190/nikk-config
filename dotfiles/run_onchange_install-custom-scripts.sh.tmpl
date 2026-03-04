@@ -3,17 +3,13 @@ set -e
 
 REPO_DIR="{{ .repoDir }}"
 
-# Cache sudo credentials upfront (single password prompt)
-sudo -v
-
-# === Custom scripts → /usr/local/bin ===
-sudo mkdir -p /usr/local/bin
+# === Custom scripts → ~/.local/bin ===
+mkdir -p ~/.local/bin
 chmod +x "$REPO_DIR/custom-script/autogen-pyinit.sh" \
          "$REPO_DIR/custom-script/echo-colorized.sh" \
          "$REPO_DIR/custom-script/music-animation.sh"
-sudo ln -sf "$REPO_DIR/custom-script/autogen-pyinit.sh" /usr/local/bin/autogen-pyinit
-sudo ln -sf "$REPO_DIR/custom-script/echo-colorized.sh" /usr/local/bin/echo-colorized
-sudo ln -sf "$REPO_DIR/custom-script/lazy-nvm.sh" /usr/local/bin/lazy-nvm.sh
+ln -sf "$REPO_DIR/custom-script/autogen-pyinit.sh" ~/.local/bin/autogen-pyinit
+ln -sf "$REPO_DIR/custom-script/echo-colorized.sh" ~/.local/bin/echo-colorized
 
 # === Music animation → ~/.config/tmux ===
 mkdir -p ~/.config/tmux

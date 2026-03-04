@@ -179,7 +179,6 @@ function pbwd {
     pgrep -af '^ssh.*ubuntu' | xargs kill
 }
 
-source /usr/local/bin/lazy-nvm.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 

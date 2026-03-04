@@ -38,7 +38,7 @@ install-custom-script:
 	chmod +x `pwd`/custom-script/autogen-pyinit.sh `pwd`/custom-script/echo-colorized.sh `pwd`/custom-script/music-animation.sh
 	sudo ln -sf `pwd`/custom-script/autogen-pyinit.sh /usr/local/bin/autogen-pyinit
 	sudo ln -sf `pwd`/custom-script/echo-colorized.sh /usr/local/bin/echo-colorized
-	sudo ln -sf `pwd`/custom-script/lazy-nvm.sh /usr/local/bin/lazy-nvm.sh
+	# lazy-nvm removed (using mise instead)
 	mkdir -p ~/.config/tmux
 	ln -sf `pwd`/custom-script/music-animation.sh ~/.config/tmux/music-animation.sh
 
@@ -142,9 +142,8 @@ clean-claude:
 	rm -f ~/.claude/settings.json
 
 clean-custom-script:
-	sudo rm -f /usr/local/bin/autogen-pyinit
-	sudo rm -f /usr/local/bin/echo-colorized
-	sudo rm -f /usr/local/bin/lazy-nvm.sh
+	rm -f ~/.local/bin/autogen-pyinit
+	rm -f ~/.local/bin/echo-colorized
 	rm -f ~/.config/tmux/music-animation.sh
 
 clean-nvim:
