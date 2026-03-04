@@ -9,6 +9,7 @@ if ! command -v brew &>/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     echo "[chezmoi] Homebrew already installed, updating..."
+    brew untap homebrew/cask-fonts 2>/dev/null || true
     brew update
 fi
 
