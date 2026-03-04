@@ -71,6 +71,19 @@ done
 
 {{ end -}}
 
+# === mise (all platforms) ===
+
+if ! command -v mise &>/dev/null; then
+    echo "[chezmoi] Installing mise..."
+    curl https://mise.run | sh
+    eval "$("$HOME/.local/bin/mise" activate bash)"
+else
+    echo "[chezmoi] mise already installed"
+fi
+
+mise use --global node
+mise use --global go
+
 # === Node packages (all platforms) ===
 
 if command -v npm &>/dev/null; then

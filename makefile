@@ -8,15 +8,15 @@ DetectOS:
 # Mac OS
 Darwin: prerequisite \
     install-custom-script \
-    install-karabiner \
-	install-aerospace \
     install-nvim \
     install-tmux \
     install-zsh \
     install-git \
-    install-wezterm \
-	install-taskwarrior \
-	install-claude
+    install-taskwarrior \
+    install-claude
+    #install-wezterm \
+    #install-karabiner \
+    #install-aerospace \
 
 Linux: prerequisite-linux \
     install-nvim \
@@ -64,11 +64,13 @@ install-tmux:
 	if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 	ln -sf `pwd`/.tmux.conf ~/.tmux.conf
 	mkdir -p ~/.tmux/plugins/tmuxifier/layouts
-	ln -sf `pwd`/tmuxifier/layouts/go1.session.sh ~/.tmux/plugins/tmuxifier/layouts/go1.session.sh
-	ln -sf `pwd`/tmuxifier/layouts/side.session.sh ~/.tmux/plugins/tmuxifier/layouts/side.session.sh
+	# ln -sf `pwd`/tmuxifier/layouts/go1.session.sh ~/.tmux/plugins/tmuxifier/layouts/go1.session.sh
+	# ln -sf `pwd`/tmuxifier/layouts/side.session.sh ~/.tmux/plugins/tmuxifier/layouts/side.session.sh
+	ln -sf `pwd`/tmuxifier/layouts/go1.session.sh ~/.tmuxifier/layouts/go1.session.sh
+	ln -sf `pwd`/tmuxifier/layouts/side.session.sh ~/.tmuxifier/layouts/side.session.sh
 
 install-zsh:
-	$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)")
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	ln -sf `pwd`/.zshrc ~/.zshrc
 	if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
 	if [ ! -f "${HOME}/.zsh_custom.zsh" ]; then cp `pwd`/.zsh_custom.zsh.example ~/.zsh_custom.zsh; fi
@@ -101,7 +103,10 @@ clean: clean-karabiner \
     clean-lynx \
     clean-git \
     clean-newsboat \
-    clean-claude
+    clean-claude \
+    clean-custom-script \
+    clean-nvim \
+    clean-taskwarrior
 
 distclean: clean
 
@@ -110,10 +115,13 @@ clean-karabiner:
 
 clean-vim:
 	rm -f ~/.vimrc
+	rm -f ~/.vim-bookmarks
 
 clean-tmux:
 	rm -rf ~/.tmux/plugins/tpm
 	rm -f ~/.tmux.conf
+	rm -f ~/.tmuxifier/layouts/go1.session.sh
+	rm -f ~/.tmuxifier/layouts/side.session.sh
 
 clean-zsh:
 	rm -f ~/.zshrc
@@ -132,3 +140,15 @@ clean-newsboat:
 clean-claude:
 	rm -f ~/.claude/scripts/context-bar.sh
 	rm -f ~/.claude/settings.json
+
+clean-custom-script:
+	sudo rm -f /usr/local/bin/autogen-pyinit
+	sudo rm -f /usr/local/bin/echo-colorized
+	sudo rm -f /usr/local/bin/lazy-nvm.sh
+	rm -f ~/.config/tmux/music-animation.sh
+
+clean-nvim:
+	rm -f ~/.config/nvim
+
+clean-taskwarrior:
+	rm -f ~/.taskrc

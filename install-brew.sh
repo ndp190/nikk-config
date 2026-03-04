@@ -25,14 +25,17 @@ packages=(
     fzf
     gnupg
     lazygit
-    # kubectl
+    # for nvim's telescope find
+    ripgrep
+    kubectl
+    # taskwarrior
+    task
     # node
     # python3
     # pyenv
     # autojump
     # lynx
     # newsboat
-    # ripgrep
     # go
     # ansible
 )

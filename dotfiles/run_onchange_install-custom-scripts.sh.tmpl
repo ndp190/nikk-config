@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-REPO_DIR="{{ .chezmoi.sourceDir | replace "/dotfiles" "" }}"
+REPO_DIR="{{ .repoDir }}"
 
 # === Custom scripts → /usr/local/bin ===
 sudo mkdir -p /usr/local/bin
