@@ -1,8 +1,10 @@
 [user]
     email = phuc.nguyen@go1.com
     name = Nikk Nguyen
-    signingkey =
+    signingkey = ssh-ed25519 REPLACE_WITH_YOUR_PUBLIC_KEY
 [commit]
     gpgsign = true
 [gpg]
-    program = /usr/local/bin/gpg
+    format = ssh
+[gpg "ssh"]
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

@@ -1,8 +1,10 @@
 [user]
     email = ndp190@gmail.com
     name = Nikk Nguyen
-    signingkey =
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGLolYNxvlbjYnt8+/64BzNCkTj9tQHseeldV58XflK5
 [commit]
     gpgsign = true
 [gpg]
-    program = /usr/local/bin/gpg
+    format = ssh
+[gpg "ssh"]
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
