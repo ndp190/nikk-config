@@ -91,13 +91,11 @@ fi
 
 # === Python packages (all platforms) ===
 
-if command -v pip3 &>/dev/null; then
-    pip_packages=(
-        pynvim
-    )
+pip_packages=(
+    pynvim
+)
 
-    for pkg in "${pip_packages[@]}"; do
-        pip3 install "$pkg"
-        echo "[chezmoi] pip package '$pkg' is installed"
-    done
-fi
+for pkg in "${pip_packages[@]}"; do
+    mise exec python -- pip3 install "$pkg"
+    echo "[chezmoi] pip package '$pkg' is installed"
+done
