@@ -1,0 +1,97 @@
+#!/bin/bash
+set -e
+
+{{ if eq .chezmoi.os "darwin" -}}
+# === macOS: Homebrew ===
+
+if ! command -v brew &>/dev/null; then
+    echo "[chezmoi] Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "[chezmoi] Homebrew already installed, updating..."
+    brew update
+fi
+
+taps=(
+    homebrew/cask-fonts
+)
+
+packages=(
+    tmux
+    htop
+    watch
+    nvim
+    zoxide
+    fzf
+    gnupg
+    lazygit
+    ripgrep
+    kubectl
+    task
+)
+
+packages_cask=(
+    karabiner-elements
+    font-hack-nerd-font
+)
+
+for pkg in "${taps[@]}"; do
+    brew tap "$pkg" 2>/dev/null || true
+    echo "[chezmoi] brew tap '$pkg'"
+done
+
+for pkg in "${packages[@]}"; do
+    if brew ls --versions "$pkg" >/dev/null 2>&1; then
+        echo "[chezmoi] Package '$pkg' is already installed"
+    else
+        brew install "$pkg"
+        echo "[chezmoi] Package '$pkg' has been installed"
+    fi
+done
+
+for pkg in "${packages_cask[@]}"; do
+    if brew ls --cask --versions "$pkg" >/dev/null 2>&1; then
+        echo "[chezmoi] Cask '$pkg' is already installed"
+    else
+        brew install --cask "$pkg"
+        echo "[chezmoi] Cask '$pkg' has been installed"
+    fi
+done
+
+{{ else if eq .chezmoi.os "linux" -}}
+# === Linux: apt-get ===
+
+packages=(
+    neovim
+)
+
+for pkg in "${packages[@]}"; do
+    sudo apt-get -y install "$pkg"
+done
+
+{{ end -}}
+
+# === Node packages (all platforms) ===
+
+if command -v npm &>/dev/null; then
+    node_packages=(
+        bash-language-server
+    )
+
+    for pkg in "${node_packages[@]}"; do
+        npm list -g 2>/dev/null | grep "$pkg" || npm install -g "$pkg" --no-shrinkwrap
+    done
+fi
+
+# === Python packages (all platforms) ===
+
+if command -v pip3 &>/dev/null; then
+    pip_packages=(
+        pynvim
+    )
+
+    for pkg in "${pip_packages[@]}"; do
+        pip3 install "$pkg"
+        echo "[chezmoi] pip package '$pkg' is installed"
+    done
+fi

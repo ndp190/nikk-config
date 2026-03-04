@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+REPO_DIR="{{ .chezmoi.sourceDir | replace "/dotfiles" "" }}"
+
+# === Custom scripts → /usr/local/bin ===
+sudo mkdir -p /usr/local/bin
+chmod +x "$REPO_DIR/custom-script/autogen-pyinit.sh" \
+         "$REPO_DIR/custom-script/echo-colorized.sh" \
+         "$REPO_DIR/custom-script/music-animation.sh"
+sudo ln -sf "$REPO_DIR/custom-script/autogen-pyinit.sh" /usr/local/bin/autogen-pyinit
+sudo ln -sf "$REPO_DIR/custom-script/echo-colorized.sh" /usr/local/bin/echo-colorized
+sudo ln -sf "$REPO_DIR/custom-script/lazy-nvm.sh" /usr/local/bin/lazy-nvm.sh
+
+# === Music animation → ~/.config/tmux ===
+mkdir -p ~/.config/tmux
+ln -sf "$REPO_DIR/custom-script/music-animation.sh" ~/.config/tmux/music-animation.sh
+
+# === Neovim config symlink ===
+mkdir -p ~/.config
+ln -sf "$REPO_DIR/nvim" ~/.config/nvim

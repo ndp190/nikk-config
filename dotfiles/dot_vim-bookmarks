@@ -1,0 +1,3 @@
+let l:bm_file_version = 1
+let l:bm_sessions = {'default': {'/Users/nikk/nikk-config/nvim/configs/01.plugins.vim': [{'sign_idx': 9500, 'line_nr': 1, 'content': 'call plug#begin(''~/.config/nvim/bundle'')', 'annotation': 'nvim plugin setting'},],}}
+let l:bm_current_session = 'default'
