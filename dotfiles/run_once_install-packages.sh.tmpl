@@ -12,10 +12,6 @@ else
     brew update
 fi
 
-taps=(
-    homebrew/cask-fonts
-)
-
 packages=(
     tmux
     htop
@@ -34,11 +30,6 @@ packages_cask=(
     karabiner-elements
     font-hack-nerd-font
 )
-
-for pkg in "${taps[@]}"; do
-    brew tap "$pkg" 2>/dev/null || true
-    echo "[chezmoi] brew tap '$pkg'"
-done
 
 for pkg in "${packages[@]}"; do
     if brew ls --versions "$pkg" >/dev/null 2>&1; then
