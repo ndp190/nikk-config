@@ -244,7 +244,7 @@ _a() {
   fi
 }
 alias a='noglob _a'
-eval "$(/Users/phuc.nguyen/.local/bin/mise activate zsh)"
+eval "$("$HOME/.local/bin/mise" activate zsh)"
 
 export LC_ALL=en_US.UTF-8
 
