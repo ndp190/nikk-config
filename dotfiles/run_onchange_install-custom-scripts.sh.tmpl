@@ -3,6 +3,9 @@ set -e
 
 REPO_DIR="{{ .repoDir }}"
 
+# Cache sudo credentials upfront (single password prompt)
+sudo -v
+
 # === Custom scripts → /usr/local/bin ===
 sudo mkdir -p /usr/local/bin
 chmod +x "$REPO_DIR/custom-script/autogen-pyinit.sh" \
