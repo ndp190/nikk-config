@@ -82,6 +82,7 @@ mise use --global python
 if command -v npm &>/dev/null; then
     node_packages=(
         bash-language-server
+        tree-sitter-cli
     )
 
     for pkg in "${node_packages[@]}"; do
