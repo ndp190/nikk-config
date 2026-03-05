@@ -65,6 +65,8 @@ function _G.open_nikk_claude()
     if need_new_terminal then
         local chan = vim.fn.termopen(vim.o.shell)
         vim.api.nvim_chan_send(chan, "claude\n")
+        -- Ensure buffer persists when window is hidden
+        vim.bo[_G.nikk_claude_buf].bufhidden = "hide"
     end
     vim.wo.number = false
     vim.wo.relativenumber = false
@@ -75,6 +77,16 @@ function _G.open_nikk_claude()
     vim.api.nvim_buf_set_keymap(_G.nikk_claude_buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })
     vim.cmd("startinsert")
 end
+
+-- Track window closure so toggle reuses the buffer instead of losing track
+vim.api.nvim_create_autocmd("WinClosed", {
+    callback = function(args)
+        local closed_win = tonumber(args.match)
+        if closed_win == _G.nikk_claude_win then
+            _G.nikk_claude_win = nil
+        end
+    end
+})
 
 -- Cleanup terminal when vim exits
 vim.api.nvim_create_autocmd("VimLeavePre", {
