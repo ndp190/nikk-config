@@ -1,0 +1,6 @@
+[".task"]
+    type = "git-repo"
+    url = "git@github.com:ndp190/task.git"
+    refreshPeriod = "168h"
+    [".task".pull]
+        args = ["--ff-only"]
