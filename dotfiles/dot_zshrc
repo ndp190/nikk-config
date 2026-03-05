@@ -113,8 +113,9 @@ alias v=vim
 alias vi=vim
 alias g='git'
 alias k='kubectl'
-alias k-qa='kubectl --context=k8s-qa'
-alias k-prod='kubectl --context=k8s-prod'
+alias k-aqa='kubectl --context=aks-qa'
+alias k-qa='kubectl --context=eks-qa'
+alias k-prod='kubectl --context=aks-prod'
 alias k-3s='kubectl --context=k3s'
 
 function f () {
