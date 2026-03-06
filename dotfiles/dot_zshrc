@@ -118,6 +118,8 @@ alias k-qa='kubectl --context=eks-qa'
 alias k-prod='kubectl --context=aks-prod'
 alias k-3s='kubectl --context=k3s'
 
+source <(kubectl completion zsh)
+
 function f () {
   local file
   file=$(fzf --preview 'bat --style=numbers --color=always {} | head -100')
