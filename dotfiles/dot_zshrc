@@ -77,6 +77,8 @@ source $ZSH/oh-my-zsh.sh
 
 source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 
+source <(kubectl completion zsh)
+
 # additional config
 source ~/.zsh_custom.zsh
 
@@ -117,8 +119,6 @@ alias k-aqa='kubectl --context=aks-qa'
 alias k-qa='kubectl --context=eks-qa'
 alias k-prod='kubectl --context=aks-prod'
 alias k-3s='kubectl --context=k3s'
-
-source <(kubectl completion zsh)
 
 function f () {
   local file
@@ -202,14 +202,14 @@ eval "$(zoxide init zsh)"
 
 codeartifact() {
     local result
-    result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile codeartifact --output text 2>&1)
+    result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile CodeArtifactReadOnly-ProductionInfrastructure --output text 2>&1)
 
     # Check if SSO token expired and needs refresh
     if [[ "$result" == *"Token has expired and refresh failed"* ]]; then
         echo "SSO token expired, logging in..."
         aws sso login --profile codeartifact
         # Retry after login
-        result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile codeartifact --output text 2>&1)
+        result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile CodeArtifactReadOnly-ProductionInfrastructure --output text 2>&1)
     fi
 
     # Check if we got a valid token
