@@ -152,7 +152,7 @@ return {
                         },
                     },
                     file_sorter = require 'telescope.sorters'.get_fuzzy_file,
-                    file_ignore_patterns = { "dist/.*", "node_modules/.*", "vendor/.*", "packages/.*", ".git/", ".gitignore", ".gitkeep", ".next", "package-lock.json" },
+                    file_ignore_patterns = { "dist/.*", "node_modules/.*", "vendor/.*", "packages/.*", "%.git/", ".gitignore", ".gitkeep", ".next", "package-lock.json" },
                     mappings = {
                         i = {
                             ["<C-o>"] = open_buffer_in_background,
