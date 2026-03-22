@@ -1,3 +1,7 @@
+-- Make rg include hidden files (e.g. .github) but skip .git
+-- config for anyjump
+vim.env.RIPGREP_CONFIG_PATH = vim.fn.stdpath('config') .. '/ripgreprc'
+
 require("config.lazy")
 
 -- Load vim_scripts
