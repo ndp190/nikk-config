@@ -1,0 +1,6 @@
+[tools]
+go = "latest"
+node = "latest"
+opentofu = "latest"
+pnpm = "latest"
+python = "latest"
