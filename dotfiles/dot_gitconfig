@@ -1,7 +1,7 @@
-[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-    path = "~/.gitconfig_github"
 [includeIf "hasconfig:remote.*.url:git@github.com:go1com/**"]
     path = "~/.gitconfig_go1"
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+    path = "~/.gitconfig_github"
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim

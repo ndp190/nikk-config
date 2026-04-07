@@ -223,11 +223,11 @@ codeartifact() {
 }
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
-alias claude='claude --permission-mode bypassPermissions'
+alias claude='claude --permission-mode auto'
 
 claudeOp() {
     export CLAUDE_CODE_GH_PAT=$(echo '{{op://Private/PAT claude code mcp/token}}' | op inject)
-    command claude --permission-mode bypassPermissions "$@"
+    command claude --permission-mode auto "$@"
 }
 
 opencodeOp() {
