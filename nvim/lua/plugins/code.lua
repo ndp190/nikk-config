@@ -39,6 +39,7 @@ local servers = {
     'bashls',
     'terraformls',
     'jedi_language_server', -- Python
+    'ruff',                 -- Python formatting & linting
     'intelephense',         -- store intelephense license key at HOME/intelephense/licence.txt (no I am not spelling it wrong)
     'ts_ls',
     'quick_lint_js',
@@ -64,6 +65,12 @@ return {
             for _, lsp in ipairs(servers) do
                 vim.lsp.config(lsp, {})
             end
+            -- Disable ruff hover so jedi handles hover/completions
+            vim.lsp.config('ruff', {
+                on_attach = function(client)
+                    client.server_capabilities.hoverProvider = false
+                end,
+            })
             vim.lsp.enable(servers)
         end,
     },
