@@ -1,0 +1,26 @@
+# Ghostty bindings that send tmux prefix sequences directly.
+# This keeps tmux actions on Command shortcuts when running inside tmux.
+macos-option-as-alt = true
+
+#
+# The mapped tmux actions are:
+#   Cmd-s       -> prefix + f  (pane search across sessions)
+#   Cmd-Shift-s -> prefix + S  (session manager)
+#   Cmd-n       -> prefix + N  (new named session)
+#   Cmd-r       -> prefix + R  (rename session)
+#   Cmd-f       -> prefix + f  (pane search across sessions)
+#   Cmd-z       -> prefix + z  (toggle tmux pane zoom)
+#   Cmd-/       -> prefix + ?  (help)
+#
+# Preserve the overridden Ghostty defaults on shifted variants.
+keybind = super+shift+n=new_window
+keybind = super+shift+f=start_search
+keybind = super+shift+z=undo
+
+keybind = super+s=text:\x02f
+keybind = super+shift+s=text:\x02S
+keybind = super+n=text:\x02N
+keybind = super+r=text:\x02R
+keybind = super+f=text:\x02f
+keybind = super+z=text:\x02z
+keybind = super+slash=text:\x02?

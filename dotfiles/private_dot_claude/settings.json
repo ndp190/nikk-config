@@ -6,7 +6,8 @@
       "Bash(git reset --hard*)",
       "Bash(git rebase*)",
       "Bash(git checkout -b*)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Notification": [
@@ -42,5 +43,6 @@
     "code-simplifier@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true
 }

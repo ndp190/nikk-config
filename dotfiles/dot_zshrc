@@ -197,9 +197,6 @@ fi;
 # End of lines added by compinstall
 
 
-# zoxide (better 'cd')
-eval "$(zoxide init zsh)"
-
 codeartifact() {
     local result
     result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile CodeArtifactReadOnly-ProductionInfrastructure --output text 2>&1)
@@ -223,10 +220,12 @@ codeartifact() {
 }
 export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
+# alias claude='claude --permission-mode bypassPermissions'
 alias claude='claude --permission-mode auto'
 
 claudeOp() {
     export CLAUDE_CODE_GH_PAT=$(echo '{{op://Private/PAT claude code mcp/token}}' | op inject)
+    # command claude --permission-mode bypassPermissions "$@"
     command claude --permission-mode auto "$@"
 }
 
@@ -250,6 +249,9 @@ alias a='noglob _a'
 eval "$("$HOME/.local/bin/mise" activate zsh)"
 
 export LC_ALL=en_US.UTF-8
+
+# zoxide (better 'cd') !!ALWAYS AT THE 2nd END
+eval "$(zoxide init zsh)"
 
 # Profiling zsh !!ALWAYS AT THE END
 # zprof
