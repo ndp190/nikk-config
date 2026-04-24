@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "say -v Trinoid \"Psst\""
+            "command": "~/.local/bin/tmux-agent-attention hook claude"
           }
         ]
       }
@@ -27,7 +27,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "say -v Trinoid \"Psst\""
+            "command": "~/.local/bin/tmux-agent-attention hook claude"
           }
         ]
       }

@@ -13,7 +13,7 @@ require_tmux() {
 pane_rows() {
   local target_session="$1"
   local format
-  format=$'#{session_name}\t#{window_index}\t#{window_name}\t#{pane_id}\t#{pane_current_path}\t#{pane_active}'
+  format=$'#{session_name}\t#{window_index}\t#{window_name}\t#{pane_id}\t#{pane_current_path}\t#{pane_active}\t#{@agent_attention}\t#{@agent_attention_summary}'
   tmux list-panes -a -F "$format" |
     awk -F '\t' -v target_session="$target_session" '
       target_session == "" || $1 == target_session {
@@ -23,8 +23,14 @@ pane_rows() {
           pane_name = "/"
         }
         active = ($6 == "1") ? "*" : " "
-        label = sprintf("%s > %s", $1, pane_name)
-        context = sprintf("%s:%s  %s  %s", $1, $2, $3, active)
+        alert = ""
+        summary = ""
+        if ($7 != "") {
+          alert = sprintf("\033[38;5;208m●\033[0m ")
+          summary = sprintf("  \033[38;5;208m[%s]\033[0m %s", $7, $8)
+        }
+        label = sprintf("%s%s > %s", alert, $1, pane_name)
+        context = sprintf("%s:%s  %s  %s%s", $1, $2, $3, active, summary)
         print label "\t" context "\t" $4 "\t" $5
       }
     '
@@ -58,7 +64,7 @@ interactive() {
       --height=100% \
       --layout=reverse \
       --prompt="Panes > " \
-      --header="enter jump  esc close" \
+      --header="enter jump  orange dot = needs input  esc close" \
       --delimiter=$'\t' \
       --with-nth=1,2,4 \
       --preview 'tmux capture-pane -p -t {3} -S -20' \
@@ -68,6 +74,7 @@ interactive() {
   [[ -n "$selected" ]] || exit 0
 
   session_name="$(printf '%s\n' "$selected" | cut -f1 | sed 's/ > .*//')"
+  session_name="$(printf '%s\n' "$session_name" | sed $'s/\033\\[[0-9;]*m//g' | sed 's/^● //')"
   pane_id="$(printf '%s\n' "$selected" | cut -f3)"
   jump_to_pane "$session_name" "$pane_id"
 }

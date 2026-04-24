@@ -10,12 +10,14 @@ chmod +x "$REPO_DIR/custom-script/autogen-pyinit.sh" \
          "$REPO_DIR/custom-script/music-animation.sh" \
          "$REPO_DIR/custom-script/tmux-session-manager.sh" \
          "$REPO_DIR/custom-script/tmux-pane-picker.sh" \
-         "$REPO_DIR/custom-script/tmux-help.sh"
+         "$REPO_DIR/custom-script/tmux-help.sh" \
+         "$REPO_DIR/custom-script/tmux-agent-attention.sh"
 ln -sf "$REPO_DIR/custom-script/autogen-pyinit.sh" ~/.local/bin/autogen-pyinit
 ln -sf "$REPO_DIR/custom-script/echo-colorized.sh" ~/.local/bin/echo-colorized
 ln -sf "$REPO_DIR/custom-script/tmux-session-manager.sh" ~/.local/bin/tmux-session-manager
 ln -sf "$REPO_DIR/custom-script/tmux-pane-picker.sh" ~/.local/bin/tmux-pane-picker
 ln -sf "$REPO_DIR/custom-script/tmux-help.sh" ~/.local/bin/tmux-help
+ln -sf "$REPO_DIR/custom-script/tmux-agent-attention.sh" ~/.local/bin/tmux-agent-attention
 
 # === Music animation → ~/.config/tmux ===
 mkdir -p ~/.config/tmux
@@ -28,3 +30,7 @@ ln -sf "$REPO_DIR/nvim" ~/.config/nvim
 # === Ghostty macOS config path -> XDG config path ===
 mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
 ln -sf "$HOME/.config/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+
+# === Codex config ===
+mkdir -p ~/.codex
+ln -sf "$REPO_DIR/codex/config.toml" ~/.codex/config.toml

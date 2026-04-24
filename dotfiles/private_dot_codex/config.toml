@@ -1,0 +1,53 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+notify = ["~/.local/bin/tmux-agent-attention", "hook", "codex"]
+
+[projects."/Users/phuc.nguyen/Projects/nikk/nikk-assistant"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/nikk/toys"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/nikk/rental-entry-condition"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Downloads"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-external-api-gateway"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-recommendation-baseline-infrastructure"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/terraform-okta-sync"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-external-api-developer-docs"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/nikk-config"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/foundation-v2-shared-infrastructure"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/cloudflare-iac"]
+trust_level = "trusted"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "context-used", "codex-version"]
+
+[marketplaces.openai-bundled]
+last_updated = "2026-04-23T02:14:22Z"
+source_type = "local"
+source = "/Users/phuc.nguyen/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[plugins."slack@openai-curated"]
+enabled = true
+
+[mcp_servers.datadog]
+url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"

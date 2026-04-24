@@ -78,6 +78,12 @@ local custom_actions = {
             end
         end
     },
+    {
+        name = "Open current folder",
+        action = function()
+            vim.cmd('!open %:p:h')
+        end
+    },
 }
 
 
