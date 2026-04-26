@@ -2,6 +2,13 @@
 _G.nikk_claude_buf = nil
 _G.nikk_claude_win = nil
 
+local launch_options = {
+    { label = "claude", command = "claude" },
+    { label = "claude --resume", command = "claude --resume" },
+    { label = "codex", command = "codex" },
+    { label = "codex resume", command = "codex resume" },
+}
+
 -- Toggle the floating terminal window - faster than ToggleTerm plugin
 function _G.toggle_nikk_claude()
     local claude_open = _G.nikk_claude_win ~= nil and vim.api.nvim_win_is_valid(_G.nikk_claude_win)
@@ -35,6 +42,30 @@ local function is_terminal_running(buf)
     return chan ~= nil and chan > 0 and vim.fn.jobwait({chan}, 0)[1] == -1
 end
 
+local function close_claude_window()
+    if _G.nikk_claude_win and vim.api.nvim_win_is_valid(_G.nikk_claude_win) then
+        vim.api.nvim_win_hide(_G.nikk_claude_win)
+    end
+    _G.nikk_claude_win = nil
+end
+
+local function start_terminal_command(buf, command)
+    local chan = vim.fn.termopen(vim.o.shell)
+    vim.bo[buf].bufhidden = "hide"
+    vim.api.nvim_chan_send(chan, command .. "\n")
+end
+
+local function select_launch_command(on_select)
+    vim.ui.select(launch_options, {
+        prompt = "Launch AI terminal",
+        format_item = function(item)
+            return item.label
+        end,
+    }, function(choice)
+        on_select(choice and choice.command or nil)
+    end)
+end
+
 function _G.open_nikk_claude()
     local width = math.floor(vim.o.columns * 0.8)
     local height = vim.o.lines - 2  -- Full height minus statusline/cmdline
@@ -63,10 +94,29 @@ function _G.open_nikk_claude()
     end
     _G.nikk_claude_win = vim.api.nvim_open_win(_G.nikk_claude_buf, true, opts)
     if need_new_terminal then
-        local chan = vim.fn.termopen(vim.o.shell)
-        vim.api.nvim_chan_send(chan, "claude\n")
-        -- Ensure buffer persists when window is hidden
-        vim.bo[_G.nikk_claude_buf].bufhidden = "hide"
+        local buf = _G.nikk_claude_buf
+        select_launch_command(function(command)
+            if not command then
+                if buf and vim.api.nvim_buf_is_valid(buf) then
+                    vim.api.nvim_buf_delete(buf, { force = true })
+                end
+                if _G.nikk_claude_buf == buf then
+                    _G.nikk_claude_buf = nil
+                end
+                close_claude_window()
+                return
+            end
+
+            if not (buf and vim.api.nvim_buf_is_valid(buf)) then
+                return
+            end
+
+            start_terminal_command(buf, command)
+            if _G.nikk_claude_win and vim.api.nvim_win_is_valid(_G.nikk_claude_win) then
+                vim.api.nvim_set_current_win(_G.nikk_claude_win)
+                vim.cmd("startinsert")
+            end
+        end)
     end
     vim.wo.number = false
     vim.wo.relativenumber = false
