@@ -1,0 +1,124 @@
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+notify = ["~/.local/bin/tmux-agent-attention", "hook", "codex"]
+
+[projects."/Users/phuc.nguyen/Projects/nikk/nikk-assistant"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/nikk/toys"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/nikk/rental-entry-condition"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Downloads"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-external-api-gateway"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-recommendation-baseline-infrastructure"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/terraform-okta-sync"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-external-api-developer-docs"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/nikk-config"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/foundation-v2-shared-infrastructure"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/cloudflare-iac"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-27-find-in-slack-convo-about-enable"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/public-api-cors"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-27-i-want-to-notify-user-on"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/go1-dx"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/domain-infrastructure-k8s-ingress"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-29/on-this-thread-https-go1-slack"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-29/dester-having-this-error-https-go1"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-29/given-this-hey-team-flagging-an"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-29/given-this-hey-team-flagging-an-2"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-29/any-trait-on-aws-account-number"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/nikk/namca-trips-worktree/codex-computer-use"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/gh-actions"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/go1/go1-api-v3"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-30/explain-this-note-zonal-to-regional"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-30/files-mentioned-by-the-user-avatar"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Documents/Codex/2026-04-30/answer-this-or-provide-some-solution"]
+trust_level = "trusted"
+
+[projects."/Users/phuc.nguyen/Projects/nikk/namca-trips"]
+trust_level = "trusted"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "context-used", "codex-version"]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-01T01:04:01Z"
+source_type = "local"
+source = "/Users/phuc.nguyen/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-01T01:19:18Z"
+source_type = "local"
+source = "/Users/phuc.nguyen/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."slack@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[mcp_servers.datadog]
+url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"

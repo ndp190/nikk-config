@@ -66,6 +66,21 @@ local function select_launch_command(on_select)
     end)
 end
 
+local function configure_claude_window(buf, win)
+    if win and vim.api.nvim_win_is_valid(win) then
+        vim.wo[win].number = false
+        vim.wo[win].relativenumber = false
+        vim.wo[win].winhighlight = "Normal:Normal"
+        -- Optional: set transparency, requires 'winblend' support
+        -- vim.wo[win].winblend = 15
+    end
+
+    if buf and vim.api.nvim_buf_is_valid(buf) then
+        -- Pass space through immediately without waiting for leader key timeout
+        vim.api.nvim_buf_set_keymap(buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })
+    end
+end
+
 function _G.open_nikk_claude()
     local width = math.floor(vim.o.columns * 0.8)
     local height = vim.o.lines - 2  -- Full height minus statusline/cmdline
@@ -93,6 +108,8 @@ function _G.open_nikk_claude()
         need_new_terminal = true
     end
     _G.nikk_claude_win = vim.api.nvim_open_win(_G.nikk_claude_buf, true, opts)
+    configure_claude_window(_G.nikk_claude_buf, _G.nikk_claude_win)
+
     if need_new_terminal then
         local buf = _G.nikk_claude_buf
         select_launch_command(function(command)
@@ -117,14 +134,9 @@ function _G.open_nikk_claude()
                 vim.cmd("startinsert")
             end
         end)
+        return
     end
-    vim.wo.number = false
-    vim.wo.relativenumber = false
-    vim.wo.winhighlight = "Normal:Normal"
-    -- Optional: set transparency, requires 'winblend' support
-    -- vim.wo.winblend = 15
-    -- Pass space through immediately without waiting for leader key timeout
-    vim.api.nvim_buf_set_keymap(_G.nikk_claude_buf, 't', '<Space>', '<Space>', { nowait = true, noremap = true })
+
     vim.cmd("startinsert")
 end
 

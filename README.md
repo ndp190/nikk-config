@@ -1,56 +1,51 @@
 # Nikk config
 
-* Install
+This repository is a chezmoi source tree for dotfiles and local development
+configuration. The chezmoi source root is `dotfiles/`, configured by
+`.chezmoiroot`.
+
+## Apply
 
 ```bash
-make
+chezmoi --source="$PWD" apply
 ```
 
-* [Optional] Update custom configurations located at `~/.zsh_custom.zsh`, use cases:
-    * git gpg sign
-    * specific host's shell configurations
-
-* Manual steps
-
-    * tmux: in order to install tmux plugins you need to go into a tmux session and input `<leader> I`
-
-* (*)Clean: this will *remove all* current configuration, use with cautious
+For a single target:
 
 ```bash
-make clean
+chezmoi --source="$PWD" apply ~/.zshrc
 ```
 
-## Brew & node package
+## Layout
 
-To add more package for brew, update it in `install-brew.sh`
-To add more package for node, update it in `install-node.sh`
+- `dotfiles/` contains chezmoi-managed source files.
+- `nvim/`, `codex/`, and selected repo directories are symlink targets used by
+  chezmoi source files.
+- `custom-script/` contains scripts linked into `~/.local/bin` by
+  `dotfiles/run_onchange_install-custom-scripts.sh.tmpl`.
 
-## Custom scripts
+## Editing
 
-### Colorized output
+Make changes in the repo source first, then run `chezmoi apply`. Do not edit a
+generated home-directory file directly when the corresponding source exists in
+this repo.
 
-Ex:
+Common source paths:
 
-```bash
-echo-colorized '[0;31mConflictError[0m:'
-```
+- `dotfiles/dot_zshrc` -> `~/.zshrc`
+- `dotfiles/dot_tmux.conf` -> `~/.tmux.conf`
+- `dotfiles/dot_gitconfig` -> `~/.gitconfig`
+- `dotfiles/private_dot_claude/` -> `~/.claude/`
+- `dotfiles/private_dot_codex/symlink_config.toml.tmpl` -> `~/.codex/config.toml`
+- `dotfiles/dot_config/symlink_nvim.tmpl` -> `~/.config/nvim`
 
-### Auto generate `__init__.py`
+## Packages
 
-Ex:
+Package setup lives in `dotfiles/run_once_install-packages.sh.tmpl`. Shell
+plugin bootstrap lives in `dotfiles/run_once_before_install-shell-plugins.sh`.
 
-```bash
-autogen-pyinit <directory-to-generate>
-```
+## Notes
 
-## Other notes
-
-* Midnight commander: configuration is put in `/mc` folder, not included in install script
-
-# FAQ
-
-### Q: Error when ssh to another server in kitty and try to run tmux?
-
-Run this command
-
-	runkitty +kitten ssh nikk@192.168.1.202
+- Tmux plugins still need to be installed from inside tmux with `<prefix> I`.
+- Midnight Commander configuration is kept in `mc/` and is not currently
+  applied by chezmoi.

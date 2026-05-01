@@ -153,6 +153,10 @@ bindkey "[D" backward-word
 bindkey "[C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
+# tmux extended-keys can turn Shift+Enter into an explicit escape sequence.
+# Accept both known forms so the shell prompt still treats it like Enter.
+bindkey '\e[13;2u' accept-line
+bindkey '\e[27;2;13~' accept-line
 
 export VISUAL=nvim
 export EDITOR=nvim
@@ -198,20 +202,26 @@ fi;
 
 
 codeartifact() {
+    local profile="${CODEARTIFACT_AWS_PROFILE:-codeartifact}"
     local result
-    result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile CodeArtifactReadOnly-ProductionInfrastructure --output text 2>&1)
+    local aws_status
+
+    result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile "$profile" --output text 2>&1)
+    aws_status=$?
 
     # Check if SSO token expired and needs refresh
-    if [[ "$result" == *"Token has expired and refresh failed"* ]]; then
+    if (( aws_status != 0 )) && { [[ "$result" == *"Token has expired"* ]] || [[ "$result" == *"Error loading SSO Token"* ]] || [[ "$result" == *"SSO session"* ]]; }; then
         echo "SSO token expired, logging in..."
-        aws sso login --profile codeartifact
+        aws sso login --profile "$profile" || return $?
         # Retry after login
-        result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile CodeArtifactReadOnly-ProductionInfrastructure --output text 2>&1)
+        result=$(aws codeartifact get-authorization-token --domain go1 --domain-owner 654654359634 --region us-east-1 --query authorizationToken --profile "$profile" --output text 2>&1)
+        aws_status=$?
     fi
 
     # Check if we got a valid token
-    if [[ -z "$result" ]] || [[ "$result" == *"Error"* ]]; then
+    if (( aws_status != 0 )) || [[ -z "$result" ]] || [[ "$result" == "None" ]]; then
         echo "Failed to get CodeArtifact token"
+        [[ -n "$result" ]] && echo "$result" >&2
         return 1
     fi
 

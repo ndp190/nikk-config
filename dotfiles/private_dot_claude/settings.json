@@ -44,5 +44,6 @@
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }
