@@ -36,7 +36,7 @@ socket_lock_dir() {
 }
 
 save_script_path() {
-  printf '%s\n' "$HOME/.tmux/plugins/tmux-resurrect/scripts/save.sh"
+  printf '%s\n' "$HOME/.local/bin/tmux-resurrect-save"
 }
 
 save_once() {
@@ -44,7 +44,7 @@ save_once() {
   save_script="$(save_script_path)"
 
   [[ -x "$save_script" ]] || return 0
-  "$save_script" >/dev/null 2>&1 || true
+  "$save_script" quiet >/dev/null 2>&1 || true
 }
 
 watch() {
@@ -60,7 +60,8 @@ watch() {
     exit 0
   fi
 
-  trap 'rmdir "$lock_dir" >/dev/null 2>&1 || true' EXIT INT TERM
+  trap 'rmdir "$lock_dir" >/dev/null 2>&1 || true' EXIT
+  trap 'rmdir "$lock_dir" >/dev/null 2>&1 || true; exit 0' INT TERM
 
   save_once
   while tmux list-panes >/dev/null 2>&1; do
